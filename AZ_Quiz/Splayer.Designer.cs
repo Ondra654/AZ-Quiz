@@ -34,7 +34,6 @@ namespace AZ_Quiz
             this.SinQuestion = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.back_button = new System.Windows.Forms.Button();
-            this.EnterAnswer = new System.Windows.Forms.Button();
             this.RevealAnswer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -45,6 +44,7 @@ namespace AZ_Quiz
             this.SinAnswer.Name = "SinAnswer";
             this.SinAnswer.Size = new System.Drawing.Size(403, 27);
             this.SinAnswer.TabIndex = 0;
+            this.SinAnswer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SinAnswer_Entered);//z netu
             // 
             // SinQuestion
             // 
@@ -81,16 +81,6 @@ namespace AZ_Quiz
             this.back_button.UseVisualStyleBackColor = false;
             this.back_button.Click += new System.EventHandler(this.back_button_Click);
             // 
-            // EnterAnswer
-            // 
-            this.EnterAnswer.Location = new System.Drawing.Point(697, 300);
-            this.EnterAnswer.Name = "EnterAnswer";
-            this.EnterAnswer.Size = new System.Drawing.Size(128, 29);
-            this.EnterAnswer.TabIndex = 6;
-            this.EnterAnswer.Text = "reveal answer";
-            this.EnterAnswer.UseVisualStyleBackColor = true;
-            this.EnterAnswer.Click += new System.EventHandler(this.EnterAnswer_Click);
-            // 
             // RevealAnswer
             // 
             this.RevealAnswer.Location = new System.Drawing.Point(36, 407);
@@ -106,7 +96,6 @@ namespace AZ_Quiz
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.Controls.Add(this.RevealAnswer);
-            this.Controls.Add(this.EnterAnswer);
             this.Controls.Add(this.back_button);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.SinQuestion);
@@ -125,7 +114,6 @@ namespace AZ_Quiz
         private Label SinQuestion;
         private Button button1;
         private Button back_button;
-        private Button EnterAnswer;
         private Label RevealAnswer;
     }
 }

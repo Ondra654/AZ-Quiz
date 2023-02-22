@@ -17,7 +17,7 @@ namespace AZ_Quiz
         {
             InitializeComponent();
         }
-        
+  
         private void Splayer_Load(object sender, EventArgs e)
         {
 
@@ -34,25 +34,28 @@ namespace AZ_Quiz
             RevealAnswer.Text = "";
             SinAnswer.BackColor = Color.White;
         }
-        private void EnterAnswer_Click(object sender, EventArgs e)
+        private void SinAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
-            if (myGameManager.Answer == "")
+            if (e.KeyChar == (char)13)//z netu
             {
-                RevealAnswer.Text = "Generate new Question first!";
-            }else
-            RevealAnswer.Text= myGameManager.Answer;
-            if (SinAnswer.Text == myGameManager.Answer)
-            {
-                SinAnswer.BackColor= Color.Green;
-            }else
-                SinAnswer.BackColor= Color.Red;
+                if (myGameManager.Answer == "")
+                {
+                    RevealAnswer.Text = "Generate new Question first!";
+                }else
+                    RevealAnswer.Text= myGameManager.Answer;
+                if (SinAnswer.Text == myGameManager.Answer)
+                {
+                    SinAnswer.BackColor= Color.Green;
+                }else
+                    SinAnswer.BackColor= Color.Red;
+            }
         }
-        
-
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Hide();
             SinQuestion.Text = "Press Question button to start";
+            SinAnswer.BackColor = Color.White;
+            RevealAnswer.Text = "";
         }
     }
 }
