@@ -33,6 +33,7 @@ namespace AZ_Quiz
             SinAnswer.Text = FirstLetter;
             RevealAnswer.Text = "";
             SinAnswer.BackColor = Color.White;
+            string AA = myGameManager.Answer;
         }
         private void EnterAnswer_Click(object sender, EventArgs e)
         {
