@@ -46,6 +46,9 @@ namespace AZ_Quiz
                 if (SinAnswer.Text == myGameManager.Answer)
                 {
                     SinAnswer.BackColor= Color.Green;
+
+
+
                 }else
                     SinAnswer.BackColor= Color.Red;
             }
