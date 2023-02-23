@@ -13,13 +13,10 @@ namespace AZ_Quiz
     public partial class Splayer : UserControl
     {
         GameManager myGameManager = new GameManager();
-        public Splayer()
-        {
+        public Splayer(){
             InitializeComponent();
         }
-        private void Splayer_Load(object sender, EventArgs e)
-        {
-
+        private void Splayer_Load(object sender, EventArgs e){
         }
         public void ResetAll()
         {
@@ -40,7 +37,7 @@ namespace AZ_Quiz
             SinQuestion.Text = myGameManager.Question;
             string FirstLetter = myGameManager.Answer.Substring(0, 1);
             SinAnswer.Text = FirstLetter;
-            //RevealAnswer.Text = "";
+            SinAnswer.SelectionStart = SinAnswer.Text.Length;//z netu
             SinAnswer.BackColor = Color.White;
         }
         public void CountScore() 
