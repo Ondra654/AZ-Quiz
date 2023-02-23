@@ -16,12 +16,19 @@ namespace AZ_Quiz
         public int SinglePlayerScore = 0;
         public string Answer = "";
         public string Question = "";
-        private string[] questions;
-        private string[] answers;
+        private string[] questions = new string[0];
+        private string[] answers = new string[0];
         private int question = -1;
         public Random number = new Random();
-
-       public void NextQuestion()
+        private void LoadQuestions(string Qpath)
+        {
+            questions = File.ReadAllLines(Qpath);
+        }
+        private void LoadAnswers(string Apath)
+        {
+            answers= File.ReadAllLines(Apath);
+        }
+        public void NextQuestion()
        {
             if (questions == null) {
                 LoadQuestions(QuestionsPath);
@@ -46,27 +53,6 @@ namespace AZ_Quiz
             }
             
             return Answer = answers[question];
-        }
-        public string AAA()
-        {
-            return string.Empty;
-        }
-        
-        private void LoadQuestions(string Qpath)
-        {
-            questions = File.ReadAllLines(Qpath);
-        }
-        private void LoadAnswers(string Apath)
-        {
-            answers= File.ReadAllLines(Apath);
-        }
-        internal void LoadData()
-        {
-           //accounts
-        }
-        internal void SavedData()
-        {
-            //accounts
         }
     }
 }

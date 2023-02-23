@@ -24,8 +24,6 @@ namespace AZ_Quiz
             mplayer1.SetGlobalGameManager(myGameManager);
             splayer1.Hide();
             login1.Hide();
-
-            myGameManager.LoadData();
         }
         private void GameMenu_Load(object sender, EventArgs e)
         {

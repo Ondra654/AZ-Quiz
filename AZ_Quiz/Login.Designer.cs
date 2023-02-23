@@ -30,16 +30,16 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.LoginNickname = new System.Windows.Forms.TextBox();
+            this.RegisterNickName = new System.Windows.Forms.TextBox();
             this.RegisterButton = new System.Windows.Forms.Button();
-            this.RegisterLabel = new System.Windows.Forms.Label();
+            this.RegisterLabel2 = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
-            this.LoginLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LoginLabel1 = new System.Windows.Forms.Label();
+            this.RegisterLabel1 = new System.Windows.Forms.Label();
+            this.RegisterPassword = new System.Windows.Forms.TextBox();
+            this.LoginPassword = new System.Windows.Forms.TextBox();
+            this.LoginLabel2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -62,21 +62,19 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Register new account";
             // 
-            // textBox1
+            // LoginNickname
             // 
-            this.textBox1.Location = new System.Drawing.Point(100, 168);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 27);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.LoginNickname.Location = new System.Drawing.Point(100, 168);
+            this.LoginNickname.Name = "LoginNickname";
+            this.LoginNickname.Size = new System.Drawing.Size(204, 27);
+            this.LoginNickname.TabIndex = 2;
             // 
-            // textBox2
+            // RegisterNickName
             // 
-            this.textBox2.Location = new System.Drawing.Point(572, 167);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(204, 27);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.RegisterNickName.Location = new System.Drawing.Point(572, 167);
+            this.RegisterNickName.Name = "RegisterNickName";
+            this.RegisterNickName.Size = new System.Drawing.Size(204, 27);
+            this.RegisterNickName.TabIndex = 3;
             // 
             // RegisterButton
             // 
@@ -86,16 +84,15 @@
             this.RegisterButton.TabIndex = 5;
             this.RegisterButton.Text = "Click to continue";
             this.RegisterButton.UseVisualStyleBackColor = true;
-            this.RegisterButton.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
-            // RegisterLabel
+            // RegisterLabel2
             // 
-            this.RegisterLabel.AutoSize = true;
-            this.RegisterLabel.Location = new System.Drawing.Point(484, 203);
-            this.RegisterLabel.Name = "RegisterLabel";
-            this.RegisterLabel.Size = new System.Drawing.Size(73, 20);
-            this.RegisterLabel.TabIndex = 6;
-            this.RegisterLabel.Text = "Password:";
+            this.RegisterLabel2.AutoSize = true;
+            this.RegisterLabel2.Location = new System.Drawing.Point(484, 203);
+            this.RegisterLabel2.Name = "RegisterLabel2";
+            this.RegisterLabel2.Size = new System.Drawing.Size(73, 20);
+            this.RegisterLabel2.TabIndex = 6;
+            this.RegisterLabel2.Text = "Password:";
             // 
             // LoginButton
             // 
@@ -105,64 +102,63 @@
             this.LoginButton.TabIndex = 7;
             this.LoginButton.Text = "Click to continue";
             this.LoginButton.UseVisualStyleBackColor = true;
-            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
-            // LoginLabel
+            // LoginLabel1
             // 
-            this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(12, 174);
-            this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(82, 20);
-            this.LoginLabel.TabIndex = 8;
-            this.LoginLabel.Text = "Nickname: ";
+            this.LoginLabel1.AutoSize = true;
+            this.LoginLabel1.Location = new System.Drawing.Point(12, 174);
+            this.LoginLabel1.Name = "LoginLabel1";
+            this.LoginLabel1.Size = new System.Drawing.Size(82, 20);
+            this.LoginLabel1.TabIndex = 8;
+            this.LoginLabel1.Text = "Nickname: ";
             // 
-            // label3
+            // RegisterLabel1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(484, 171);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 20);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Nickname: ";
+            this.RegisterLabel1.AutoSize = true;
+            this.RegisterLabel1.Location = new System.Drawing.Point(484, 171);
+            this.RegisterLabel1.Name = "RegisterLabel1";
+            this.RegisterLabel1.Size = new System.Drawing.Size(82, 20);
+            this.RegisterLabel1.TabIndex = 9;
+            this.RegisterLabel1.Text = "Nickname: ";
             // 
-            // textBox3
+            // RegisterPassword
             // 
-            this.textBox3.Location = new System.Drawing.Point(572, 200);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(204, 27);
-            this.textBox3.TabIndex = 10;
+            this.RegisterPassword.Location = new System.Drawing.Point(572, 200);
+            this.RegisterPassword.Name = "RegisterPassword";
+            this.RegisterPassword.Size = new System.Drawing.Size(204, 27);
+            this.RegisterPassword.TabIndex = 10;
             // 
-            // textBox4
+            // LoginPassword
             // 
-            this.textBox4.Location = new System.Drawing.Point(100, 200);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(204, 27);
-            this.textBox4.TabIndex = 11;
+            this.LoginPassword.Location = new System.Drawing.Point(100, 200);
+            this.LoginPassword.Name = "LoginPassword";
+            this.LoginPassword.Size = new System.Drawing.Size(204, 27);
+            this.LoginPassword.TabIndex = 11;
             // 
-            // label4
+            // LoginLabel2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 207);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 20);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Password:";
+            this.LoginLabel2.AutoSize = true;
+            this.LoginLabel2.Location = new System.Drawing.Point(12, 207);
+            this.LoginLabel2.Name = "LoginLabel2";
+            this.LoginLabel2.Size = new System.Drawing.Size(73, 20);
+            this.LoginLabel2.TabIndex = 12;
+            this.LoginLabel2.Text = "Password:";
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.LoginLabel);
+            this.Controls.Add(this.LoginLabel2);
+            this.Controls.Add(this.LoginPassword);
+            this.Controls.Add(this.RegisterPassword);
+            this.Controls.Add(this.RegisterLabel1);
+            this.Controls.Add(this.LoginLabel1);
             this.Controls.Add(this.LoginButton);
-            this.Controls.Add(this.RegisterLabel);
+            this.Controls.Add(this.RegisterLabel2);
             this.Controls.Add(this.RegisterButton);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.RegisterNickName);
+            this.Controls.Add(this.LoginNickname);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Login";
@@ -177,15 +173,15 @@
 
         private Label label1;
         private Label label2;
-        private Label RegisterLabel;
-        private Label LoginLabel;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private Label RegisterLabel2;
+        private Label LoginLabel1;
+        private TextBox LoginNickname;
+        private TextBox RegisterNickName;
         private Button RegisterButton;
         private Button LoginButton;
-        private Label label3;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private Label label4;
+        private Label RegisterLabel1;
+        private TextBox RegisterPassword;
+        private TextBox LoginPassword;
+        private Label LoginLabel2;
     }
 }
