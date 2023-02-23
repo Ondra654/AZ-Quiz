@@ -17,48 +17,64 @@ namespace AZ_Quiz
         {
             InitializeComponent();
         }
-  
         private void Splayer_Load(object sender, EventArgs e)
         {
 
         }
-        public void button1_Click(object sender, EventArgs e)
+        public void ResetAll()
+        {
+            SinQuestion.Text = "Press Question button to start";
+            SinAnswer.BackColor = Color.White;
+            SinAnswer.Text = "";
+            RevealAnswer.Text = "";
+            RevealAnswer.BackColor = Color.CadetBlue;
+            myGameManager.SinglePlayerScore = 0;
+            score.Text = "score: " + myGameManager.SinglePlayerScore;
+        }
+        public void DisplayQuestion()
         {
             myGameManager.NextQuestion();
             myGameManager.GetQuestion();
             myGameManager.GetAnswer();
 
-            string FirstLetter = myGameManager.Answer.Substring(0, 1);
             SinQuestion.Text = myGameManager.Question;
+            string FirstLetter = myGameManager.Answer.Substring(0, 1);
             SinAnswer.Text = FirstLetter;
-            RevealAnswer.Text = "";
+            //RevealAnswer.Text = "";
             SinAnswer.BackColor = Color.White;
+        }
+        public void CountScore() 
+        {
+            if (SinAnswer.Text == myGameManager.Answer){
+                myGameManager.SinglePlayerScore = myGameManager.SinglePlayerScore + 10;
+                RevealAnswer.BackColor = Color.Green;
+            }else {
+                myGameManager.SinglePlayerScore = myGameManager.SinglePlayerScore - 3;
+                RevealAnswer.BackColor = Color.Red;
+            }
+                score.Text = "score: " + myGameManager.SinglePlayerScore.ToString();
+                RevealAnswer.Text = "Right answer was: " + myGameManager.Answer;
+        }
+        public void button1_Click(object sender, EventArgs e)
+        {
+            DisplayQuestion();
         }
         private void SinAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)//z netu
             {
-                if (myGameManager.Answer == "")
+                if (SinAnswer.Text == "")
                 {
-                    RevealAnswer.Text = "Generate new Question first!";
+                    RevealAnswer.Text = "You need to generete new question first!";
                 }else
-                    RevealAnswer.Text= myGameManager.Answer;
-                if (SinAnswer.Text == myGameManager.Answer)
-                {
-                    SinAnswer.BackColor= Color.Green;
-
-
-
-                }else
-                    SinAnswer.BackColor= Color.Red;
+                CountScore();
+                DisplayQuestion();
             }
         }
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            SinQuestion.Text = "Press Question button to start";
-            SinAnswer.BackColor = Color.White;
-            RevealAnswer.Text = "";
+            ResetAll();
         }
     }
 }

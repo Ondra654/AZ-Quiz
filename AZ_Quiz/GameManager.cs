@@ -13,6 +13,7 @@ namespace AZ_Quiz
         const string QuestionsPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Questions.txt";
         const string AnswerPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Answers.txt";
 
+        public int SinglePlayerScore = 0;
         public string Answer = "";
         public string Question = "";
         private string[] questions;
@@ -46,7 +47,7 @@ namespace AZ_Quiz
             
             return Answer = answers[question];
         }
-        public string CheckAnswer()
+        public string AAA()
         {
             return string.Empty;
         }
@@ -63,7 +64,6 @@ namespace AZ_Quiz
         {
            //accounts
         }
-
         internal void SavedData()
         {
             //accounts

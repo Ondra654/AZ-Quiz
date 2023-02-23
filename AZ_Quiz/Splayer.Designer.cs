@@ -35,6 +35,7 @@ namespace AZ_Quiz
             this.button1 = new System.Windows.Forms.Button();
             this.back_button = new System.Windows.Forms.Button();
             this.RevealAnswer = new System.Windows.Forms.Label();
+            this.score = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SinAnswer
@@ -44,7 +45,7 @@ namespace AZ_Quiz
             this.SinAnswer.Name = "SinAnswer";
             this.SinAnswer.Size = new System.Drawing.Size(403, 27);
             this.SinAnswer.TabIndex = 0;
-            this.SinAnswer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SinAnswer_Entered);//z netu
+            this.SinAnswer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SinAnswer_Entered);
             // 
             // SinQuestion
             // 
@@ -59,7 +60,7 @@ namespace AZ_Quiz
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(718, 351);
+            this.button1.Location = new System.Drawing.Point(701, 301);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 2;
@@ -83,18 +84,27 @@ namespace AZ_Quiz
             // 
             // RevealAnswer
             // 
-            this.RevealAnswer.Location = new System.Drawing.Point(36, 407);
+            this.RevealAnswer.Location = new System.Drawing.Point(279, 416);
             this.RevealAnswer.Name = "RevealAnswer";
-            this.RevealAnswer.Size = new System.Drawing.Size(931, 42);
+            this.RevealAnswer.Size = new System.Drawing.Size(403, 24);
             this.RevealAnswer.TabIndex = 7;
             this.RevealAnswer.Text = ".";
             this.RevealAnswer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // score
+            // 
+            this.score.Location = new System.Drawing.Point(858, 84);
+            this.score.Name = "score";
+            this.score.Size = new System.Drawing.Size(86, 25);
+            this.score.TabIndex = 8;
+            this.score.Text = "score: ";
             // 
             // Splayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
+            this.Controls.Add(this.score);
             this.Controls.Add(this.RevealAnswer);
             this.Controls.Add(this.back_button);
             this.Controls.Add(this.button1);
@@ -115,5 +125,6 @@ namespace AZ_Quiz
         private Button button1;
         private Button back_button;
         private Label RevealAnswer;
+        private Label score;
     }
 }
