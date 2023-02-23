@@ -16,6 +16,10 @@ namespace AZ_Quiz
 
         public string Nickname = "";
         public string Password = "";
+        public AccountsManager() 
+        { 
+
+        }
         internal void LoadData()
         {
             accounts = File.ReadAllLines(AccountsPath);
