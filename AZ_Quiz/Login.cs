@@ -19,7 +19,10 @@ namespace AZ_Quiz
         private void Login_Load(object sender, EventArgs e){
         }
 
-
-        
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+            myAccountsManager.LoadData();
+            TESTLABEL.Text = myAccountsManager.existingNicknames;
+        }
     }
 }

@@ -10,14 +10,14 @@ namespace AZ_Quiz
 {
     internal class GameManager
     {
-        const string QuestionsPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Questions.txt";
-        const string AnswerPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Answers.txt";
+        const string QuestionsPath = "C:\\Users\\Ondra\\source\\repos\\AZ-Quiz\\Questions.txt";
+        const string AnswerPath = "C:\\Users\\Ondra\\source\\repos\\AZ-Quiz\\Answers.txt";
 
         public int SinglePlayerScore = 0;
         public string Answer = "";
         public string Question = "";
-        private string[] questions = new string[0];
-        private string[] answers = new string[0];
+        private string[] questions;
+        private string[] answers;
         private int question = -1;
         public Random number = new Random();
         private void LoadQuestions(string Qpath)
