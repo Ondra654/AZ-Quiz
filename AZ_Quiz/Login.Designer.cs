@@ -41,16 +41,16 @@
             this.LoginPassword = new System.Windows.Forms.TextBox();
             this.LoginLabel2 = new System.Windows.Forms.Label();
             this.TESTLABEL = new System.Windows.Forms.Label();
+            this.TESTLABEL2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(194, 138);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(155, 110);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 38);
+            this.label1.Size = new System.Drawing.Size(91, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Login";
             // 
@@ -58,55 +58,50 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(639, 138);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(511, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(370, 38);
+            this.label2.Size = new System.Drawing.Size(314, 32);
             this.label2.TabIndex = 1;
             this.label2.Text = "Register new account";
             // 
             // LoginNickname
             // 
-            this.LoginNickname.Location = new System.Drawing.Point(125, 210);
-            this.LoginNickname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LoginNickname.Location = new System.Drawing.Point(100, 168);
             this.LoginNickname.Name = "LoginNickname";
-            this.LoginNickname.Size = new System.Drawing.Size(254, 31);
+            this.LoginNickname.Size = new System.Drawing.Size(204, 27);
             this.LoginNickname.TabIndex = 2;
             // 
             // RegisterNickName
             // 
-            this.RegisterNickName.Location = new System.Drawing.Point(715, 209);
-            this.RegisterNickName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RegisterNickName.Location = new System.Drawing.Point(572, 167);
             this.RegisterNickName.Name = "RegisterNickName";
-            this.RegisterNickName.Size = new System.Drawing.Size(254, 31);
+            this.RegisterNickName.Size = new System.Drawing.Size(204, 27);
             this.RegisterNickName.TabIndex = 3;
             // 
             // RegisterButton
             // 
-            this.RegisterButton.Location = new System.Drawing.Point(761, 291);
-            this.RegisterButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RegisterButton.Location = new System.Drawing.Point(609, 233);
             this.RegisterButton.Name = "RegisterButton";
-            this.RegisterButton.Size = new System.Drawing.Size(170, 34);
+            this.RegisterButton.Size = new System.Drawing.Size(136, 27);
             this.RegisterButton.TabIndex = 5;
             this.RegisterButton.Text = "Click to continue";
             this.RegisterButton.UseVisualStyleBackColor = true;
+            this.RegisterButton.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
             // RegisterLabel2
             // 
             this.RegisterLabel2.AutoSize = true;
-            this.RegisterLabel2.Location = new System.Drawing.Point(605, 254);
-            this.RegisterLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.RegisterLabel2.Location = new System.Drawing.Point(484, 203);
             this.RegisterLabel2.Name = "RegisterLabel2";
-            this.RegisterLabel2.Size = new System.Drawing.Size(91, 25);
+            this.RegisterLabel2.Size = new System.Drawing.Size(73, 20);
             this.RegisterLabel2.TabIndex = 6;
             this.RegisterLabel2.Text = "Password:";
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(169, 291);
-            this.LoginButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LoginButton.Location = new System.Drawing.Point(135, 233);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(170, 34);
+            this.LoginButton.Size = new System.Drawing.Size(136, 27);
             this.LoginButton.TabIndex = 7;
             this.LoginButton.Text = "Click to continue";
             this.LoginButton.UseVisualStyleBackColor = true;
@@ -115,63 +110,69 @@
             // LoginLabel1
             // 
             this.LoginLabel1.AutoSize = true;
-            this.LoginLabel1.Location = new System.Drawing.Point(15, 218);
-            this.LoginLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LoginLabel1.Location = new System.Drawing.Point(12, 174);
             this.LoginLabel1.Name = "LoginLabel1";
-            this.LoginLabel1.Size = new System.Drawing.Size(99, 25);
+            this.LoginLabel1.Size = new System.Drawing.Size(82, 20);
             this.LoginLabel1.TabIndex = 8;
             this.LoginLabel1.Text = "Nickname: ";
             // 
             // RegisterLabel1
             // 
             this.RegisterLabel1.AutoSize = true;
-            this.RegisterLabel1.Location = new System.Drawing.Point(605, 214);
-            this.RegisterLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.RegisterLabel1.Location = new System.Drawing.Point(484, 171);
             this.RegisterLabel1.Name = "RegisterLabel1";
-            this.RegisterLabel1.Size = new System.Drawing.Size(99, 25);
+            this.RegisterLabel1.Size = new System.Drawing.Size(82, 20);
             this.RegisterLabel1.TabIndex = 9;
             this.RegisterLabel1.Text = "Nickname: ";
             // 
             // RegisterPassword
             // 
-            this.RegisterPassword.Location = new System.Drawing.Point(715, 250);
-            this.RegisterPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RegisterPassword.Location = new System.Drawing.Point(572, 200);
             this.RegisterPassword.Name = "RegisterPassword";
-            this.RegisterPassword.Size = new System.Drawing.Size(254, 31);
+            this.RegisterPassword.Size = new System.Drawing.Size(204, 27);
             this.RegisterPassword.TabIndex = 10;
             // 
             // LoginPassword
             // 
-            this.LoginPassword.Location = new System.Drawing.Point(125, 250);
-            this.LoginPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LoginPassword.Location = new System.Drawing.Point(100, 200);
             this.LoginPassword.Name = "LoginPassword";
-            this.LoginPassword.Size = new System.Drawing.Size(254, 31);
+            this.LoginPassword.Size = new System.Drawing.Size(204, 27);
             this.LoginPassword.TabIndex = 11;
             // 
             // LoginLabel2
             // 
             this.LoginLabel2.AutoSize = true;
-            this.LoginLabel2.Location = new System.Drawing.Point(15, 259);
-            this.LoginLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LoginLabel2.Location = new System.Drawing.Point(12, 207);
             this.LoginLabel2.Name = "LoginLabel2";
-            this.LoginLabel2.Size = new System.Drawing.Size(91, 25);
+            this.LoginLabel2.Size = new System.Drawing.Size(73, 20);
             this.LoginLabel2.TabIndex = 12;
             this.LoginLabel2.Text = "Password:";
             // 
             // TESTLABEL
             // 
             this.TESTLABEL.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TESTLABEL.Location = new System.Drawing.Point(125, 351);
+            this.TESTLABEL.Location = new System.Drawing.Point(100, 281);
+            this.TESTLABEL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TESTLABEL.Name = "TESTLABEL";
-            this.TESTLABEL.Size = new System.Drawing.Size(910, 74);
+            this.TESTLABEL.Size = new System.Drawing.Size(728, 59);
             this.TESTLABEL.TabIndex = 13;
             this.TESTLABEL.Text = "label3";
             // 
+            // TESTLABEL2
+            // 
+            this.TESTLABEL2.AutoSize = true;
+            this.TESTLABEL2.Location = new System.Drawing.Point(171, 281);
+            this.TESTLABEL2.Name = "TESTLABEL2";
+            this.TESTLABEL2.Size = new System.Drawing.Size(50, 20);
+            this.TESTLABEL2.TabIndex = 14;
+            this.TESTLABEL2.Text = "label3";
+            // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
+            this.Controls.Add(this.TESTLABEL2);
             this.Controls.Add(this.TESTLABEL);
             this.Controls.Add(this.LoginLabel2);
             this.Controls.Add(this.LoginPassword);
@@ -185,9 +186,8 @@
             this.Controls.Add(this.LoginNickname);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Login";
-            this.Size = new System.Drawing.Size(1125, 500);
+            this.Size = new System.Drawing.Size(900, 400);
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -209,5 +209,6 @@
         private TextBox LoginPassword;
         private Label LoginLabel2;
         private Label TESTLABEL;
+        private Label TESTLABEL2;
     }
 }

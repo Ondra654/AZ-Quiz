@@ -22,7 +22,25 @@ namespace AZ_Quiz
         private void LoginButton_Click(object sender, EventArgs e)
         {
             myAccountsManager.LoadData();
-            TESTLABEL.Text = myAccountsManager.existingNicknames;
+            myAccountsManager.SplitTextLine();
+
+            TESTLABEL.Text = "";
+            TESTLABEL2.Text = "";
+            foreach (var name in myAccountsManager.nicknames)
+            {
+                TESTLABEL.Text = TESTLABEL.Text + name;
+            }
+            foreach(var password in myAccountsManager.passwords)
+            {
+                TESTLABEL2.Text = TESTLABEL2.Text + password;
+            }
+        }
+
+        private void RegisterButton_Click(object sender, EventArgs e)
+        {
+            myAccountsManager.newNickname = RegisterNickName.Text;
+            myAccountsManager.newPassword = RegisterPassword.Text;
+            myAccountsManager.Register();
         }
     }
 }
