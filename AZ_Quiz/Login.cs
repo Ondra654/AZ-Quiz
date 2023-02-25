@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,15 +25,24 @@ namespace AZ_Quiz
             myAccountsManager.LoadData();
             myAccountsManager.SplitTextLine();
 
-            TESTLABEL.Text = "";
-            TESTLABEL2.Text = "";
-            foreach (var name in myAccountsManager.nicknames)
+            string[] Names = new string[myAccountsManager.nicknames.Length];
+
+            foreach (var checkNickname in myAccountsManager.nicknames)
             {
-                TESTLABEL.Text = TESTLABEL.Text + name;
-            }
-            foreach(var password in myAccountsManager.passwords)
-            {
-                TESTLABEL2.Text = TESTLABEL2.Text + password;
+                if (checkNickname == LoginNickname.Text)
+                {
+                    foreach (var checkPassword in myAccountsManager.passwords)
+                    {
+                        if(LoginPassword.Text == checkPassword)
+                        {
+                            myAccountsManager.LoginNickname = LoginNickname.Text;
+                            myAccountsManager.LoginPassword= LoginPassword.Text;
+                        }
+                    }
+                    TESTLABEL2.Text = "success";
+                }else{
+                    TESTLABEL2.Text = "This Nickname does not exist!";
+                }
             }
         }
 

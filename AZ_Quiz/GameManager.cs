@@ -10,8 +10,8 @@ namespace AZ_Quiz
 {
     internal class GameManager
     {
-        const string QuestionsPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Questions.txt";
-        const string AnswerPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Answers.txt";
+        const string QuestionsPath = "C:\\Users\\Ondra\\source\\repos\\AZ-Quiz\\Questions.txt";
+        const string AnswerPath = "C:\\Users\\Ondra\\source\\repos\\AZ-Quiz\\Answers.txt";
 
         public int SinglePlayerScore = 0;
         public string Answer = "";

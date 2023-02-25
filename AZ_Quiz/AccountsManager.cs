@@ -8,7 +8,7 @@ namespace AZ_Quiz
 {
     internal class AccountsManager
     {
-        const string AccountsPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Accounts.txt";
+        const string AccountsPath = "C:\\Users\\Ondra\\source\\repos\\AZ-Quiz\\Accounts.txt";
         public string[] accounts;
 
         public string[] nicknames = new string[0];
@@ -16,19 +16,14 @@ namespace AZ_Quiz
 
         public string newNickname = "";
         public string newPassword = "";
-        public AccountsManager() 
-        {
+        public string LoginNickname = "";
+        public string LoginPassword = "";
 
-        }
         internal void LoadData()
         {
             accounts = File.ReadAllLines(AccountsPath);
             nicknames= new string[accounts.Length];
             passwords= new string[accounts.Length];
-        }
-        internal void SavedData()
-        {
-            File.WriteAllLines(AccountsPath, accounts);
         }
         public void SplitTextLine()
         {
@@ -46,11 +41,10 @@ namespace AZ_Quiz
         }
         public void Register()
         {
-            string[] linkAccounts = new string[] {newNickname,newPassword};
             string seperator = " ";
-            string linkedAccount = String.Join(seperator, linkAccounts);
-            //File.WriteAllText(AccountsPath, linkedAccount);
-            File.AppendAllLines(AccountsPath, linkAccounts);
+            string[] linkedAccount = new string[] {newNickname,newPassword};
+            string[]NP = new string[] {String.Join(seperator, linkedAccount)};
+            File.AppendAllLines(AccountsPath, NP);
         }
     }
 }
