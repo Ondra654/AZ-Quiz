@@ -164,13 +164,12 @@
             // 
             // TESTLABEL
             // 
-            this.TESTLABEL.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TESTLABEL.Location = new System.Drawing.Point(125, 44);
+            this.TESTLABEL.Location = new System.Drawing.Point(666, 348);
             this.TESTLABEL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TESTLABEL.Name = "TESTLABEL";
-            this.TESTLABEL.Size = new System.Drawing.Size(910, 74);
+            this.TESTLABEL.Size = new System.Drawing.Size(368, 25);
             this.TESTLABEL.TabIndex = 13;
-            this.TESTLABEL.Text = "label3";
+            this.TESTLABEL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TESTLABEL2
             // 

@@ -8,7 +8,7 @@ namespace AZ_Quiz
 {
     internal class AccountsManager
     {
-        const string AccountsPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Accounts.txt";
+        const string AccountsPath = "C:\\Users\\Ondra\\source\\repos\\AZ-Quiz\\Accounts.txt";
         public string[] accounts;
 
         public string[] nicknames = new string[0];
@@ -33,6 +33,13 @@ namespace AZ_Quiz
                 splitAccounts = accounts[i].Split(" ");
                 nicknames[i] = splitAccounts[0];
                 passwords[i] = splitAccounts[1];
+            }
+        }
+        public void JoinTextLine()
+        {
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                accounts[i] = string.Join(nicknames[i], " ", passwords[i]);
             }
         }
         public void Login()
