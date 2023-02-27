@@ -25,27 +25,22 @@ namespace AZ_Quiz
             myAccountsManager.LoadData();
             myAccountsManager.SplitTextLine();
 
-            string[] Names = new string[myAccountsManager.nicknames.Length];
-
             foreach (var checkNickname in myAccountsManager.nicknames)
             {
-                if (checkNickname == LoginNickname.Text)
+                if (LoginNickname.Text == checkNickname)
                 {
+                    string specificPassword;
                     foreach (var checkPassword in myAccountsManager.passwords)
                     {
-                        if(LoginPassword.Text == checkPassword)
-                        {
-                            myAccountsManager.LoginNickname = LoginNickname.Text;
-                            myAccountsManager.LoginPassword= LoginPassword.Text;
-                        }
+                        
                     }
                     TESTLABEL2.Text = "success";
+                    break;
                 }else{
                     TESTLABEL2.Text = "This Nickname does not exist!";
                 }
             }
         }
-
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             myAccountsManager.newNickname = RegisterNickName.Text;
