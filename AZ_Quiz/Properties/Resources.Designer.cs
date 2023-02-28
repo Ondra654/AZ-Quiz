@@ -61,6 +61,64 @@ namespace AZ_Quiz.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AIDS
+        ///Atmosféra
+        ///avokádo
+        ///Anakonda
+        ///Aligátor
+        ///bakterie
+        ///buňka
+        ///Bonsaj
+        ///blána
+        ///Běžníkovití
+        ///Bělásek zelný
+        ///Botanika
+        ///Bakteriofág
+        ///Biosféra
+        ///Bezocasí
+        ///Borelióza
+        ///Cévní
+        ///Cysta
+        ///Cejn velký
+        ///Celulóza
+        ///Candát
+        ///Čmelák
+        ///Červotoč
+        ///Lupenotvarné
+        ///Čolek
+        ///Dělnice
+        ///Dýchání
+        ///Dřevokazné
+        ///Dřevomorka
+        ///Dýchací
+        ///Dezinfekce
+        ///Encefalitida
+        ///elektrický
+        ///Ekologie
+        ///Flemming
+        ///Flóra
+        ///Goliáš
+        ///Gorila
+        ///Gazela
+        ///Hmyz
+        ///Hlístoun stříbřitý
+        ///Hlavonožce
+        ///Hlavohruď
+        ///Hermafroditi
+        ///Hlavonožci
+        ///Hroznýš
+        ///Chloroplast
+        ///Chlorofyl
+        ///Chitin
+        ///Chrupavčitou        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Answers {
+            get {
+                return ResourceManager.GetString("Answers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap AZkvíz_logo {

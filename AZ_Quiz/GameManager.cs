@@ -11,8 +11,6 @@ namespace AZ_Quiz
 {
     internal class GameManager
     {
-        const string AnswerPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Answers.txt";
-
         public int SinglePlayerScore = 0;
         public string Answer = "";
         public string Question = "";
@@ -25,9 +23,9 @@ namespace AZ_Quiz
             //questions = File.ReadAllLines(Qpath);
             questions = Resources.Questions.Split("\r\n");
         }
-        private void LoadAnswers(string Apath)
+        private void LoadAnswers()
         {
-            answers= File.ReadAllLines(Apath);
+            answers = Resources.Answers.Split("\r\n");
         }
         public void NextQuestion()
        {
@@ -50,7 +48,7 @@ namespace AZ_Quiz
             }
 
             if (answers == null) {
-                LoadAnswers(AnswerPath);
+                LoadAnswers();
             }
             
             return Answer = answers[question];
