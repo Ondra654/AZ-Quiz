@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AZ_Quiz.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -10,8 +11,7 @@ namespace AZ_Quiz
 {
     internal class GameManager
     {
-        const string QuestionsPath = "C:\\Users\\Ondra\\source\\repos\\AZ-Quiz\\Questions.txt";
-        const string AnswerPath = "C:\\Users\\Ondra\\source\\repos\\AZ-Quiz\\Answers.txt";
+        const string AnswerPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Answers.txt";
 
         public int SinglePlayerScore = 0;
         public string Answer = "";
@@ -20,9 +20,10 @@ namespace AZ_Quiz
         private string[] answers;
         private int question = -1;
         public Random number = new Random();
-        private void LoadQuestions(string Qpath)
+        public void LoadQuestions()
         {
-            questions = File.ReadAllLines(Qpath);
+            //questions = File.ReadAllLines(Qpath);
+            questions = Resources.Questions.Split("\r\n");
         }
         private void LoadAnswers(string Apath)
         {
@@ -31,7 +32,7 @@ namespace AZ_Quiz
         public void NextQuestion()
        {
             if (questions == null) {
-                LoadQuestions(QuestionsPath);
+                LoadQuestions();
             }
             question = number.Next(questions.Length);
         }

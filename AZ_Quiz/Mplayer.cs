@@ -19,15 +19,17 @@ namespace AZ_Quiz
             InitializeComponent();
             this.gameManager = new GameManager();
         }
-
         internal void SetGlobalGameManager(GameManager myGameManager)
         {
             this.gameManager = myGameManager;
         }
 
-        private void Mplayer_Load(object sender, EventArgs e)
+        private void Mplayer_Load(object sender, EventArgs e){
+        }
+
+        private void back_button_Click(object sender, EventArgs e)
         {
-            BackColor= Color.Red;
+            this.Hide();
         }
     }
 }

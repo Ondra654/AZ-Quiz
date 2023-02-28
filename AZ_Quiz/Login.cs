@@ -61,5 +61,10 @@ namespace AZ_Quiz
                 myAccountsManager.Register();
             }
         }
+
+        private void back_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

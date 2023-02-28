@@ -8,7 +8,7 @@ namespace AZ_Quiz
 {
     internal class AccountsManager
     {
-        const string AccountsPath = "C:\\Users\\Ondra\\source\\repos\\AZ-Quiz\\Accounts.txt";
+        const string AccountsPath = "C:\\Users\\Ondra\\source\\repos\\AZ_Quiz\\Accounts.txt";
         public string[] accounts;
 
         public string[] nicknames = new string[0];

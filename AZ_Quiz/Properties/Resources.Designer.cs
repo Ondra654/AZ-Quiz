@@ -59,5 +59,32 @@ namespace AZ_Quiz.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AZkvíz_logo {
+            get {
+                object obj = ResourceManager.GetObject("AZkvíz logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jak se nazývá nemoc způsobená viry, která se přenáší pohlavním stykem?
+        ///Jak se nazývá plynný obal Země?
+        ///Ovocem s největší kalorickou hodnotu je _________.
+        ///Největší had na světě (škrtič), žijící v Amazonce _________.
+        ///Jak se nazývá největší krokodýl?
+        ///Co jsou stafylokoky a streptokoky? (Jsou tyčinkovité, kulovité, hroznovité, atd.)
+        ///Jak se nazývá základní stavební a funkční jednotka organismu?
+        ///Strom nebo rostlina pěstovaná v ploché nádobě se nazývá _________.
+        ///Jak se nazývá hmota, která je např. u žab mez [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Questions {
+            get {
+                return ResourceManager.GetString("Questions", resourceCulture);
+            }
+        }
     }
 }
