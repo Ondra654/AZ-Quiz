@@ -118,13 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Questions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Questions.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="Answers" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Answers.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="OrangeTabel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OrangeTabel3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AZkvíz logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AZkvíz logo.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Questions" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Questions.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="BlueTabel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BlueTabel2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

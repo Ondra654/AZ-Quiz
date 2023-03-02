@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,16 +13,16 @@ namespace AZ_Quiz
 {
     public partial class Mplayer : UserControl
     {
-        GameManager gameManager;
+        GameManager mygameManager;
 
         public Mplayer()
         {
             InitializeComponent();
-            this.gameManager = new GameManager();
+            this.mygameManager = new GameManager();
         }
         internal void SetGlobalGameManager(GameManager myGameManager)
         {
-            this.gameManager = myGameManager;
+            this.mygameManager = myGameManager;
         }
 
         private void Mplayer_Load(object sender, EventArgs e){
@@ -30,6 +31,11 @@ namespace AZ_Quiz
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -46,7 +46,10 @@ namespace AZ_Quiz
         {
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;
-            this.Size = new Size(50, 50);
+            this.BackColor = Color.Purple;
+            this.Name = "Hexagon";
+            this.Size = new Size(50, 58);
+            this.Location = new Point(445, 575);
             this.BackColor = Color.MediumSlateBlue;
             this.ForeColor = Color.White;
             this.Size = new Size(2 * hexagonSide, (int)(1.73 * hexagonSide));
