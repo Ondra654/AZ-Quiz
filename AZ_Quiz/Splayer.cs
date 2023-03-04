@@ -21,7 +21,7 @@ namespace AZ_Quiz
         public void ResetAll()
         {
             SinQuestion.Text = "Press Question button to start";
-            SinAnswer.BackColor = Color.White;
+            SinAnswer.BackColor = Color.BurlyWood;
             SinAnswer.Text = "";
             RevealAnswer.Text = "";
             RevealAnswer.BackColor = Color.CadetBlue;

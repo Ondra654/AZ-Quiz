@@ -51,14 +51,5 @@ namespace AZ_Quiz
             }
             return Answer = answers[question];
         }
-
-        public void GenerateHexagons()
-        {
-            for (int i = 0; i < 28; i++)
-            {
-                HexagonButton button = new HexagonButton();
-                button.Name = i.ToString();
-            }
-        }
     }
 }

@@ -37,16 +37,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.login1 = new AZ_Quiz.Login();
             this.splayer1 = new AZ_Quiz.Splayer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.scoreBoard1 = new AZ_Quiz.ScoreBoard();
+            this.tableMenuPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.tableMenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PVP
             // 
-            this.PVP.Location = new System.Drawing.Point(375, 225);
+            this.PVP.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PVP.Location = new System.Drawing.Point(464, 312);
+            this.PVP.Margin = new System.Windows.Forms.Padding(4);
             this.PVP.Name = "PVP";
             this.PVP.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.PVP.Size = new System.Drawing.Size(239, 83);
+            this.PVP.Size = new System.Drawing.Size(300, 70);
             this.PVP.TabIndex = 1;
             this.PVP.Text = "PVP";
             this.PVP.UseVisualStyleBackColor = true;
@@ -54,10 +57,12 @@
             // 
             // Solo
             // 
-            this.Solo.Location = new System.Drawing.Point(50, 225);
+            this.Solo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Solo.Location = new System.Drawing.Point(68, 312);
+            this.Solo.Margin = new System.Windows.Forms.Padding(4);
             this.Solo.Name = "Solo";
             this.Solo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Solo.Size = new System.Drawing.Size(239, 83);
+            this.Solo.Size = new System.Drawing.Size(300, 70);
             this.Solo.TabIndex = 2;
             this.Solo.Text = "Solo";
             this.Solo.UseVisualStyleBackColor = true;
@@ -65,10 +70,12 @@
             // 
             // AC
             // 
-            this.AC.Location = new System.Drawing.Point(695, 225);
+            this.AC.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.AC.Location = new System.Drawing.Point(860, 312);
+            this.AC.Margin = new System.Windows.Forms.Padding(4);
             this.AC.Name = "AC";
             this.AC.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.AC.Size = new System.Drawing.Size(239, 83);
+            this.AC.Size = new System.Drawing.Size(300, 70);
             this.AC.TabIndex = 3;
             this.AC.Text = "Manage Account";
             this.AC.UseVisualStyleBackColor = true;
@@ -76,13 +83,15 @@
             // 
             // End_button
             // 
+            this.End_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.End_button.BackColor = System.Drawing.Color.Red;
             this.End_button.Cursor = System.Windows.Forms.Cursors.No;
             this.End_button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.End_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.End_button.Location = new System.Drawing.Point(915, 512);
+            this.End_button.Location = new System.Drawing.Point(1135, 634);
+            this.End_button.Margin = new System.Windows.Forms.Padding(4);
             this.End_button.Name = "End_button";
-            this.End_button.Size = new System.Drawing.Size(55, 29);
+            this.End_button.Size = new System.Drawing.Size(69, 36);
             this.End_button.TabIndex = 4;
             this.End_button.Text = "quit";
             this.End_button.UseVisualStyleBackColor = false;
@@ -91,20 +100,21 @@
             // mplayer1
             // 
             this.mplayer1.BackColor = System.Drawing.Color.White;
-            this.mplayer1.Location = new System.Drawing.Point(1004, 564);
-            this.mplayer1.Margin = new System.Windows.Forms.Padding(4);
+            this.mplayer1.Location = new System.Drawing.Point(1255, 705);
+            this.mplayer1.Margin = new System.Windows.Forms.Padding(5);
             this.mplayer1.Name = "mplayer1";
-            this.mplayer1.Size = new System.Drawing.Size(985, 555);
+            this.mplayer1.Size = new System.Drawing.Size(1230, 695);
             this.mplayer1.TabIndex = 6;
             // 
             // help
             // 
+            this.help.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.help.BackColor = System.Drawing.Color.Yellow;
             this.help.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.help.Location = new System.Drawing.Point(941, 11);
+            this.help.Location = new System.Drawing.Point(1168, 22);
             this.help.Margin = new System.Windows.Forms.Padding(2);
             this.help.Name = "help";
-            this.help.Size = new System.Drawing.Size(30, 27);
+            this.help.Size = new System.Drawing.Size(38, 34);
             this.help.TabIndex = 7;
             this.help.Text = "?";
             this.help.UseVisualStyleBackColor = false;
@@ -112,12 +122,14 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Gold;
-            this.label1.Location = new System.Drawing.Point(395, 107);
+            this.label1.Location = new System.Drawing.Point(503, 99);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 50);
+            this.label1.Size = new System.Drawing.Size(222, 60);
             this.label1.TabIndex = 8;
             this.label1.Text = "AZ Quiz";
             // 
@@ -125,52 +137,73 @@
             // 
             this.login1.BackColor = System.Drawing.Color.SeaGreen;
             this.login1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.login1.Location = new System.Drawing.Point(34, 548);
-            this.login1.Margin = new System.Windows.Forms.Padding(4);
+            this.login1.Location = new System.Drawing.Point(44, 705);
+            this.login1.Margin = new System.Windows.Forms.Padding(5);
             this.login1.Name = "login1";
-            this.login1.Size = new System.Drawing.Size(900, 400);
+            this.login1.Size = new System.Drawing.Size(1124, 500);
             this.login1.TabIndex = 9;
             // 
             // splayer1
             // 
             this.splayer1.BackColor = System.Drawing.Color.CadetBlue;
-            this.splayer1.Location = new System.Drawing.Point(1004, 1);
-            this.splayer1.Margin = new System.Windows.Forms.Padding(4);
+            this.splayer1.Location = new System.Drawing.Point(1255, 1);
+            this.splayer1.Margin = new System.Windows.Forms.Padding(5);
             this.splayer1.Name = "splayer1";
-            this.splayer1.Size = new System.Drawing.Size(985, 555);
+            this.splayer1.Size = new System.Drawing.Size(1230, 695);
             this.splayer1.TabIndex = 10;
             // 
-            // pictureBox1
+            // scoreBoard1
             // 
-            this.pictureBox1.Image = global::AZ_Quiz.Properties.Resources.AZkvíz_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(247, 64);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(511, 114);
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
+            this.scoreBoard1.BackColor = System.Drawing.Color.White;
+            this.scoreBoard1.Location = new System.Drawing.Point(1, 1225);
+            this.scoreBoard1.Name = "scoreBoard1";
+            this.scoreBoard1.Size = new System.Drawing.Size(1230, 695);
+            this.scoreBoard1.TabIndex = 12;
+            // 
+            // tableMenuPanel
+            // 
+            this.tableMenuPanel.ColumnCount = 5;
+            this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableMenuPanel.Controls.Add(this.help, 3, 1);
+            this.tableMenuPanel.Controls.Add(this.End_button, 3, 3);
+            this.tableMenuPanel.Controls.Add(this.Solo, 1, 2);
+            this.tableMenuPanel.Controls.Add(this.PVP, 2, 2);
+            this.tableMenuPanel.Controls.Add(this.AC, 3, 2);
+            this.tableMenuPanel.Controls.Add(this.label1, 2, 1);
+            this.tableMenuPanel.Location = new System.Drawing.Point(0, 0);
+            this.tableMenuPanel.Name = "tableMenuPanel";
+            this.tableMenuPanel.RowCount = 5;
+            this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableMenuPanel.Size = new System.Drawing.Size(1230, 695);
+            this.tableMenuPanel.TabIndex = 13;
+            this.tableMenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // GameMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(1539, 844);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(2090, 1369);
+            this.Controls.Add(this.tableMenuPanel);
+            this.Controls.Add(this.scoreBoard1);
             this.Controls.Add(this.splayer1);
             this.Controls.Add(this.login1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.help);
             this.Controls.Add(this.mplayer1);
-            this.Controls.Add(this.End_button);
-            this.Controls.Add(this.AC);
-            this.Controls.Add(this.Solo);
-            this.Controls.Add(this.PVP);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameMenu";
             this.Text = "AZ Quiz";
             this.Load += new System.EventHandler(this.GameMenu_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableMenuPanel.ResumeLayout(false);
+            this.tableMenuPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -184,6 +217,7 @@
         private Label label1;
         private Login login1;
         private Splayer splayer1;
-        private PictureBox pictureBox1;
+        private ScoreBoard scoreBoard1;
+        private TableLayoutPanel tableMenuPanel;
     }
 }
