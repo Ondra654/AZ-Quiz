@@ -52,37 +52,6 @@ namespace AZ_Quiz
             return Answer = answers[question];
         }
 
-        public class TriangleHexButtonsControl : UserControl
-        {
-            private const int ButtonSize = 50;
-            private const int ButtonHeight = 60;
-            private const int NumRows = 7;
-
-            public TriangleHexButtonsControl()
-            {
-                this.Size = new Size(NumRows * ButtonSize, NumRows * ButtonHeight);
-                this.BackColor = Color.White;
-
-                for (int row = 0; row < NumRows; row++)
-                {
-                    int numButtons = NumRows - row;
-                    int offset = row / 2 * ButtonSize;
-                    int y = row * ButtonHeight;
-
-                    for (int col = 0; col < numButtons; col++)
-                    {
-                        int x = offset + col * ButtonSize;
-
-                        HexagonButton button = new HexagonButton();
-                        button.Location = new Point(x, y);
-                        button.Size = new Size(ButtonSize, ButtonHeight);
-                        button.BackColor = Color.Yellow;
-                        button.Text = $"({row},{col})";
-                        this.Controls.Add(button);
-                    }
-                }
-            }
-        }
         public void GenerateHexagons()
         {
             for (int i = 0; i < 28; i++)
