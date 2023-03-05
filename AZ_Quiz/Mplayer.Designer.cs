@@ -32,6 +32,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.player1 = new System.Windows.Forms.Label();
+            this.player2 = new System.Windows.Forms.Label();
+            this.Question = new System.Windows.Forms.Label();
+            this.RightAnswer = new System.Windows.Forms.Label();
+            this.PlayersAnswer = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -82,11 +87,61 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // player1
+            // 
+            this.player1.AutoSize = true;
+            this.player1.Location = new System.Drawing.Point(177, 201);
+            this.player1.Name = "player1";
+            this.player1.Size = new System.Drawing.Size(69, 25);
+            this.player1.TabIndex = 27;
+            this.player1.Text = "Player1";
+            // 
+            // player2
+            // 
+            this.player2.AutoSize = true;
+            this.player2.Location = new System.Drawing.Point(1006, 201);
+            this.player2.Name = "player2";
+            this.player2.Size = new System.Drawing.Size(69, 25);
+            this.player2.TabIndex = 28;
+            this.player2.Text = "Player2";
+            // 
+            // Question
+            // 
+            this.Question.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Question.Location = new System.Drawing.Point(221, 19);
+            this.Question.Name = "Question";
+            this.Question.Size = new System.Drawing.Size(802, 113);
+            this.Question.TabIndex = 29;
+            this.Question.Text = "label1";
+            this.Question.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // RightAnswer
+            // 
+            this.RightAnswer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.RightAnswer.Location = new System.Drawing.Point(406, 155);
+            this.RightAnswer.Name = "RightAnswer";
+            this.RightAnswer.Size = new System.Drawing.Size(456, 71);
+            this.RightAnswer.TabIndex = 31;
+            this.RightAnswer.Text = "label2";
+            this.RightAnswer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PlayersAnswer
+            // 
+            this.PlayersAnswer.Location = new System.Drawing.Point(440, 245);
+            this.PlayersAnswer.Name = "PlayersAnswer";
+            this.PlayersAnswer.Size = new System.Drawing.Size(370, 31);
+            this.PlayersAnswer.TabIndex = 32;
+            // 
             // Mplayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(194)))), ((int)(((byte)(123)))));
+            this.Controls.Add(this.PlayersAnswer);
+            this.Controls.Add(this.RightAnswer);
+            this.Controls.Add(this.Question);
+            this.Controls.Add(this.player2);
+            this.Controls.Add(this.player1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -98,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -106,5 +162,10 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private Button button1;
+        private Label player1;
+        private Label player2;
+        private Label Question;
+        private Label RightAnswer;
+        private TextBox PlayersAnswer;
     }
 }

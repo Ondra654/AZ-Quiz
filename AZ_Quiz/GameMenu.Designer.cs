@@ -184,7 +184,6 @@
             this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableMenuPanel.Size = new System.Drawing.Size(1230, 695);
             this.tableMenuPanel.TabIndex = 13;
-            this.tableMenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // GameMenu
             // 

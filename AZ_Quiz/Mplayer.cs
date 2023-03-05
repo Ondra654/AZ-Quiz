@@ -14,12 +14,11 @@ namespace AZ_Quiz
     public partial class Mplayer : UserControl
     {
         GameManager myGameManager = new GameManager();
-
+        AccountsManager myAccountManager = new AccountsManager();
         public Mplayer()
         {
             InitializeComponent();
         }
-        
         private void Mplayer_Load(object sender, EventArgs e){
         }
         private void back_button_Click(object sender, EventArgs e)
@@ -28,6 +27,8 @@ namespace AZ_Quiz
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            player1.Text = myAccountManager.Account1;
+            player2.Text = myAccountManager.Account2;
             int Xcoordinate = 600;
             int Ycoordinate = 330;
             int buttonName = 1;
@@ -38,7 +39,7 @@ namespace AZ_Quiz
                 {
                     HexagonButton b = new HexagonButton();
                     b.Location = new Point(Xcoordinate, Ycoordinate + (int)79.4 * (i / 2)); //prostřední sloupec buttonů
-                    b.Name = "button" + buttonName.ToString(); //nastav si sám
+                    b.Text = buttonName.ToString(); //nastav si sám
                     buttonName++;
                     this.Controls.Add(b);
 
@@ -47,12 +48,12 @@ namespace AZ_Quiz
                     {
                         HexagonButton b1 = new HexagonButton();
                         b1.Location = new Point(Xcoordinate + 46 * (j + 1), Ycoordinate + (int)79.4 * (i / 2));
-                        b1.Name = "button" + buttonName.ToString(); //nastav si sám
+                        b1.Text = buttonName.ToString(); //nastav si sám
                         buttonName++;
                         this.Controls.Add(b1);
                         HexagonButton b2 = new HexagonButton();
                         b2.Location = new Point(Xcoordinate - 46 * (j + 1), Ycoordinate + (int)79.4 * (i / 2));
-                        b2.Name = "button" + buttonName.ToString(); //nastav si
+                        b2.Text = buttonName.ToString(); //nastav si
                         buttonName++;
                         this.Controls.Add(b2);
                     }
@@ -61,24 +62,24 @@ namespace AZ_Quiz
                 {
                     HexagonButton bRight = new HexagonButton();
                     bRight.Location = new Point(Xcoordinate + 23, Ycoordinate + (int)37.5 + (int)(79.4 * (i / 3)));
-                    bRight.Name = "button" + buttonName.ToString();
+                    bRight.Text = buttonName.ToString();
                     buttonName++;
                     this.Controls.Add(bRight);
                     HexagonButton bLeft = new HexagonButton();
                     bLeft.Location = new Point(Xcoordinate - 23, Ycoordinate + (int)37.5 + (int)(79.4 * (i / 3)));
-                    bLeft.Name = "button" + buttonName.ToString();
+                    bLeft.Text = buttonName.ToString();
                     buttonName++;
                     this.Controls.Add(bLeft);
                     if (i == 4)
                     {
                         HexagonButton br1 = new HexagonButton();
                         br1.Location = new Point(Xcoordinate + 23 + 46, Ycoordinate + (int)116.9);
-                        br1.Name = "button" + buttonName.ToString();
+                        br1.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(br1);
                         HexagonButton bl1 = new HexagonButton();
                         bl1.Location = new Point(Xcoordinate - 23 - 46, Ycoordinate + (int)116.9);
-                        bl1.Name = "button" + buttonName.ToString();
+                        bl1.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(bl1);
                     }
@@ -86,22 +87,22 @@ namespace AZ_Quiz
                     {
                         HexagonButton br1 = new HexagonButton();
                         br1.Location = new Point(Xcoordinate + 23 + 46, Ycoordinate + (int)196.3);
-                        br1.Name = "button" + buttonName.ToString();
+                        br1.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(br1);
                         HexagonButton br2 = new HexagonButton();
                         br2.Location = new Point(Xcoordinate + 23 + 2 * 46, Ycoordinate + (int)196.3);
-                        br2.Name = "button" + buttonName.ToString();
+                        br2.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(br2);
                         HexagonButton bl1 = new HexagonButton();
                         bl1.Location = new Point(Xcoordinate - 23 - 46, Ycoordinate + (int)196.3);
-                        bl1.Name = "button" + buttonName.ToString();
+                        bl1.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(bl1);
                         HexagonButton bl2 = new HexagonButton();
                         bl2.Location = new Point(Xcoordinate - 23 - 2 * 46, Ycoordinate + (int)196.3);
-                        bl2.Name = "button" + buttonName.ToString();
+                        bl2.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(bl2);
                     }
@@ -111,7 +112,23 @@ namespace AZ_Quiz
                     b.Size = new Size(40, 46); //50,58?
                     b.Show();
                     b.BackColor = Color.Purple; //...
+                    b.Click += new System.EventHandler(this.bButton_Click);
                 }
+            }
+        }
+        private void bButton_Click(object? sender, EventArgs e)
+        {
+            myGameManager.NextQuestion();
+            myGameManager.GetQuestion();
+            myGameManager.GetAnswer();
+            Question.Text = myGameManager.Question;
+            PlayersAnswer.Text = myGameManager.Answer.Substring(0, 1);
+            PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
+            foreach (HexagonButton b in this.Controls.OfType<HexagonButton>())
+            {
+
+                b.BackColor = Color.Blue; //...
+                
             }
         }
     }

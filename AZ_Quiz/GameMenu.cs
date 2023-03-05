@@ -23,9 +23,10 @@ namespace AZ_Quiz
         {
             InitializeComponent();
             scoreBoard1.Hide();
+            login1.BringToFront();
+            login1.Location = new System.Drawing.Point(45, 70);
             mplayer1.Hide();
             splayer1.Hide();
-            login1.Hide();
         }
         private void GameMenu_Load(object sender, EventArgs e)
         {
@@ -36,9 +37,9 @@ namespace AZ_Quiz
             tableMenuPanel.SendToBack();
             mplayer1.Show();
             mplayer1.Location = new System.Drawing.Point(0,0);
-            login1.Show();
-            login1.BringToFront();
-            login1.Location = new System.Drawing.Point(45, 70);
+            //login1.Show();
+            //login1.BringToFront();
+            //login1.Location = new System.Drawing.Point(45, 70);
         }
         private void Solo_Click(object sender, EventArgs e)
         {
@@ -62,11 +63,6 @@ namespace AZ_Quiz
         private void END_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
