@@ -37,6 +37,8 @@
             this.Question = new System.Windows.Forms.Label();
             this.RightAnswer = new System.Windows.Forms.Label();
             this.PlayersAnswer = new System.Windows.Forms.TextBox();
+            this.score1 = new System.Windows.Forms.Label();
+            this.score2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -132,11 +134,31 @@
             this.PlayersAnswer.Size = new System.Drawing.Size(370, 31);
             this.PlayersAnswer.TabIndex = 32;
             // 
+            // score1
+            // 
+            this.score1.AutoSize = true;
+            this.score1.Location = new System.Drawing.Point(177, 132);
+            this.score1.Name = "score1";
+            this.score1.Size = new System.Drawing.Size(59, 25);
+            this.score1.TabIndex = 33;
+            this.score1.Text = "label1";
+            // 
+            // score2
+            // 
+            this.score2.AutoSize = true;
+            this.score2.Location = new System.Drawing.Point(1016, 132);
+            this.score2.Name = "score2";
+            this.score2.Size = new System.Drawing.Size(59, 25);
+            this.score2.TabIndex = 34;
+            this.score2.Text = "label1";
+            // 
             // Mplayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(194)))), ((int)(((byte)(123)))));
+            this.Controls.Add(this.score2);
+            this.Controls.Add(this.score1);
             this.Controls.Add(this.PlayersAnswer);
             this.Controls.Add(this.RightAnswer);
             this.Controls.Add(this.Question);
@@ -167,5 +189,7 @@
         private Label Question;
         private Label RightAnswer;
         private TextBox PlayersAnswer;
+        private Label score1;
+        private Label score2;
     }
 }

@@ -58,7 +58,7 @@ namespace AZ_Quiz
         //Methods
         private GraphicsPath GetFigurePath(Rectangle rect, int side)
         {
-            GraphicsPath path = new GraphicsPath();
+            GraphicsPath path = new();
             //float curveSize = radius * 2F;
 
             int thirdOfSide = rect.Width / 3;

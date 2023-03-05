@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace AZ_Quiz
 {
@@ -15,6 +16,8 @@ namespace AZ_Quiz
     {
         GameManager myGameManager = new GameManager();
         AccountsManager myAccountManager = new AccountsManager();
+
+        private bool ButtonClicked = false;
         public Mplayer()
         {
             InitializeComponent();
@@ -112,11 +115,11 @@ namespace AZ_Quiz
                     b.Size = new Size(40, 46); //50,58?
                     b.Show();
                     b.BackColor = Color.Purple; //...
-                    b.Click += new System.EventHandler(this.bButton_Click);
+                    b.Click += HexagonButton_Click;
                 }
             }
-        }
-        private void bButton_Click(object? sender, EventArgs e)
+    }
+        private void HexagonButton_Click(object sender, EventArgs e)
         {
             myGameManager.NextQuestion();
             myGameManager.GetQuestion();
@@ -124,11 +127,38 @@ namespace AZ_Quiz
             Question.Text = myGameManager.Question;
             PlayersAnswer.Text = myGameManager.Answer.Substring(0, 1);
             PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
+
+            HexagonButton clickedButton = (HexagonButton)sender;
+            RightAnswer.Text = clickedButton.Text;
+
             foreach (HexagonButton b in this.Controls.OfType<HexagonButton>())
             {
-
-                b.BackColor = Color.Blue; //...
-                
+                b.BackColor = Color.Blue;
+            }
+        }
+        private void CountScore()
+        {
+            if (PlayersAnswer.Text == myGameManager.Answer)
+            {
+                myGameManager.SinglePlayerScore = myGameManager.SinglePlayerScore + 10;
+                RightAnswer.BackColor = Color.Green;
+            }else{
+                myGameManager.SinglePlayerScore = myGameManager.Player1Score - 3;
+                RightAnswer.BackColor = Color.Red;
+            }
+            score1.Text = "score: " + myGameManager.Player1Score.ToString();
+            RightAnswer.Text = "Right answer was: " + myGameManager.Answer;
+        }
+        private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)//z netu
+            {
+                if (PlayersAnswer.Text == "")
+                {
+                    RightAnswer.Text = "You need to generete new question first!";
+                }
+                else
+                    CountScore();
             }
         }
     }

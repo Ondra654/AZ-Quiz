@@ -12,6 +12,8 @@ namespace AZ_Quiz
     internal class GameManager
     {
         public int SinglePlayerScore = 0;
+        public int Player1Score = 0;
+        public int Player2Score = 0;
         public string Answer = "";
         public string Question = "";
         private string[] questions;
@@ -28,7 +30,7 @@ namespace AZ_Quiz
             answers = Resources.Answers.Split("\r\n");
         }
         public void NextQuestion()
-       {
+        {
             if (questions == null) {
                 LoadQuestions();
             }
