@@ -14,11 +14,16 @@ namespace AZ_Quiz
     public partial class ScoreBoard : UserControl
     {
         AccountsManager myAccountmanager = new AccountsManager();
-        
+
 
         public ScoreBoard()
         {
             InitializeComponent();
+        }
+        private void ScoreBoard_Load(object sender, EventArgs e)
+        {
+            myAccountmanager.LoadData();
+            myAccountmanager.SplitTextLine();
         }
         private void back_button_Click(object sender, EventArgs e)
         {
@@ -29,11 +34,28 @@ namespace AZ_Quiz
         {
             string[] nick = myAccountmanager.nicknames;
             List<string> loadNicks = new List<string>(nick);
-            foreach(string stringnick in nick) 
+            foreach (string stringnick in nick)
             {
                 loadNicks.Add(stringnick);
             }
             dataGridView1.DataSource = new List<string>(loadNicks);
         }
+
+        private void DelAccount_Click(object sender, EventArgs e)
+        {
+            myAccountmanager.LoginNickname = DeleteNickname.Text;
+            myAccountmanager.LoginPassword = DeletePassword.Text;
+            myAccountmanager.FindAccount();
+            if(myAccountmanager.AccountExists == true)
+            {
+                DelLabel.Text = "success";
+                myAccountmanager.DeleteAccount();
+            }
+            else
+            {
+                DelLabel.Text = "smt went wrong";
+            }
+        }
+
     }
 }

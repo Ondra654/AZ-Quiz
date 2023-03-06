@@ -30,7 +30,7 @@ namespace AZ_Quiz
         }
         private void GameMenu_Load(object sender, EventArgs e)
         {
-            this.Size = new System.Drawing.Size(1000, 600);
+            this.Size = new System.Drawing.Size(1250, 750);
         }
         private void PVP_Click(object sender, EventArgs e)
         {

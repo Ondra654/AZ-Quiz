@@ -23,30 +23,20 @@ namespace AZ_Quiz
         }
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            foreach (var checkNickname in myAccountsManager.nicknames){
-                if (LoginNickname.Text == checkNickname){
-                    foreach (var checkPassword in myAccountsManager.passwords){
-                        if(LoginPassword.Text == checkPassword){
-                            myAccountsManager.JoinTextLine();
-                            string EnteredData = string.Join(LoginNickname.Text," ",LoginPassword.Text);
-                            foreach(var checkData in myAccountsManager.accounts){
-                                if(EnteredData == checkData){
-                                    TESTLABEL2.Text = "success";
-                                    if (myAccountsManager.Account1 == "")
-                                    {
-                                        myAccountsManager.Account1 = LoginNickname.Text;
-                                        break;
-                                    }
-                                    else
-                                        myAccountsManager.Account2 = LoginNickname.Text;
-                                        this.Hide();
-                                }
-                            }break;
-                        }else{
-                            TESTLABEL2.Text = "This Password does not exists!";
-                        }
-                    }break;
+            myAccountsManager.LoginNickname = LoginNickname.Text;
+            myAccountsManager.LoginPassword = LoginPassword.Text;
+            myAccountsManager.FindAccount();
+            if(myAccountsManager.AccountExists == true){
+                TESTLABEL2.Text = "success";
+                if (myAccountsManager.Account1 == ""){
+                    myAccountsManager.Account1 = LoginNickname.Text;
+                }else{
+                    myAccountsManager.Account2 = LoginNickname.Text;
+                    this.Hide();
                 }
+            }
+            else if (myAccountsManager.AccountExists == false){
+                TESTLABEL2.Text = "This Password does not exists!";
             }
         }
         private void RegisterButton_Click(object sender, EventArgs e){
@@ -57,11 +47,8 @@ namespace AZ_Quiz
                 myAccountsManager.Register();
                 if (myAccountsManager.Account1 == ""){
                     myAccountsManager.Account1 = RegisterNickName.Text;       
-                }
-                else
+                }else{
                     myAccountsManager.Account2 = RegisterNickName.Text;
-                if(myAccountsManager.Account2 == RegisterNickName.Text)
-                {
                     this.Hide();
                 }
             }
