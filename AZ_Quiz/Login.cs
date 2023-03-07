@@ -66,10 +66,5 @@ namespace AZ_Quiz
         private void back_button_Click(object sender, EventArgs e){
             this.Hide();
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label3.Text = myAccountsManager.Account1;
-            label4.Text = myAccountsManager.Account2;
-        }
     }
 }

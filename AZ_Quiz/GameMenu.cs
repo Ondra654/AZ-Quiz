@@ -24,8 +24,7 @@ namespace AZ_Quiz
         {
             InitializeComponent();
             scoreBoard1.Hide();
-            login1.BringToFront();
-            login1.Location = new System.Drawing.Point(45, 70);
+            login1.Hide();
             mplayer1.Hide();
             splayer1.Hide();
         }
@@ -38,9 +37,9 @@ namespace AZ_Quiz
             tableMenuPanel.SendToBack();
             mplayer1.Show();
             mplayer1.Location = new System.Drawing.Point(0,0);
-            //login1.Show();
-            //login1.BringToFront();
-            //login1.Location = new System.Drawing.Point(45, 70);
+            login1.Show();
+            login1.BringToFront();
+            login1.Location = new System.Drawing.Point(55, 80);
         }
         private void Solo_Click(object sender, EventArgs e)
         {
@@ -54,7 +53,7 @@ namespace AZ_Quiz
             scoreBoard1.Show();
             scoreBoard1.Location = new System.Drawing.Point(0, 0);
         }
-        private void help_Click(object sender, EventArgs e)// z netu
+        private void help_Click(object sender, EventArgs e)
         {
             myAccountManager.HelpLoad();
         }
