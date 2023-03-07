@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AZ_Quiz": {
+      "commandName": "Project",
+      "workingDirectory": "."
+    }
+  }
+}

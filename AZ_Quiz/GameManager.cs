@@ -11,6 +11,8 @@ namespace AZ_Quiz
 {
     internal class GameManager
     {
+        AccountsManager myAccountManager = new AccountsManager();
+
         public int SinglePlayerScore = 0;
         public int Player1Score = 0;
         public int Player2Score = 0;

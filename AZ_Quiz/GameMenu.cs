@@ -19,6 +19,7 @@ namespace AZ_Quiz
     {
         Form form1 = new Form();
         GameManager myGameManager = new GameManager();
+        AccountsManager myAccountManager = new AccountsManager();
         public GameMenu()
         {
             InitializeComponent();
@@ -55,10 +56,7 @@ namespace AZ_Quiz
         }
         private void help_Click(object sender, EventArgs e)// z netu
         {
-            ProcessStartInfo info = new ProcessStartInfo();
-            info.FileName = @"C:\Users\Ondra\source\repos\AZ_Quiz\rules.html";
-            info.UseShellExecute = true;
-            Process.Start(info);
+            myAccountManager.HelpLoad();
         }
         private void END_Click(object sender, EventArgs e)
         {
