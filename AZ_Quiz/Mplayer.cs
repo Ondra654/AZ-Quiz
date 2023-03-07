@@ -28,6 +28,33 @@ namespace AZ_Quiz
         {
             this.Hide();
         }
+        private void HexagonButton_Click(object sender, EventArgs e)
+        {
+            myGameManager.NextQuestion();
+            myGameManager.GetQuestion();
+            myGameManager.GetAnswer();
+            Question.Text = myGameManager.Question;
+            PlayersAnswer.Text = myGameManager.Answer.Substring(0, 1);
+            PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
+
+            HexagonButton clickedButton = (HexagonButton)sender;
+            RightAnswer.Text = clickedButton.Text;
+
+            foreach (HexagonButton b in this.Controls.OfType<HexagonButton>())
+            {
+                b.BackColor = Color.Blue;
+            }
+        }
+        private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)//z netu
+            {
+                if (PlayersAnswer.Text == "")
+                {
+                    RightAnswer.Text = "You need to generete new question first!";
+                }
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             player1.Text = myAccountManager.Account1;
@@ -117,48 +144,6 @@ namespace AZ_Quiz
                     b.BackColor = Color.Purple; //...
                     b.Click += HexagonButton_Click;
                 }
-            }
-    }
-        private void HexagonButton_Click(object sender, EventArgs e)
-        {
-            myGameManager.NextQuestion();
-            myGameManager.GetQuestion();
-            myGameManager.GetAnswer();
-            Question.Text = myGameManager.Question;
-            PlayersAnswer.Text = myGameManager.Answer.Substring(0, 1);
-            PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
-
-            HexagonButton clickedButton = (HexagonButton)sender;
-            RightAnswer.Text = clickedButton.Text;
-
-            foreach (HexagonButton b in this.Controls.OfType<HexagonButton>())
-            {
-                b.BackColor = Color.Blue;
-            }
-        }
-        private void CountScore()
-        {
-            if (PlayersAnswer.Text == myGameManager.Answer)
-            {
-                myGameManager.SinglePlayerScore = myGameManager.SinglePlayerScore + 10;
-                RightAnswer.BackColor = Color.Green;
-            }else{
-                myGameManager.SinglePlayerScore = myGameManager.Player1Score - 3;
-                RightAnswer.BackColor = Color.Red;
-            }
-            score1.Text = "score: " + myGameManager.Player1Score.ToString();
-            RightAnswer.Text = "Right answer was: " + myGameManager.Answer;
-        }
-        private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)//z netu
-            {
-                if (PlayersAnswer.Text == "")
-                {
-                    RightAnswer.Text = "You need to generete new question first!";
-                }
-                else
-                    CountScore();
             }
         }
     }

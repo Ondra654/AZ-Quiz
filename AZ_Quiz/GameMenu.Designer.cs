@@ -190,7 +190,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(1234, 699);
+            this.ClientSize = new System.Drawing.Size(1228, 694);
             this.Controls.Add(this.tableMenuPanel);
             this.Controls.Add(this.scoreBoard1);
             this.Controls.Add(this.splayer1);

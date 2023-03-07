@@ -138,6 +138,7 @@
             this.PlayersAnswer.Name = "PlayersAnswer";
             this.PlayersAnswer.Size = new System.Drawing.Size(370, 31);
             this.PlayersAnswer.TabIndex = 32;
+            this.PlayersAnswer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PlayersAnswer_Entered);
             // 
             // score1
             // 
