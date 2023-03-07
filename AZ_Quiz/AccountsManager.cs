@@ -53,6 +53,13 @@ namespace AZ_Quiz
                 accounts[i] = string.Join(nicknames[i], " ", passwords[i]);
             }
         }
+        public void JoinTextLineForDelete()
+        {
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                accounts[i] = string.Join(accounts[i], " ", highscores[i]);
+            }
+        }
         public void Register()
         {
             string NewAccScore = EmptyScore.ToString();
@@ -83,12 +90,13 @@ namespace AZ_Quiz
         }
         public void DeleteAccount() 
         {
-            string JoinedAccData = string.Join(LoginNickname, " ", LoginPassword, " ", EmptyScore);
+            string NickPass = string.Join(LoginNickname, " ", LoginPassword);
+            string JoinedAccData = string.Join(NickPass, " ", EmptyScore.ToString());
             DeletingAccount = JoinedAccData;
-            foreach(var findRow in accounts)
-            {
-                
-            }
+            JoinTextLineForDelete();
+            accounts = accounts.Where(e => e != DeletingAccount).ToArray();
+
+            File.WriteAllLines(AccountsPath, accounts);
         }
 
         public void SaveData()

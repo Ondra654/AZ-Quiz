@@ -155,7 +155,7 @@
             // scoreBoard1
             // 
             this.scoreBoard1.BackColor = System.Drawing.Color.White;
-            this.scoreBoard1.Location = new System.Drawing.Point(1, 1225);
+            this.scoreBoard1.Location = new System.Drawing.Point(17, 1224);
             this.scoreBoard1.Name = "scoreBoard1";
             this.scoreBoard1.Size = new System.Drawing.Size(1230, 695);
             this.scoreBoard1.TabIndex = 12;
@@ -190,7 +190,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(2090, 1369);
+            this.ClientSize = new System.Drawing.Size(1234, 699);
             this.Controls.Add(this.tableMenuPanel);
             this.Controls.Add(this.scoreBoard1);
             this.Controls.Add(this.splayer1);
