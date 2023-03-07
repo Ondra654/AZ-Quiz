@@ -1,3 +1,2 @@
-Ondra asd 0
-dad dddd 0
-AAA BBBBBB 0
+Ondra password 99
+AAAA BBB 154

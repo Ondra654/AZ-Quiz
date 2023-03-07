@@ -21,6 +21,16 @@ namespace AZ_Quiz
             myAccountsManager.LoadData();
             myAccountsManager.SplitTextLine();
         }
+        public void CheckIfNameAlreadyExists(){
+            foreach (var checkNickname in myAccountsManager.nicknames){
+                if (RegisterNickName.Text == checkNickname){
+                    TESTLABEL.Text = "This name already exists!";
+                    break;
+                }else{
+                    TESTLABEL.Text = "success";
+                }
+            }
+        }
         private void LoginButton_Click(object sender, EventArgs e)
         {
             myAccountsManager.LoginNickname = LoginNickname.Text;
@@ -53,20 +63,9 @@ namespace AZ_Quiz
                 }
             }
         }        
-        public void CheckIfNameAlreadyExists(){
-            foreach (var checkNickname in myAccountsManager.nicknames){
-                if (RegisterNickName.Text == checkNickname){
-                    TESTLABEL.Text = "This name already exists!";
-                    break;
-                }else{
-                    TESTLABEL.Text = "success";
-                }
-            }
-        }
         private void back_button_Click(object sender, EventArgs e){
             this.Hide();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             label3.Text = myAccountsManager.Account1;
