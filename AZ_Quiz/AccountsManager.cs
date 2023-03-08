@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace AZ_Quiz
 {
-    internal class AccountsManager
+    public class AccountsManager
     {
         string path = GetPath("data", "Accounts.txt");
         
@@ -37,7 +37,7 @@ namespace AZ_Quiz
         {
             string path = Directory.GetCurrentDirectory();
 
-            path = Path.Combine(path, "..", "..", "AZ-Quiz", "AZ_Quiz");
+            path = Path.Combine(path, "..", "AZ_Quiz");
 
             for (int i = 0; i < segments.Length; i += 1)
             {

@@ -23,23 +23,22 @@ namespace AZ_Quiz
         public GameMenu()
         {
             InitializeComponent();
-            scoreBoard1.Hide();
             login1.Hide();
+            scoreBoard1.Hide();
             mplayer1.Hide();
             splayer1.Hide();
-        }
-        private void GameMenu_Load(object sender, EventArgs e)
-        {
-            
+
+            login1.SetAccountsManager(myAccountManager);
+            mplayer1.SetAccountsManager(myAccountManager);
         }
         private void PVP_Click(object sender, EventArgs e)
         {
             tableMenuPanel.SendToBack();
-            mplayer1.Show();
-            mplayer1.Location = new System.Drawing.Point(0,0);
             login1.Show();
             login1.BringToFront();
             login1.Location = new System.Drawing.Point(55, 80);
+            mplayer1.Show();
+            mplayer1.Location = new System.Drawing.Point(0,0);
         }
         private void Solo_Click(object sender, EventArgs e)
         {

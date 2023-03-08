@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.XPath;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace AZ_Quiz
@@ -15,14 +16,42 @@ namespace AZ_Quiz
     public partial class Mplayer : UserControl
     {
         GameManager myGameManager = new GameManager();
-        AccountsManager myAccountManager = new AccountsManager();
+        AccountsManager myAccountManager;
 
-        private bool ButtonClicked = false;
+        public bool BlueTurn = false;
+
+        public string BluePlayer = "";
+        public string OrangePlayer = "";
+        public int BlueScore = 0;
+        public int OrangeScore = 0;
+        public void SetAccountsManager(AccountsManager accountManager)
+        {
+            myAccountManager = accountManager;
+        }
         public Mplayer()
         {
             InitializeComponent();
         }
-        private void Mplayer_Load(object sender, EventArgs e){
+        private void Mplayer_Load(object sender, EventArgs e)
+        {
+            player1.Text = myAccountManager.Account1;
+            player2.Text = myAccountManager.Account2;
+            BluePlayer = myAccountManager.Account1;
+            OrangePlayer = myAccountManager.Account2;
+            scoreBlue.Text = BlueScore.ToString();
+            scoreOrange.Text = OrangeScore.ToString();
+            FindTurn();
+        }
+        private void FindTurn()
+        {
+            Random rnd = new Random();
+            int result = rnd.Next(0,2);
+            if(result == 0)
+            {
+                BlueTurn = false;//orange
+            }else if(result == 1) {
+                BlueTurn = true;//blue
+            }
         }
         private void back_button_Click(object sender, EventArgs e)
         {
@@ -45,6 +74,29 @@ namespace AZ_Quiz
                 b.BackColor = Color.Blue;
             }
         }
+        private void CountScore()
+        {
+            if(PlayersAnswer.Text == myGameManager.Answer){
+                RightAnswer.BackColor = Color.Green;
+                if (BlueTurn == false){
+                    OrangeScore = OrangeScore + 10;
+                    BlueTurn = true;
+                }else if (BlueTurn == true){
+                    BlueScore = BlueScore + 10;
+                    BlueTurn= false;
+                }
+            }else{
+                RightAnswer.BackColor = Color.Red;
+                if (BlueTurn == false){
+                    OrangeScore = OrangeScore - 3;
+                }else if (BlueTurn == true){
+                    BlueScore = BlueScore - 3;
+                }
+            }
+            scoreBlue.Text = BlueScore.ToString();
+            scoreOrange.Text = OrangeScore.ToString();
+            RightAnswer.Text = "Right answer is: " + myGameManager.Answer;
+        }
         private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)//z netu
@@ -52,15 +104,17 @@ namespace AZ_Quiz
                 if (PlayersAnswer.Text == "")
                 {
                     RightAnswer.Text = "You need to generete new question first!";
+                }else{
+                    CountScore();
                 }
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            player1.Text = myAccountManager.Account1;
-            player2.Text = myAccountManager.Account2;
-            int Xcoordinate = 600;
-            int Ycoordinate = 330;
+            //600
+            int Xcoordinate = Size.Width / 2;//492
+            //330
+            int Ycoordinate = Size.Height / 2 - (Size.Height / 10);//223
             int buttonName = 1;
             //button size vždy 40,46, mezera mezi buttony 6; první button má lokaci 600,330
             for (int i = 1; i <= 7; i++)
@@ -146,5 +200,6 @@ namespace AZ_Quiz
                 }
             }
         }
+
     }
 }

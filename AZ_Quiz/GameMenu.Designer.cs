@@ -199,7 +199,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameMenu";
             this.Text = "AZ Quiz";
-            this.Load += new System.EventHandler(this.GameMenu_Load);
             this.tableMenuPanel.ResumeLayout(false);
             this.tableMenuPanel.PerformLayout();
             this.ResumeLayout(false);

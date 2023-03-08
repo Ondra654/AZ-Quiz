@@ -9,7 +9,7 @@ using static System.Windows.Forms.LinkLabel;
 
 namespace AZ_Quiz
 {
-    internal class GameManager
+    public class GameManager
     {
         AccountsManager myAccountManager = new AccountsManager();
 

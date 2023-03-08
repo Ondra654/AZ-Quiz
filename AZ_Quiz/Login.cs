@@ -13,7 +13,14 @@ namespace AZ_Quiz
 {
     public partial class Login : UserControl
     {
-        AccountsManager myAccountsManager = new AccountsManager();
+        AccountsManager myAccountsManager;
+        GameManager myGamemanager = new GameManager();
+
+        public void SetAccountsManager(AccountsManager accountManager)
+        {
+            myAccountsManager = accountManager;
+        }
+
         public Login(){
             InitializeComponent();
         }
@@ -24,10 +31,10 @@ namespace AZ_Quiz
         public void CheckIfNameAlreadyExists(){
             foreach (var checkNickname in myAccountsManager.nicknames){
                 if (RegisterNickName.Text == checkNickname){
-                    TESTLABEL.Text = "This name already exists!";
+                    ResultLabel.Text = "This name already exists!";
                     break;
                 }else{
-                    TESTLABEL.Text = "success";
+                    ResultLabel.Text = "success";
                 }
             }
         }
@@ -37,7 +44,7 @@ namespace AZ_Quiz
             myAccountsManager.LoginPassword = LoginPassword.Text;
             myAccountsManager.FindAccount();
             if(myAccountsManager.AccountExists == true){
-                TESTLABEL2.Text = "success";
+                ResultLabel.Text = "success";
                 if (myAccountsManager.Account1 == ""){
                     myAccountsManager.Account1 = LoginNickname.Text;
                 }else{
@@ -46,17 +53,17 @@ namespace AZ_Quiz
                 }
             }
             else if (myAccountsManager.AccountExists == false){
-                TESTLABEL2.Text = "This Password does not exists!";
+                ResultLabel.Text = "This Password does not exists!";
             }
         }
         private void RegisterButton_Click(object sender, EventArgs e){
             CheckIfNameAlreadyExists();
-            if(TESTLABEL.Text == "success"){
+            if(ResultLabel.Text == "success"){
                 myAccountsManager.newNickname = RegisterNickName.Text;
                 myAccountsManager.newPassword = RegisterPassword.Text;
                 myAccountsManager.Register();
                 if (myAccountsManager.Account1 == ""){
-                    myAccountsManager.Account1 = RegisterNickName.Text;       
+                    myAccountsManager.Account1 = RegisterNickName.Text;
                 }else{
                     myAccountsManager.Account2 = RegisterNickName.Text;
                     this.Hide();
