@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using AZ_Quiz.Properties;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,17 +17,21 @@ namespace AZ_Quiz
     public partial class Mplayer : UserControl
     {
         GameManager myGameManager = new GameManager();
-        AccountsManager myAccountManager;
+        AccountsManager myAccountsManager;
 
         public bool BlueTurn = false;
+        public bool SameQuestionAnswered = false;
 
         public string BluePlayer = "";
         public string OrangePlayer = "";
         public int BlueScore = 0;
         public int OrangeScore = 0;
+
+        public string secondPlayer = "";
+        public string firstPlayer = "";
         public void SetAccountsManager(AccountsManager accountManager)
         {
-            myAccountManager = accountManager;
+            myAccountsManager = accountManager;
         }
         public Mplayer()
         {
@@ -34,28 +39,20 @@ namespace AZ_Quiz
         }
         private void Mplayer_Load(object sender, EventArgs e)
         {
-            player1.Text = myAccountManager.Account1;
-            player2.Text = myAccountManager.Account2;
-            BluePlayer = myAccountManager.Account1;
-            OrangePlayer = myAccountManager.Account2;
+            YesButton.Hide();
+            NoButton.Hide();
+        }
+        private void StartGameButton_Click(object sender, EventArgs e)
+        {
+            GenerateHexagons();
+            player1.Text = myAccountsManager.Account1;
+            player2.Text = myAccountsManager.Account2;
+            BluePlayer = myAccountsManager.Account1;
+            OrangePlayer = myAccountsManager.Account2;
             scoreBlue.Text = BlueScore.ToString();
             scoreOrange.Text = OrangeScore.ToString();
-            FindTurn();
-        }
-        private void FindTurn()
-        {
-            Random rnd = new Random();
-            int result = rnd.Next(0,2);
-            if(result == 0)
-            {
-                BlueTurn = false;//orange
-            }else if(result == 1) {
-                BlueTurn = true;//blue
-            }
-        }
-        private void back_button_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+            StartingColor();
+            StartGameButton.Hide();
         }
         private void HexagonButton_Click(object sender, EventArgs e)
         {
@@ -69,52 +66,97 @@ namespace AZ_Quiz
             HexagonButton clickedButton = (HexagonButton)sender;
             RightAnswer.Text = clickedButton.Text;
 
-            foreach (HexagonButton b in this.Controls.OfType<HexagonButton>())
-            {
-                b.BackColor = Color.Blue;
-            }
-        }
-        private void CountScore()
-        {
-            if(PlayersAnswer.Text == myGameManager.Answer){
-                RightAnswer.BackColor = Color.Green;
-                if (BlueTurn == false){
-                    OrangeScore = OrangeScore + 10;
-                    BlueTurn = true;
-                }else if (BlueTurn == true){
-                    BlueScore = BlueScore + 10;
-                    BlueTurn= false;
-                }
-            }else{
-                RightAnswer.BackColor = Color.Red;
-                if (BlueTurn == false){
-                    OrangeScore = OrangeScore - 3;
-                }else if (BlueTurn == true){
-                    BlueScore = BlueScore - 3;
-                }
-            }
-            scoreBlue.Text = BlueScore.ToString();
-            scoreOrange.Text = OrangeScore.ToString();
-            RightAnswer.Text = "Right answer is: " + myGameManager.Answer;
         }
         private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)//z netu
             {
-                if (PlayersAnswer.Text == "")
-                {
-                    RightAnswer.Text = "You need to generete new question first!";
+                if (PlayersAnswer.Text == ""){
+                    RightAnswer.Text = "Select Hexagon first!";
+                }else if(PlayersAnswer.Text == myGameManager.Answer){
+                    AnswerWasRight();
                 }else{
-                    CountScore();
+                    AnswerWasFalse();
                 }
+                scoreBlue.Text = BlueScore.ToString();
+                scoreOrange.Text = OrangeScore.ToString();
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void YesButton_Click(object sender, EventArgs e)
         {
-            //600
-            int Xcoordinate = Size.Width / 2;//492
-            //330
-            int Ycoordinate = Size.Height / 2 - (Size.Height / 10);//223
+            YesButton.Hide();
+            NoButton.Hide();
+            SameQuestionAnswered = true;
+            BlueTurn = !BlueTurn;// z netu
+            RightAnswer.Text = "Now you can answer";
+        }
+        private void NoButton_Click(object sender, EventArgs e)
+        {
+            ResetFuntion();
+        }
+        private void AnswerWasRight()
+        {
+            FindPlayersNames();
+            if (BlueTurn == false){
+                OrangeScore = OrangeScore + 10;
+                BlueTurn = true;
+            }else if (BlueTurn == true){
+                BlueScore = BlueScore + 10;
+                BlueTurn = false;
+            }
+            RightAnswer.Text = "This answer was right, " + firstPlayer;
+            ResetFuntion();
+        }
+        private void AnswerWasFalse() 
+        {
+            FindPlayersNames();
+            if (BlueTurn == false){
+                OrangeScore = OrangeScore - 3;
+            }else if (BlueTurn == true){
+                BlueScore = BlueScore - 3;
+            }
+            if (SameQuestionAnswered == false){
+                RightAnswer.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
+                YesButton.Show();
+                NoButton.Show();
+            }else
+                RightAnswer.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.Answer;
+        }
+        private void StartingColor()
+        {
+            Random rnd = new Random();
+            int result = rnd.Next(0,2);
+            if(result == 0)
+            {
+                BlueTurn = false;//orange
+            }else if(result == 1) {
+                BlueTurn = true;//blue
+            }
+        }
+        private void FindPlayersNames()
+        {
+            if (BlueTurn == false)
+            {
+                secondPlayer = BluePlayer;
+                firstPlayer = OrangePlayer;
+            }else if (BlueTurn == true)
+            {
+                secondPlayer = OrangePlayer;
+                firstPlayer = BluePlayer;
+            }
+        }
+        private void ResetFuntion()
+        {
+            YesButton.Hide();
+            NoButton.Hide();
+            Question.Text = "";
+            PlayersAnswer.Text = "";
+            BlueTurn= !BlueTurn;
+        }
+        private void GenerateHexagons()
+        {
+            int Xcoordinate = (Size.Width / 2) - 20;
+            int Ycoordinate = (Size.Height / 2) ;
             int buttonName = 1;
             //button size vždy 40,46, mezera mezi buttony 6; první button má lokaci 600,330
             for (int i = 1; i <= 7; i++)
@@ -193,13 +235,18 @@ namespace AZ_Quiz
                 }
                 foreach (HexagonButton b in this.Controls.OfType<HexagonButton>())
                 {
-                    b.Size = new Size(40, 46); //50,58?
+                    b.Size = new Size(52, 60);
                     b.Show();
-                    b.BackColor = Color.Purple; //...
+                    b.BackColor = Color.FromArgb(234, 234, 234);
+                    b.ForeColor = Color.Black;
                     b.Click += HexagonButton_Click;
                 }
             }
-        }
 
+        }
+        private void back_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace AZ_Quiz
     {
         Form form1 = new Form();
         GameManager myGameManager = new GameManager();
-        AccountsManager myAccountManager = new AccountsManager();
+        AccountsManager myAccountsManager = new AccountsManager();
         public GameMenu()
         {
             InitializeComponent();
@@ -28,8 +28,8 @@ namespace AZ_Quiz
             mplayer1.Hide();
             splayer1.Hide();
 
-            login1.SetAccountsManager(myAccountManager);
-            mplayer1.SetAccountsManager(myAccountManager);
+            login1.SetAccountsManager(myAccountsManager);
+            mplayer1.SetAccountsManager(myAccountsManager);
         }
         private void PVP_Click(object sender, EventArgs e)
         {
@@ -37,8 +37,8 @@ namespace AZ_Quiz
             login1.Show();
             login1.BringToFront();
             login1.Location = new System.Drawing.Point(55, 80);
-            mplayer1.Show();
             mplayer1.Location = new System.Drawing.Point(0,0);
+            mplayer1.Show();
         }
         private void Solo_Click(object sender, EventArgs e)
         {
@@ -54,7 +54,7 @@ namespace AZ_Quiz
         }
         private void help_Click(object sender, EventArgs e)
         {
-            myAccountManager.HelpLoad();
+            myAccountsManager.HelpLoad();
         }
         private void END_Click(object sender, EventArgs e)
         {

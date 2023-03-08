@@ -25,11 +25,11 @@ namespace AZ_Quiz
         public void LoadQuestions()
         {
             //questions = File.ReadAllLines(Qpath);
-            questions = Resources.Questions.Split("\n");
+            questions = Resources.Questions.Split("\r\n");
         }
         private void LoadAnswers()
         {
-            answers = Resources.Answers.Split("\n");
+            answers = Resources.Answers.Split("\r\n");
         }
         public void NextQuestion()
         {

@@ -99,7 +99,6 @@
             // 
             // mplayer1
             // 
-            this.mplayer1.BackColor = System.Drawing.Color.White;
             this.mplayer1.Location = new System.Drawing.Point(1255, 705);
             this.mplayer1.Margin = new System.Windows.Forms.Padding(5);
             this.mplayer1.Name = "mplayer1";
