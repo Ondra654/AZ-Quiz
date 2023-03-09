@@ -255,6 +255,7 @@ namespace AZ_Quiz
                 {
                     b.Size = new Size(52, 60);
                     b.Show();
+                    b.BringToFront();
                     b.BackColor = Color.FromArgb(234, 234, 234);
                     b.ForeColor = Color.Black;
                     b.Click += HexagonButton_Click;
@@ -265,11 +266,6 @@ namespace AZ_Quiz
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
