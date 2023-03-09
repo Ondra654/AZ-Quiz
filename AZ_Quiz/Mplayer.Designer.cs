@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.back_button = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -35,12 +36,14 @@
             this.player1 = new System.Windows.Forms.Label();
             this.player2 = new System.Windows.Forms.Label();
             this.Question = new System.Windows.Forms.Label();
-            this.RightAnswer = new System.Windows.Forms.Label();
+            this.DisplayInfo = new System.Windows.Forms.Label();
             this.PlayersAnswer = new System.Windows.Forms.TextBox();
             this.scoreBlue = new System.Windows.Forms.Label();
             this.scoreOrange = new System.Windows.Forms.Label();
             this.YesButton = new System.Windows.Forms.Button();
             this.NoButton = new System.Windows.Forms.Button();
+            this.timerGame = new System.Windows.Forms.Timer(this.components);
+            this.timerQuestion = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -122,15 +125,15 @@
             this.Question.Text = "label1";
             this.Question.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // RightAnswer
+            // DisplayInfo
             // 
-            this.RightAnswer.Location = new System.Drawing.Point(110, 114);
-            this.RightAnswer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.RightAnswer.Name = "RightAnswer";
-            this.RightAnswer.Size = new System.Drawing.Size(770, 35);
-            this.RightAnswer.TabIndex = 31;
-            this.RightAnswer.Text = "label2";
-            this.RightAnswer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DisplayInfo.Location = new System.Drawing.Point(110, 114);
+            this.DisplayInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DisplayInfo.Name = "DisplayInfo";
+            this.DisplayInfo.Size = new System.Drawing.Size(770, 35);
+            this.DisplayInfo.TabIndex = 31;
+            this.DisplayInfo.Text = "label2";
+            this.DisplayInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PlayersAnswer
             // 
@@ -185,6 +188,14 @@
             this.NoButton.UseVisualStyleBackColor = false;
             this.NoButton.Click += new System.EventHandler(this.NoButton_Click);
             // 
+            // timerGame
+            // 
+            this.timerGame.Interval = 900;
+            // 
+            // timerQuestion
+            // 
+            this.timerQuestion.Interval = 20;
+            // 
             // Mplayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -195,7 +206,7 @@
             this.Controls.Add(this.scoreOrange);
             this.Controls.Add(this.scoreBlue);
             this.Controls.Add(this.PlayersAnswer);
-            this.Controls.Add(this.RightAnswer);
+            this.Controls.Add(this.DisplayInfo);
             this.Controls.Add(this.Question);
             this.Controls.Add(this.player2);
             this.Controls.Add(this.player1);
@@ -221,11 +232,13 @@
         private Label player1;
         private Label player2;
         private Label Question;
-        private Label RightAnswer;
+        private Label DisplayInfo;
         private TextBox PlayersAnswer;
         private Label scoreBlue;
         private Label scoreOrange;
         private Button YesButton;
         private Button NoButton;
+        private System.Windows.Forms.Timer timerGame;
+        private System.Windows.Forms.Timer timerQuestion;
     }
 }

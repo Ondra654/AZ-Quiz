@@ -77,7 +77,7 @@
             this.LoginNickname.Location = new System.Drawing.Point(154, 126);
             this.LoginNickname.Name = "LoginNickname";
             this.LoginNickname.Size = new System.Drawing.Size(192, 27);
-            this.LoginNickname.TabIndex = 2;
+            this.LoginNickname.TabIndex = 0;
             // 
             // RegisterNickName
             // 
@@ -114,7 +114,7 @@
             this.LoginButton.Location = new System.Drawing.Point(180, 211);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(140, 28);
-            this.LoginButton.TabIndex = 7;
+            this.LoginButton.TabIndex = 2;
             this.LoginButton.Text = "Login";
             this.LoginButton.UseVisualStyleBackColor = true;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
@@ -146,7 +146,7 @@
             this.RegisterPassword.Name = "RegisterPassword";
             this.RegisterPassword.PasswordChar = '*';
             this.RegisterPassword.Size = new System.Drawing.Size(197, 27);
-            this.RegisterPassword.TabIndex = 10;
+            this.RegisterPassword.TabIndex = 4;
             // 
             // LoginPassword
             // 
@@ -155,7 +155,7 @@
             this.LoginPassword.Name = "LoginPassword";
             this.LoginPassword.PasswordChar = '*';
             this.LoginPassword.Size = new System.Drawing.Size(192, 27);
-            this.LoginPassword.TabIndex = 11;
+            this.LoginPassword.TabIndex = 1;
             // 
             // LoginLabel2
             // 

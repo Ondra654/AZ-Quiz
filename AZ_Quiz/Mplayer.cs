@@ -67,7 +67,7 @@ namespace AZ_Quiz
             PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
 
             HexagonButton clickedButton = (HexagonButton)sender;
-            RightAnswer.Text = clickedButton.Text;
+            DisplayInfo.Text = clickedButton.Text;
 
         }
         private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
@@ -75,7 +75,7 @@ namespace AZ_Quiz
             if (e.KeyChar == (char)13)//z netu
             {
                 if (PlayersAnswer.Text == ""){
-                    RightAnswer.Text = "Select Hexagon first!";
+                    Question.Text = "Select Hexagon first!";
                 }else if(PlayersAnswer.Text == myGameManager.Answer){
                     AnswerWasRight();
                 }else{
@@ -91,12 +91,12 @@ namespace AZ_Quiz
             NoButton.Hide();
             SameQuestionAnswered = true;
             BlueTurn = !BlueTurn;// z netu
-            RightAnswer.Text = "Now you can answer";
+            DisplayInfo.Text = "Now you can answer: ";
         }
         private void NoButton_Click(object sender, EventArgs e)
         {
-            Question.Text = "Ok, " + secondPlayer + ", it´s your turn";
-            RightAnswer.Text = "";
+            DisplayInfo.Text = "Ok, " + secondPlayer + ", it´s your turn";
+            Question.Text = "";
             PlayersAnswer.Text = "";
             BlueTurn = !BlueTurn;
             YesButton.Hide();
@@ -113,9 +113,10 @@ namespace AZ_Quiz
                 BlueScore = BlueScore + 10;
                 BlueTurn = false;
             }
-            RightAnswer.Text = "This answer was right, " + firstPlayer;
+            Question.Text = "This answer was right, " + firstPlayer + ".";
+            DisplayInfo.Text = secondPlayer + ", it´s your turn now.";
             PlayersAnswer.Text = "";
-            Question.Text = secondPlayer + ", it´s your turn now!";
+            SameQuestionAnswered = false;
         }
         private void AnswerWasFalse() 
         {
@@ -126,13 +127,13 @@ namespace AZ_Quiz
                 BlueScore = BlueScore - 3;
             }
             if (SameQuestionAnswered == false){
-                RightAnswer.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
+                Question.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
                 YesButton.Show();
                 NoButton.Show();
             }else{
+                Question.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.Answer;
+                DisplayInfo.Text = secondPlayer + ", it´s your turn";
                 PlayersAnswer.Text = "";
-                RightAnswer.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.Answer;
-                Question.Text = secondPlayer + ", it´s your turn";
                 BlueTurn = !BlueTurn;
                 SameQuestionAnswered = false;
             }
@@ -159,13 +160,6 @@ namespace AZ_Quiz
                 secondPlayer = OrangePlayer;
                 firstPlayer = BluePlayer;
             }
-        }
-        private void ResetFuntion()
-        {
-            YesButton.Hide();
-            NoButton.Hide();
-            Question.Text = "";
-            PlayersAnswer.Text = "";
         }
         private void GenerateHexagons()
         {
