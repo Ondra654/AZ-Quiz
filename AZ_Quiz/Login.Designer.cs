@@ -251,11 +251,10 @@
             // 
             this.ResultLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ResultLabel.AutoSize = true;
-            this.ResultLabel.Location = new System.Drawing.Point(403, 301);
+            this.ResultLabel.Location = new System.Drawing.Point(428, 301);
             this.ResultLabel.Name = "ResultLabel";
-            this.ResultLabel.Size = new System.Drawing.Size(50, 20);
+            this.ResultLabel.Size = new System.Drawing.Size(0, 20);
             this.ResultLabel.TabIndex = 16;
-            this.ResultLabel.Text = "label3";
             // 
             // Login
             // 

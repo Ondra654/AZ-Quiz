@@ -41,6 +41,7 @@ namespace AZ_Quiz
         {
             YesButton.Hide();
             NoButton.Hide();
+            Question.Text = "Press StartButton to start game.";
         }
         private void StartGameButton_Click(object sender, EventArgs e)
         {
@@ -52,6 +53,8 @@ namespace AZ_Quiz
             scoreBlue.Text = BlueScore.ToString();
             scoreOrange.Text = OrangeScore.ToString();
             StartingColor();
+            FindPlayersNames();
+            Question.Text = "Great, " + firstPlayer + ", it´s your turn!";
             StartGameButton.Hide();
         }
         private void HexagonButton_Click(object sender, EventArgs e)
@@ -92,7 +95,13 @@ namespace AZ_Quiz
         }
         private void NoButton_Click(object sender, EventArgs e)
         {
-            ResetFuntion();
+            Question.Text = "Ok, " + secondPlayer + ", it´s your turn";
+            RightAnswer.Text = "";
+            PlayersAnswer.Text = "";
+            BlueTurn = !BlueTurn;
+            YesButton.Hide();
+            NoButton.Hide();
+            SameQuestionAnswered = false;
         }
         private void AnswerWasRight()
         {
@@ -105,7 +114,8 @@ namespace AZ_Quiz
                 BlueTurn = false;
             }
             RightAnswer.Text = "This answer was right, " + firstPlayer;
-            ResetFuntion();
+            PlayersAnswer.Text = "";
+            Question.Text = secondPlayer + ", it´s your turn now!";
         }
         private void AnswerWasFalse() 
         {
@@ -119,8 +129,13 @@ namespace AZ_Quiz
                 RightAnswer.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
                 YesButton.Show();
                 NoButton.Show();
-            }else
+            }else{
+                PlayersAnswer.Text = "";
                 RightAnswer.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.Answer;
+                Question.Text = secondPlayer + ", it´s your turn";
+                BlueTurn = !BlueTurn;
+                SameQuestionAnswered = false;
+            }
         }
         private void StartingColor()
         {
@@ -151,12 +166,11 @@ namespace AZ_Quiz
             NoButton.Hide();
             Question.Text = "";
             PlayersAnswer.Text = "";
-            BlueTurn= !BlueTurn;
         }
         private void GenerateHexagons()
         {
-            int Xcoordinate = (Size.Width / 2) - 20;
-            int Ycoordinate = (Size.Height / 2) ;
+            int Xcoordinate = (Size.Width / 2) - 25;
+            int Ycoordinate = (Size.Height / 2) - 30;
             int buttonName = 1;
             //button size vždy 40,46, mezera mezi buttony 6; první button má lokaci 600,330
             for (int i = 1; i <= 7; i++)

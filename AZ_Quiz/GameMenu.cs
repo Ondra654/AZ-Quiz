@@ -36,7 +36,9 @@ namespace AZ_Quiz
             tableMenuPanel.SendToBack();
             login1.Show();
             login1.BringToFront();
-            login1.Location = new System.Drawing.Point(55, 80);
+            int Xcoordinate = (mplayer1.Width - login1.Width) / 2;
+            int Ycoordinate = (mplayer1.Height - login1.Height) / 2;
+            login1.Location = new System.Drawing.Point(Xcoordinate, Ycoordinate);
             mplayer1.Location = new System.Drawing.Point(0,0);
             mplayer1.Show();
         }
