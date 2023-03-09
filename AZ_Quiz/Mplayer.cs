@@ -45,6 +45,7 @@ namespace AZ_Quiz
         }
         private void StartGameButton_Click(object sender, EventArgs e)
         {
+            StartGameButton.Hide();
             GenerateHexagons();
             player1.Text = myAccountsManager.Account1;
             player2.Text = myAccountsManager.Account2;
@@ -54,8 +55,8 @@ namespace AZ_Quiz
             scoreOrange.Text = OrangeScore.ToString();
             StartingColor();
             FindPlayersNames();
+            timerGame.Start();
             Question.Text = "Great, " + firstPlayer + ", it´s your turn!";
-            StartGameButton.Hide();
         }
         private void HexagonButton_Click(object sender, EventArgs e)
         {
@@ -161,6 +162,15 @@ namespace AZ_Quiz
                 firstPlayer = BluePlayer;
             }
         }
+        private void IncreaseProgressBar(object sender, EventArgs e)
+        {
+            progressBarGame.Increment(1);
+            //.Text = progressBar1.Value.ToString() + "% Completed";
+            if (progressBarGame.Value == progressBarGame.Maximum)
+            {
+                DisplayInfo.Text = "progress bar full";
+            }
+        }
         private void GenerateHexagons()
         {
             int Xcoordinate = (Size.Width / 2) - 25;
@@ -255,6 +265,11 @@ namespace AZ_Quiz
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

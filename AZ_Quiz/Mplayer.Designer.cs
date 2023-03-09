@@ -44,6 +44,8 @@
             this.NoButton = new System.Windows.Forms.Button();
             this.timerGame = new System.Windows.Forms.Timer(this.components);
             this.timerQuestion = new System.Windows.Forms.Timer(this.components);
+            this.progressBarGame = new System.Windows.Forms.ProgressBar();
+            this.progressBarQuestion = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +67,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AZ_Quiz.Properties.Resources.BlueTabel;
-            this.pictureBox1.Location = new System.Drawing.Point(31, 161);
+            this.pictureBox1.Location = new System.Drawing.Point(31, 129);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 386);
@@ -76,7 +78,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::AZ_Quiz.Properties.Resources.OrangeTabel;
-            this.pictureBox2.Location = new System.Drawing.Point(757, 161);
+            this.pictureBox2.Location = new System.Drawing.Point(757, 129);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(200, 386);
@@ -86,7 +88,7 @@
             // 
             // StartGameButton
             // 
-            this.StartGameButton.Location = new System.Drawing.Point(450, 231);
+            this.StartGameButton.Location = new System.Drawing.Point(452, 233);
             this.StartGameButton.Margin = new System.Windows.Forms.Padding(2);
             this.StartGameButton.Name = "StartGameButton";
             this.StartGameButton.Size = new System.Drawing.Size(90, 27);
@@ -98,7 +100,7 @@
             // player1
             // 
             this.player1.AutoSize = true;
-            this.player1.Location = new System.Drawing.Point(110, 231);
+            this.player1.Location = new System.Drawing.Point(110, 199);
             this.player1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.player1.Name = "player1";
             this.player1.Size = new System.Drawing.Size(57, 20);
@@ -108,7 +110,7 @@
             // player2
             // 
             this.player2.AutoSize = true;
-            this.player2.Location = new System.Drawing.Point(835, 231);
+            this.player2.Location = new System.Drawing.Point(835, 221);
             this.player2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.player2.Name = "player2";
             this.player2.Size = new System.Drawing.Size(57, 20);
@@ -117,7 +119,7 @@
             // 
             // Question
             // 
-            this.Question.Location = new System.Drawing.Point(110, 16);
+            this.Question.Location = new System.Drawing.Point(110, 3);
             this.Question.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Question.Name = "Question";
             this.Question.Size = new System.Drawing.Size(770, 75);
@@ -127,7 +129,7 @@
             // 
             // DisplayInfo
             // 
-            this.DisplayInfo.Location = new System.Drawing.Point(110, 114);
+            this.DisplayInfo.Location = new System.Drawing.Point(110, 92);
             this.DisplayInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DisplayInfo.Name = "DisplayInfo";
             this.DisplayInfo.Size = new System.Drawing.Size(770, 35);
@@ -137,7 +139,7 @@
             // 
             // PlayersAnswer
             // 
-            this.PlayersAnswer.Location = new System.Drawing.Point(348, 192);
+            this.PlayersAnswer.Location = new System.Drawing.Point(351, 160);
             this.PlayersAnswer.Margin = new System.Windows.Forms.Padding(2);
             this.PlayersAnswer.Name = "PlayersAnswer";
             this.PlayersAnswer.Size = new System.Drawing.Size(297, 27);
@@ -147,7 +149,7 @@
             // scoreBlue
             // 
             this.scoreBlue.AutoSize = true;
-            this.scoreBlue.Location = new System.Drawing.Point(31, 129);
+            this.scoreBlue.Location = new System.Drawing.Point(31, 58);
             this.scoreBlue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreBlue.Name = "scoreBlue";
             this.scoreBlue.Size = new System.Drawing.Size(50, 20);
@@ -157,7 +159,7 @@
             // scoreOrange
             // 
             this.scoreOrange.AutoSize = true;
-            this.scoreOrange.Location = new System.Drawing.Point(907, 129);
+            this.scoreOrange.Location = new System.Drawing.Point(907, 58);
             this.scoreOrange.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreOrange.Name = "scoreOrange";
             this.scoreOrange.Size = new System.Drawing.Size(50, 20);
@@ -167,7 +169,7 @@
             // YesButton
             // 
             this.YesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.YesButton.Location = new System.Drawing.Point(380, 161);
+            this.YesButton.Location = new System.Drawing.Point(385, 129);
             this.YesButton.Margin = new System.Windows.Forms.Padding(2);
             this.YesButton.Name = "YesButton";
             this.YesButton.Size = new System.Drawing.Size(74, 27);
@@ -179,7 +181,7 @@
             // NoButton
             // 
             this.NoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.NoButton.Location = new System.Drawing.Point(537, 161);
+            this.NoButton.Location = new System.Drawing.Point(537, 129);
             this.NoButton.Margin = new System.Windows.Forms.Padding(2);
             this.NoButton.Name = "NoButton";
             this.NoButton.Size = new System.Drawing.Size(74, 27);
@@ -191,16 +193,36 @@
             // timerGame
             // 
             this.timerGame.Interval = 900;
+            this.timerGame.Tick += new System.EventHandler(this.IncreaseProgressBar);
             // 
             // timerQuestion
             // 
             this.timerQuestion.Interval = 20;
+            // 
+            // progressBarGame
+            // 
+            this.progressBarGame.Location = new System.Drawing.Point(120, 537);
+            this.progressBarGame.Maximum = 900;
+            this.progressBarGame.Name = "progressBarGame";
+            this.progressBarGame.Size = new System.Drawing.Size(750, 16);
+            this.progressBarGame.TabIndex = 37;
+            this.progressBarGame.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
+            // progressBarQuestion
+            // 
+            this.progressBarQuestion.Location = new System.Drawing.Point(435, 199);
+            this.progressBarQuestion.Maximum = 20;
+            this.progressBarQuestion.Name = "progressBarQuestion";
+            this.progressBarQuestion.Size = new System.Drawing.Size(125, 29);
+            this.progressBarQuestion.TabIndex = 38;
             // 
             // Mplayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(194)))), ((int)(((byte)(123)))));
+            this.Controls.Add(this.progressBarQuestion);
+            this.Controls.Add(this.progressBarGame);
             this.Controls.Add(this.NoButton);
             this.Controls.Add(this.YesButton);
             this.Controls.Add(this.scoreOrange);
@@ -240,5 +262,7 @@
         private Button NoButton;
         private System.Windows.Forms.Timer timerGame;
         private System.Windows.Forms.Timer timerQuestion;
+        private ProgressBar progressBarGame;
+        private ProgressBar progressBarQuestion;
     }
 }
