@@ -30,6 +30,7 @@ namespace AZ_Quiz
 
         public string secondPlayer = "";
         public string firstPlayer = "";
+        public string gameResult;
         public void SetAccountsManager(AccountsManager accountManager)
         {
             myAccountsManager = accountManager;
@@ -121,6 +122,9 @@ namespace AZ_Quiz
                 BlueTurn = false;
             }
             this.clickedButton.Text = "";
+            timerQuestion.Stop();
+            progressBarQuestion.Value = 0;
+            progressBarQuestion.Hide();
             Question.Text = "This answer was right, " + firstPlayer + ".";
             DisplayInfo.Text = secondPlayer + ", it´s your turn now.";
             PlayersAnswer.Text = "";
@@ -177,6 +181,10 @@ namespace AZ_Quiz
             if (progressBarQuestion.Value == progressBarQuestion.Maximum)
             {
                 DisplayInfo.Text = "Time for answering expired";
+                AnswerWasFalse();
+                timerQuestion.Stop();
+                progressBarQuestion.Value = 0;
+                progressBarQuestion.Hide();
                 //AnswerTimeExpierd();
             }
         }
@@ -185,7 +193,15 @@ namespace AZ_Quiz
             progressBarGame.Increment(1);
             if (progressBarGame.Value == progressBarGame.Maximum)
             {
+                timerGame.Stop();
                 DisplayInfo.Text = "Game time expired.";
+                if(blueScore > orangeScore)
+                {
+                    gameResult = bluePlayer + ", congratulations! You won!";
+                }else
+                    gameResult = orangePlayer + ", congratulations! You won!";
+                string caption = "Game Result";
+                MessageBox.Show(gameResult, caption);
                 //EndThisGame();
             }
         }
