@@ -18,14 +18,15 @@ namespace AZ_Quiz
     {
         GameManager myGameManager = new GameManager();
         AccountsManager myAccountsManager;
+        HexagonButton clickedButton = new HexagonButton();
 
         public bool BlueTurn = false;
         public bool SameQuestionAnswered = false;
 
-        public string BluePlayer = "";
-        public string OrangePlayer = "";
-        public int BlueScore = 0;
-        public int OrangeScore = 0;
+        public string bluePlayer = "";
+        public string orangePlayer = "";
+        public int blueScore = 0;
+        public int orangeScore = 0;
 
         public string secondPlayer = "";
         public string firstPlayer = "";
@@ -50,10 +51,10 @@ namespace AZ_Quiz
             GenerateHexagons();
             player1.Text = myAccountsManager.Account1;
             player2.Text = myAccountsManager.Account2;
-            BluePlayer = myAccountsManager.Account1;
-            OrangePlayer = myAccountsManager.Account2;
-            scoreBlue.Text = BlueScore.ToString();
-            scoreOrange.Text = OrangeScore.ToString();
+            bluePlayer = myAccountsManager.Account1;
+            orangePlayer = myAccountsManager.Account2;
+            scoreBlue.Text = blueScore.ToString();
+            scoreOrange.Text = orangeScore.ToString();
             StartingColor();
             FindPlayersNames();
             timerGame.Start();
@@ -70,9 +71,7 @@ namespace AZ_Quiz
             PlayersAnswer.Text = myGameManager.Answer.Substring(0, 1);
             PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
 
-            HexagonButton clickedButton = (HexagonButton)sender;
-            DisplayInfo.Text = clickedButton.Text;
-
+            clickedButton = (HexagonButton)sender;
         }
         private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
@@ -85,8 +84,8 @@ namespace AZ_Quiz
                 }else{
                     AnswerWasFalse();
                 }
-                scoreBlue.Text = BlueScore.ToString();
-                scoreOrange.Text = OrangeScore.ToString();
+                scoreBlue.Text = blueScore.ToString();
+                scoreOrange.Text = orangeScore.ToString();
             }
         }
         private void YesButton_Click(object sender, EventArgs e)
@@ -100,6 +99,8 @@ namespace AZ_Quiz
         private void NoButton_Click(object sender, EventArgs e)
         {
             DisplayInfo.Text = "Ok, " + secondPlayer + ", it´s your turn";
+            this.clickedButton.BackColor = Color.Black;
+            this.clickedButton.TextColor = Color.White;
             Question.Text = "";
             PlayersAnswer.Text = "";
             BlueTurn = !BlueTurn;
@@ -111,12 +112,15 @@ namespace AZ_Quiz
         {
             FindPlayersNames();
             if (BlueTurn == false){
-                OrangeScore = OrangeScore + 10;
+                orangeScore = orangeScore + 10;
+                this.clickedButton.BackColor = Color.FromArgb(255,142,68);
                 BlueTurn = true;
             }else if (BlueTurn == true){
-                BlueScore = BlueScore + 10;
+                blueScore = blueScore + 10;
+                this.clickedButton.BackColor = Color.FromArgb(0,162,232);
                 BlueTurn = false;
             }
+            this.clickedButton.Text = "";
             Question.Text = "This answer was right, " + firstPlayer + ".";
             DisplayInfo.Text = secondPlayer + ", it´s your turn now.";
             PlayersAnswer.Text = "";
@@ -126,9 +130,9 @@ namespace AZ_Quiz
         {
             FindPlayersNames();
             if (BlueTurn == false){
-                OrangeScore = OrangeScore - 3;
+                orangeScore = orangeScore - 3;
             }else if (BlueTurn == true){
-                BlueScore = BlueScore - 3;
+                blueScore = blueScore - 3;
             }
             if (SameQuestionAnswered == false){
                 Question.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
@@ -136,6 +140,8 @@ namespace AZ_Quiz
                 NoButton.Show();
             }else{
                 Question.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.Answer;
+                this.clickedButton.BackColor = Color.Black;
+                this.clickedButton.TextColor = Color.White;
                 DisplayInfo.Text = secondPlayer + ", it´s your turn";
                 PlayersAnswer.Text = "";
                 BlueTurn = !BlueTurn;
@@ -157,12 +163,12 @@ namespace AZ_Quiz
         {
             if (BlueTurn == false)
             {
-                secondPlayer = BluePlayer;
-                firstPlayer = OrangePlayer;
+                secondPlayer = bluePlayer;
+                firstPlayer = orangePlayer;
             }else if (BlueTurn == true)
             {
-                secondPlayer = OrangePlayer;
-                firstPlayer = BluePlayer;
+                secondPlayer = orangePlayer;
+                firstPlayer = bluePlayer;
             }
         }
         private void TimeLimit(object sender, EventArgs e)
