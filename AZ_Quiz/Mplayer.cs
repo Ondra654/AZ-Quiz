@@ -78,11 +78,11 @@ namespace AZ_Quiz
         {
             if (e.KeyChar == (char)13)//z netu
             {
-                if (PlayersAnswer.Text == ""){
+                if (PlayersAnswer.Text == "") {
                     Question.Text = "Select Hexagon first!";
-                }else if(PlayersAnswer.Text == myGameManager.Answer){
+                } else if (PlayersAnswer.Text == myGameManager.Answer) {
                     AnswerWasRight();
-                }else{
+                } else {
                     AnswerWasFalse();
                 }
                 scoreBlue.Text = blueScore.ToString();
@@ -112,13 +112,13 @@ namespace AZ_Quiz
         private void AnswerWasRight()
         {
             FindPlayersNames();
-            if (BlueTurn == false){
+            if (BlueTurn == false) {
                 orangeScore = orangeScore + 10;
-                this.clickedButton.BackColor = Color.FromArgb(255,142,68);
+                this.clickedButton.BackColor = Color.FromArgb(255, 142, 68);
                 BlueTurn = true;
-            }else if (BlueTurn == true){
+            } else if (BlueTurn == true) {
                 blueScore = blueScore + 10;
-                this.clickedButton.BackColor = Color.FromArgb(0,162,232);
+                this.clickedButton.BackColor = Color.FromArgb(0, 162, 232);
                 BlueTurn = false;
             }
             this.clickedButton.Text = "";
@@ -130,19 +130,19 @@ namespace AZ_Quiz
             PlayersAnswer.Text = "";
             SameQuestionAnswered = false;
         }
-        private void AnswerWasFalse() 
+        private void AnswerWasFalse()
         {
             FindPlayersNames();
-            if (BlueTurn == false){
+            if (BlueTurn == false) {
                 orangeScore = orangeScore - 3;
-            }else if (BlueTurn == true){
+            } else if (BlueTurn == true) {
                 blueScore = blueScore - 3;
             }
-            if (SameQuestionAnswered == false){
+            if (SameQuestionAnswered == false) {
                 Question.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
                 YesButton.Show();
                 NoButton.Show();
-            }else{
+            } else {
                 Question.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.Answer;
                 this.clickedButton.BackColor = Color.Black;
                 this.clickedButton.TextColor = Color.White;
@@ -155,11 +155,11 @@ namespace AZ_Quiz
         private void StartingColor()
         {
             Random rnd = new Random();
-            int result = rnd.Next(0,2);
-            if(result == 0)
+            int result = rnd.Next(0, 2);
+            if (result == 0)
             {
                 BlueTurn = false;//orange
-            }else if(result == 1) {
+            } else if (result == 1) {
                 BlueTurn = true;//blue
             }
         }
@@ -169,7 +169,7 @@ namespace AZ_Quiz
             {
                 secondPlayer = bluePlayer;
                 firstPlayer = orangePlayer;
-            }else if (BlueTurn == true)
+            } else if (BlueTurn == true)
             {
                 secondPlayer = orangePlayer;
                 firstPlayer = bluePlayer;
@@ -195,13 +195,15 @@ namespace AZ_Quiz
             {
                 timerGame.Stop();
                 DisplayInfo.Text = "Game time expired.";
-                if(blueScore > orangeScore)
+                if (blueScore > orangeScore)
                 {
                     gameResult = bluePlayer + ", congratulations! You won!";
-                }else
+                } else
                     gameResult = orangePlayer + ", congratulations! You won!";
                 string caption = "Game Result";
-                MessageBox.Show(gameResult, caption);
+
+                MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+
                 //EndThisGame();
             }
         }
@@ -216,7 +218,7 @@ namespace AZ_Quiz
                 if (i % 2 == 1) //liché řádky
                 {
                     HexagonButton b = new HexagonButton();
-                    b.Location = new Point(Xcoordinate, Ycoordinate + (int)79.4 * (i / 2)); //prostřední sloupec buttonů
+                    b.Location = new Point(Xcoordinate, Ycoordinate + (int)107.2 * (i / 2)); //prostřední sloupec buttonů
                     b.Text = buttonName.ToString(); //nastav si sám
                     buttonName++;
                     this.Controls.Add(b);
@@ -225,12 +227,12 @@ namespace AZ_Quiz
                     for (int j = 0; j < buttonNumber; j++)
                     {
                         HexagonButton b1 = new HexagonButton();
-                        b1.Location = new Point(Xcoordinate + 46 * (j + 1), Ycoordinate + (int)79.4 * (i / 2));
+                        b1.Location = new Point(Xcoordinate + 60 * (j + 1), Ycoordinate + (int)107.2 * (i / 2));
                         b1.Text = buttonName.ToString(); //nastav si sám
                         buttonName++;
                         this.Controls.Add(b1);
                         HexagonButton b2 = new HexagonButton();
-                        b2.Location = new Point(Xcoordinate - 46 * (j + 1), Ycoordinate + (int)79.4 * (i / 2));
+                        b2.Location = new Point(Xcoordinate - 60 * (j + 1), Ycoordinate + (int)107.2 * (i / 2));
                         b2.Text = buttonName.ToString(); //nastav si
                         buttonName++;
                         this.Controls.Add(b2);
@@ -239,24 +241,24 @@ namespace AZ_Quiz
                 else //sudé řádky
                 {
                     HexagonButton bRight = new HexagonButton();
-                    bRight.Location = new Point(Xcoordinate + 23, Ycoordinate + (int)37.5 + (int)(79.4 * (i / 3)));
+                    bRight.Location = new Point(Xcoordinate + 30, Ycoordinate + (int)50.6 + (int)(107.2 * (i / 3)));
                     bRight.Text = buttonName.ToString();
                     buttonName++;
                     this.Controls.Add(bRight);
                     HexagonButton bLeft = new HexagonButton();
-                    bLeft.Location = new Point(Xcoordinate - 23, Ycoordinate + (int)37.5 + (int)(79.4 * (i / 3)));
+                    bLeft.Location = new Point(Xcoordinate - 30, Ycoordinate + (int)50.6 + (int)(107.2 * (i / 3)));
                     bLeft.Text = buttonName.ToString();
                     buttonName++;
                     this.Controls.Add(bLeft);
                     if (i == 4)
                     {
                         HexagonButton br1 = new HexagonButton();
-                        br1.Location = new Point(Xcoordinate + 23 + 46, Ycoordinate + (int)116.9);
+                        br1.Location = new Point(Xcoordinate + 30 + 60, Ycoordinate + (int)157.8);
                         br1.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(br1);
                         HexagonButton bl1 = new HexagonButton();
-                        bl1.Location = new Point(Xcoordinate - 23 - 46, Ycoordinate + (int)116.9);
+                        bl1.Location = new Point(Xcoordinate - 30 - 60, Ycoordinate + (int)157.8);
                         bl1.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(bl1);
@@ -264,22 +266,22 @@ namespace AZ_Quiz
                     if (i == 6)
                     {
                         HexagonButton br1 = new HexagonButton();
-                        br1.Location = new Point(Xcoordinate + 23 + 46, Ycoordinate + (int)196.3);
+                        br1.Location = new Point(Xcoordinate + 30 + 60, Ycoordinate + (int)265);
                         br1.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(br1);
                         HexagonButton br2 = new HexagonButton();
-                        br2.Location = new Point(Xcoordinate + 23 + 2 * 46, Ycoordinate + (int)196.3);
+                        br2.Location = new Point(Xcoordinate + 30 + 2 * 60, Ycoordinate + (int)265);
                         br2.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(br2);
                         HexagonButton bl1 = new HexagonButton();
-                        bl1.Location = new Point(Xcoordinate - 23 - 46, Ycoordinate + (int)196.3);
+                        bl1.Location = new Point(Xcoordinate - 30 - 60, Ycoordinate + (int)265);
                         bl1.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(bl1);
                         HexagonButton bl2 = new HexagonButton();
-                        bl2.Location = new Point(Xcoordinate - 23 - 2 * 46, Ycoordinate + (int)196.3);
+                        bl2.Location = new Point(Xcoordinate - 30 - 2 * 60, Ycoordinate + (int)265);
                         bl2.Text = buttonName.ToString();
                         buttonName++;
                         this.Controls.Add(bl2);
@@ -295,11 +297,10 @@ namespace AZ_Quiz
                     b.Click += HexagonButton_Click;
                 }
             }
-
         }
-        private void back_button_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
+            private void back_button_Click(object sender, EventArgs e)
+            {
+                this.Hide();
+            } 
     }
 }
