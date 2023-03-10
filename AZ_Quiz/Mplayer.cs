@@ -41,6 +41,7 @@ namespace AZ_Quiz
         {
             YesButton.Hide();
             NoButton.Hide();
+            progressBarQuestion.Hide();
             Question.Text = "Press StartButton to start game.";
         }
         private void StartGameButton_Click(object sender, EventArgs e)
@@ -60,6 +61,8 @@ namespace AZ_Quiz
         }
         private void HexagonButton_Click(object sender, EventArgs e)
         {
+            timerQuestion.Start();
+            progressBarQuestion.Show();
             myGameManager.NextQuestion();
             myGameManager.GetQuestion();
             myGameManager.GetAnswer();
@@ -162,19 +165,28 @@ namespace AZ_Quiz
                 firstPlayer = BluePlayer;
             }
         }
+        private void TimeLimit(object sender, EventArgs e)
+        {
+            progressBarQuestion.Increment(1);
+            if (progressBarQuestion.Value == progressBarQuestion.Maximum)
+            {
+                DisplayInfo.Text = "Time for answering expired";
+                //AnswerTimeExpierd();
+            }
+        }
         private void IncreaseProgressBar(object sender, EventArgs e)
         {
             progressBarGame.Increment(1);
-            //.Text = progressBar1.Value.ToString() + "% Completed";
             if (progressBarGame.Value == progressBarGame.Maximum)
             {
-                DisplayInfo.Text = "progress bar full";
+                DisplayInfo.Text = "Game time expired.";
+                //EndThisGame();
             }
         }
         private void GenerateHexagons()
         {
             int Xcoordinate = (Size.Width / 2) - 25;
-            int Ycoordinate = (Size.Height / 2) - 30;
+            int Ycoordinate = (Size.Height / 2) - 60;
             int buttonName = 1;
             //button size vždy 40,46, mezera mezi buttony 6; první button má lokaci 600,330
             for (int i = 1; i <= 7; i++)
