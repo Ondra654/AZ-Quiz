@@ -20,7 +20,6 @@ namespace AZ_Quiz
         {
             myAccountsManager = accountManager;
         }
-
         public Login(){
             InitializeComponent();
         }

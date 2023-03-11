@@ -12,6 +12,10 @@ namespace AZ_Quiz
     public class GameManager
     {
         AccountsManager myAccountManager = new AccountsManager();
+        List<string> usedQuestions = new List<string>();
+
+        string Qpath = QuestionPath ("data", "Questions.txt");
+        string Apath = AnswersPath ("data", "Answers.txt");
 
         public int SinglePlayerScore = 0;
         public int Player1Score = 0;
@@ -22,21 +26,48 @@ namespace AZ_Quiz
         private string[] answers;
         private int question = -1;
         public Random number = new Random();
-        public void LoadQuestions()
+        static string QuestionPath(params string[] segments)
         {
-            //questions = File.ReadAllLines(Qpath);
-            questions = Resources.Questions.Split("\n");
+            //questions = Resources.Questions.Split("\n");
+            string Qpath = Directory.GetCurrentDirectory();
+
+            Qpath = Path.Combine(Qpath, "..", "AZ_Quiz");
+
+            for (int i = 0; i < segments.Length; i += 1)
+            {
+                Qpath = Path.Combine(Qpath, segments[i]);
+            }
+            return Qpath;
         }
-        private void LoadAnswers()
+        static string AnswersPath(params string[] segments)
         {
-            answers = Resources.Answers.Split("\n");
+            //answers = Resources.Answers.Split("\n");
+            string Apath = Directory.GetCurrentDirectory();
+
+            Apath = Path.Combine(Apath, "..", "AZ_Quiz");
+
+            for (int i = 0; i < segments.Length; i += 1)
+            {
+                Apath = Path.Combine(Apath, segments[i]);
+            }
+            return Apath;
+        }
+        internal void LoadData()
+        {
+            questions = File.ReadAllLines(Qpath);
+            answers = File.ReadAllLines(Apath);
         }
         public void NextQuestion()
         {
             if (questions == null) {
-                LoadQuestions();
+                LoadData();
             }
             question = number.Next(questions.Length);
+            if(usedQuestions.Contains(question.ToString()))
+            {
+                question = number.Next(questions.Length);
+            }
+            usedQuestions.Add(question.ToString());
         }
         public string GetQuestion()
         {
@@ -51,7 +82,7 @@ namespace AZ_Quiz
                 throw new InvalidOperationException("Call NextQuestion first!");
             }
             if (answers == null) {
-                LoadAnswers();
+                LoadData();
             }
             return Answer = answers[question];
         }

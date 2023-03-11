@@ -91,6 +91,8 @@ namespace AZ_Quiz
         }
         private void YesButton_Click(object sender, EventArgs e)
         {
+            timerQuestion.Start();
+            progressBarQuestion.Show();
             YesButton.Hide();
             NoButton.Hide();
             SameQuestionAnswered = true;
@@ -140,9 +142,15 @@ namespace AZ_Quiz
             }
             if (SameQuestionAnswered == false) {
                 Question.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
+                timerQuestion.Stop();
+                progressBarQuestion.Value = 0;
+                progressBarQuestion.Hide();
                 YesButton.Show();
                 NoButton.Show();
             } else {
+                timerQuestion.Stop();
+                progressBarQuestion.Value = 0;
+                progressBarQuestion.Hide();
                 Question.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.Answer;
                 this.clickedButton.BackColor = Color.Black;
                 this.clickedButton.TextColor = Color.White;
@@ -185,7 +193,6 @@ namespace AZ_Quiz
                 timerQuestion.Stop();
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
-                //AnswerTimeExpierd();
             }
         }
         private void IncreaseProgressBar(object sender, EventArgs e)
@@ -201,18 +208,20 @@ namespace AZ_Quiz
                 } else
                     gameResult = orangePlayer + ", congratulations! You won!";
                 string caption = "Game Result";
-
-                MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);
-
-                //EndThisGame();
+                
+                var result = MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                if(result == DialogResult.OK)
+                {
+                    this.Hide();
+                }
             }
         }
         private void GenerateHexagons()
         {
-            int Xcoordinate = (Size.Width / 2) - 25;
+            int Xcoordinate = (Size.Width / 2) - 26;
             int Ycoordinate = (Size.Height / 2) - 60;
             int buttonName = 1;
-            //button size vždy 40,46, mezera mezi buttony 6; první button má lokaci 600,330
+            //button size vždy 52,60, mezera mezi buttony 6
             for (int i = 1; i <= 7; i++)
             {
                 if (i % 2 == 1) //liché řádky
