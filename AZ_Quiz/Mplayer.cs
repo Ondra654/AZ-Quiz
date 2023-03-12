@@ -218,98 +218,40 @@ namespace AZ_Quiz
         }
         private void GenerateHexagons()
         {
-            int Xcoordinate = (Size.Width / 2) - 26;
-            int Ycoordinate = (Size.Height / 2) - 60;
-            int buttonName = 1;
-            //button size vždy 52,60, mezera mezi buttony 6
-            for (int i = 1; i <= 7; i++)
-            {
-                if (i % 2 == 1) //liché řádky
-                {
-                    HexagonButton b = new HexagonButton();
-                    b.Location = new Point(Xcoordinate, Ycoordinate + (int)107.2 * (i / 2)); //prostřední sloupec buttonů
-                    b.Text = buttonName.ToString(); //nastav si sám
-                    buttonName++;
-                    this.Controls.Add(b);
+            int x = (Size.Width / 2) - 26;
+            int y = (Size.Height / 2) - 60;
+            int buttonWidth = 52;
+            int buttonHeight = 60;
+            int rows = 7;
+            double yGap = 0.15;
 
-                    int buttonNumber = i / 2; //celočíselné dělení, kolik buttonů vykreslit na každou stranu od toho prostřdního
-                    for (int j = 0; j < buttonNumber; j++)
-                    {
-                        HexagonButton b1 = new HexagonButton();
-                        b1.Location = new Point(Xcoordinate + 60 * (j + 1), Ycoordinate + (int)107.2 * (i / 2));
-                        b1.Text = buttonName.ToString(); //nastav si sám
-                        buttonName++;
-                        this.Controls.Add(b1);
-                        HexagonButton b2 = new HexagonButton();
-                        b2.Location = new Point(Xcoordinate - 60 * (j + 1), Ycoordinate + (int)107.2 * (i / 2));
-                        b2.Text = buttonName.ToString(); //nastav si
-                        buttonName++;
-                        this.Controls.Add(b2);
-                    }
-                }
-                else //sudé řádky
+            int buttonNumber = 1;
+            for (int row = 0; row < rows; row++)
+            {
+                int rowX = x - row * (buttonWidth /2);
+                int rowY = y + row * buttonHeight - (int)(row * (buttonHeight * yGap));
+                for (int i = 0; i <= row; i++)
                 {
-                    HexagonButton bRight = new HexagonButton();
-                    bRight.Location = new Point(Xcoordinate + 30, Ycoordinate + (int)50.6 + (int)(107.2 * (i / 3)));
-                    bRight.Text = buttonName.ToString();
-                    buttonName++;
-                    this.Controls.Add(bRight);
-                    HexagonButton bLeft = new HexagonButton();
-                    bLeft.Location = new Point(Xcoordinate - 30, Ycoordinate + (int)50.6 + (int)(107.2 * (i / 3)));
-                    bLeft.Text = buttonName.ToString();
-                    buttonName++;
-                    this.Controls.Add(bLeft);
-                    if (i == 4)
-                    {
-                        HexagonButton br1 = new HexagonButton();
-                        br1.Location = new Point(Xcoordinate + 30 + 60, Ycoordinate + (int)157.8);
-                        br1.Text = buttonName.ToString();
-                        buttonName++;
-                        this.Controls.Add(br1);
-                        HexagonButton bl1 = new HexagonButton();
-                        bl1.Location = new Point(Xcoordinate - 30 - 60, Ycoordinate + (int)157.8);
-                        bl1.Text = buttonName.ToString();
-                        buttonName++;
-                        this.Controls.Add(bl1);
-                    }
-                    if (i == 6)
-                    {
-                        HexagonButton br1 = new HexagonButton();
-                        br1.Location = new Point(Xcoordinate + 30 + 60, Ycoordinate + (int)265);
-                        br1.Text = buttonName.ToString();
-                        buttonName++;
-                        this.Controls.Add(br1);
-                        HexagonButton br2 = new HexagonButton();
-                        br2.Location = new Point(Xcoordinate + 30 + 2 * 60, Ycoordinate + (int)265);
-                        br2.Text = buttonName.ToString();
-                        buttonName++;
-                        this.Controls.Add(br2);
-                        HexagonButton bl1 = new HexagonButton();
-                        bl1.Location = new Point(Xcoordinate - 30 - 60, Ycoordinate + (int)265);
-                        bl1.Text = buttonName.ToString();
-                        buttonName++;
-                        this.Controls.Add(bl1);
-                        HexagonButton bl2 = new HexagonButton();
-                        bl2.Location = new Point(Xcoordinate - 30 - 2 * 60, Ycoordinate + (int)265);
-                        bl2.Text = buttonName.ToString();
-                        buttonName++;
-                        this.Controls.Add(bl2);
-                    }
-                }
-                foreach (HexagonButton b in this.Controls.OfType<HexagonButton>())
-                {
-                    b.Size = new Size(52, 60);
-                    b.Show();
-                    b.BringToFront();
-                    b.BackColor = Color.FromArgb(234, 234, 234);
-                    b.ForeColor = Color.Black;
-                    b.Click += HexagonButton_Click;
+                    HexagonButton button = new HexagonButton();
+                    button.Size = new Size(buttonWidth, buttonHeight);
+                    button.Location = new Point(rowX + i * buttonWidth, rowY);
+                    button.Text = buttonNumber.ToString();
+                    this.Controls.Add(button);
+                    buttonNumber++;
                 }
             }
+            foreach (HexagonButton butt in this.Controls.OfType<HexagonButton>())
+            {
+                    butt.Show();
+                    butt.BringToFront();
+                    butt.BackColor = Color.FromArgb(234, 234, 234);
+                    butt.ForeColor = Color.Black;
+                    butt.Click += HexagonButton_Click;
+            }
         }
-            private void back_button_Click(object sender, EventArgs e)
+        private void back_button_Click(object sender, EventArgs e)
             {
                 this.Hide();
-            } 
+            }
     }
 }
