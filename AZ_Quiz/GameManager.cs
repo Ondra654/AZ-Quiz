@@ -37,7 +37,7 @@ namespace AZ_Quiz
             //questions = Resources.Questions.Split("\n");
             string Qpath = Directory.GetCurrentDirectory();
 
-            Qpath = Path.Combine(Qpath, "..", "AZ_Quiz");
+            Qpath = Path.Combine(Qpath);
 
             for (int i = 0; i < segments.Length; i += 1)
             {
@@ -50,7 +50,7 @@ namespace AZ_Quiz
             //answers = Resources.Answers.Split("\n");
             string Apath = Directory.GetCurrentDirectory();
 
-            Apath = Path.Combine(Apath, "..", "AZ_Quiz");
+            Apath = Path.Combine(Apath);
 
             for (int i = 0; i < segments.Length; i += 1)
             {

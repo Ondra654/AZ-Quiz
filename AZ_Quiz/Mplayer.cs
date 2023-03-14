@@ -256,8 +256,10 @@ namespace AZ_Quiz
         {
             int x = (Size.Width / 2) - 26;
             int y = (Size.Height / 2) - 60;
-            int buttonWidth = 40;
-            int buttonHeight = 48;
+            double width = Size.Width / 24.08;
+            int buttonWidth = Convert.ToInt32(width);
+            double height = Size.Height / 11.58;
+            int buttonHeight = Convert.ToInt32(height);
             int rows = 7;
             double yGap = 0.15;
 
@@ -269,6 +271,7 @@ namespace AZ_Quiz
                 for (int i = 0; i <= row; i++)
                 {
                     HexagonButton button = new HexagonButton();
+                    button.AutoSize= true;
                     button.Size = new Size(buttonWidth, buttonHeight);
                     button.Location = new Point(rowX + i * buttonWidth, rowY);
                     button.Text = buttonNumber.ToString();

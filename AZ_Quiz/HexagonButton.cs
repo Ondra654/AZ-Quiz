@@ -48,9 +48,6 @@ namespace AZ_Quiz
             this.FlatAppearance.BorderSize = 0;
             this.BackColor = Color.Purple;
             this.Name = "Hexagon";
-            this.Size = new Size(50, 58);
-            this.Location = new Point(445, 575);
-            this.BackColor = Color.MediumSlateBlue;
             this.ForeColor = Color.White;
             this.Size = new Size(2 * hexagonSide, (int)(1.73 * hexagonSide));
         }
@@ -65,28 +62,7 @@ namespace AZ_Quiz
             int quarterOfSide = rect.Width / 4;
 
             path.StartFigure();
-            //path.AddArc(rect.X, rect.Y, curveSize, curveSize, 180, 90);
-            //path.AddArc(rect.Right - curveSize, rect.Y, curveSize, curveSize, 270, 90);
-            //path.AddArc(rect.Right - curveSize, rect.Bottom - curveSize, curveSize, curveSize, 0, 90);
-            //path.AddArc(rect.X, rect.Bottom - curveSize, curveSize, curveSize, 90, 90);
-
-            // ADAM:
-            //path.AddLine(rect.X + side/2, rect.Y, rect.X + 3*side/2, rect.Y);
-            //path.AddLine(rect.X + 3 * side / 2, rect.Y, rect.Right, (rect.Y + rect.Bottom) / 2);
-            //path.AddLine(rect.Right, (rect.Y + rect.Bottom) / 2, rect.X + 3*side/2, rect.Bottom);
-            //path.AddLine(rect.X + 3*side/2, rect.Bottom, rect.X + side/2, rect.Bottom);
-            //path.AddLine(rect.X + side / 2, rect.Bottom, rect.X, (rect.Y + rect.Bottom) / 2);
-            //path.AddLine(rect.X, (rect.Y + rect.Bottom) / 2, rect.X + side / 2, rect.Y);
-
-            // first try:
-            //path.AddLine(rect.X + thirdOfSide, rect.Y, rect.X + 2 * thirdOfSide, rect.Y);
-            //path.AddLine(rect.X + 2 * thirdOfSide, rect.Y, rect.Right, (rect.Y + rect.Bottom) / 2);
-            //path.AddLine(rect.Right, (rect.Y + rect.Bottom) / 2, rect.X + 2 * thirdOfSide, rect.Bottom);
-            //path.AddLine(rect.X + 2 * thirdOfSide, rect.Bottom, rect.X + thirdOfSide, rect.Bottom);
-            //path.AddLine(rect.X + thirdOfSide, rect.Bottom, rect.X, (rect.Y + rect.Bottom) / 2);
-            //path.AddLine(rect.X, (rect.Y + rect.Bottom) / 2, rect.X + thirdOfSide, rect.Y);
-
-            // Second try:
+            
             path.AddLine(rect.X, rect.Y + quarterOfSide, rect.X + rect.Width / 2, rect.Y);
             path.AddLine(rect.X + rect.Width / 2, rect.Y, rect.Right, rect.Y + quarterOfSide);
 
