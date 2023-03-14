@@ -50,5 +50,9 @@ namespace AZ_Quiz
             }
         }
 
+        private void hexagonButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

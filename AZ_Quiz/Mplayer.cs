@@ -1,5 +1,6 @@
 ﻿using AZ_Quiz.Properties;
 using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,7 +46,7 @@ namespace AZ_Quiz
             YesButton.Hide();
             NoButton.Hide();
             progressBarQuestion.Hide();
-            Question.Text = "Press StartButton to start game.";
+            DisplayInfo.Text = "Press StartButton to start game.";
         }
         private void StartGameButton_Click(object sender, EventArgs e)
         {
@@ -58,9 +59,9 @@ namespace AZ_Quiz
             scoreBlue.Text = blueScore.ToString();
             scoreOrange.Text = orangeScore.ToString();
             StartingColor();
-            FindPlayersNames();
+            FindPlayers();
             timerGame.Start();
-            Question.Text = "Great, " + firstPlayer + ", it´s your turn!";
+            DisplayInfo.Text = "Great, " + firstPlayer + ", it´s your turn!";
         }
         private void HexagonButton_Click(object sender, EventArgs e)
         {
@@ -135,17 +136,30 @@ namespace AZ_Quiz
         }
         private void YesNoAnswer()
         {
+            FindPlayers();
             if (myGameManager.BlackAnswer == "ano" && yesnoButton == YesButton){
                 AnswerWasRight();
             }else if (myGameManager.BlackAnswer == "ne" && yesnoButton == NoButton){
                 AnswerWasRight();
             }else{
-                AnswerWasFalse();
+                if (BlueTurn == false){
+                    orangeScore = orangeScore - 3;
+                }else if (BlueTurn == true){
+                    blueScore = blueScore - 3;
+                }
+                scoreBlue.Text = blueScore.ToString();
+                scoreOrange.Text = orangeScore.ToString();
+                Question.Text = "This answer wasn´t right. Right answer was: " + myGameManager.BlackAnswer;
+                DisplayInfo.Text = secondPlayer + ", it´s your turn now.";
+                timerQuestion.Stop();
+                progressBarQuestion.Value = 0;
+                progressBarQuestion.Hide();
+                BlueTurn = !BlueTurn;
             }
         }
         private void AnswerWasRight()
         {
-            FindPlayersNames();
+            FindPlayers();
             if (BlueTurn == false) {
                 orangeScore = orangeScore + 10;
                 this.clickedButton.BackColor = Color.FromArgb(255, 142, 68);
@@ -168,26 +182,35 @@ namespace AZ_Quiz
         }
         private void AnswerWasFalse()
         {
-            FindPlayersNames();
+            FindPlayers();
             if (BlueTurn == false) {
                 orangeScore = orangeScore - 3;
-            } else if (BlueTurn == true) {
+            }else if (BlueTurn == true) {
                 blueScore = blueScore - 3;
             }
             scoreBlue.Text = blueScore.ToString();
             scoreOrange.Text = orangeScore.ToString();
-            if (SameQuestionAnswered == false) {
-                Question.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
+            
+            if (SameQuestionAnswered == false){
+                if(progressBarQuestion.Value == progressBarQuestion.Maximum){
+                    DisplayInfo.Text = "Time for answering expired! " + secondPlayer + ", would you like to answer?";
+                }else{
+                    DisplayInfo.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
+                }
                 timerQuestion.Stop();
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
                 YesButton.Show();
                 NoButton.Show();
-            } else {
+            }else{
                 timerQuestion.Stop();
+                if (progressBarQuestion.Value == progressBarQuestion.Maximum){
+                    Question.Text = "Time for answering expired!";
+                }else{
+                    Question.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.Answer;
+                }
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
-                Question.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.Answer;
                 this.clickedButton.BackColor = Color.Black;
                 this.clickedButton.TextColor = Color.White;
                 DisplayInfo.Text = secondPlayer + ", it´s your turn";
@@ -207,14 +230,11 @@ namespace AZ_Quiz
                 BlueTurn = true;//blue
             }
         }
-        private void FindPlayersNames()
-        {
-            if (BlueTurn == false)
-            {
+        private void FindPlayers(){
+            if (BlueTurn == false){
                 secondPlayer = bluePlayer;
                 firstPlayer = orangePlayer;
-            } else if (BlueTurn == true)
-            {
+            } else if (BlueTurn == true){
                 secondPlayer = orangePlayer;
                 firstPlayer = bluePlayer;
             }
@@ -224,11 +244,32 @@ namespace AZ_Quiz
             progressBarQuestion.Increment(1);
             if (progressBarQuestion.Value == progressBarQuestion.Maximum)
             {
-                DisplayInfo.Text = "Time for answering expired";
-                AnswerWasFalse();
+                if (progressBarQuestion.Value == progressBarQuestion.Maximum && clickedButton.BackColor == Color.Black)
+                {
+                    FindPlayers();
+                    if (BlueTurn == false)
+                    {
+                        orangeScore = orangeScore - 3;
+                    }
+                    else if (BlueTurn == true)
+                    {
+                        blueScore = blueScore - 3;
+                    }
+                    timerQuestion.Stop();
+                    Question.Text = "Time for answering expired!";
+                    YesButton.Hide();
+                    NoButton.Hide();
+                    scoreBlue.Text = blueScore.ToString();
+                    scoreOrange.Text = orangeScore.ToString();
+                    BlueTurn = !BlueTurn;
+                    DisplayInfo.Text = secondPlayer + ", it´s your turn now.";
+                }
                 timerQuestion.Stop();
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
+            }else if(progressBarQuestion.Value == progressBarQuestion.Maximum){
+                DisplayInfo.Text = "Time for answering expired" + secondPlayer + "would you like to answer?";
+                AnswerWasFalse();
             }
         }
         private void IncreaseProgressBar(object sender, EventArgs e)
@@ -275,6 +316,7 @@ namespace AZ_Quiz
                     button.Size = new Size(buttonWidth, buttonHeight);
                     button.Location = new Point(rowX + i * buttonWidth, rowY);
                     button.Text = buttonNumber.ToString();
+                    button.Name = button.Name + button.Text;
                     this.Controls.Add(button);  
                     buttonNumber++;
                 }

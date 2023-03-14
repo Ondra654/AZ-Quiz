@@ -45,7 +45,7 @@
             this.back_button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.back_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.back_button.Location = new System.Drawing.Point(1145, 645);
-            this.back_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.back_button.Margin = new System.Windows.Forms.Padding(4);
             this.back_button.Name = "back_button";
             this.back_button.Size = new System.Drawing.Size(69, 36);
             this.back_button.TabIndex = 6;
@@ -78,7 +78,7 @@
             // DeleteNickname
             // 
             this.DeleteNickname.Location = new System.Drawing.Point(878, 202);
-            this.DeleteNickname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DeleteNickname.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteNickname.Name = "DeleteNickname";
             this.DeleteNickname.Size = new System.Drawing.Size(254, 31);
             this.DeleteNickname.TabIndex = 0;
@@ -86,7 +86,7 @@
             // DeletePassword
             // 
             this.DeletePassword.Location = new System.Drawing.Point(878, 261);
-            this.DeletePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DeletePassword.Margin = new System.Windows.Forms.Padding(4);
             this.DeletePassword.Name = "DeletePassword";
             this.DeletePassword.PasswordChar = '*';
             this.DeletePassword.Size = new System.Drawing.Size(254, 31);

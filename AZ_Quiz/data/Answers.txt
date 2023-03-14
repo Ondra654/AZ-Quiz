@@ -73,3 +73,6 @@ Trubec
 Tři
 Wikipedie
 ano
+ano
+ne
+ne
