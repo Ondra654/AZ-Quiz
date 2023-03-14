@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using static System.Windows.Forms.LinkLabel;
 
 namespace AZ_Quiz
@@ -22,9 +23,14 @@ namespace AZ_Quiz
         public int Player2Score = 0;
         public string Answer = "";
         public string Question = "";
+        public string BlackQuestion = "";
+        public string BlackAnswer = "";
         private string[] questions;
         private string[] answers;
+        private string[] blackquestions;
+        private string[] blackanswers;
         private int question = -1;
+        private int blackquestion = -1;
         public Random number = new Random();
         static string QuestionPath(params string[] segments)
         {
@@ -54,8 +60,10 @@ namespace AZ_Quiz
         }
         internal void LoadData()
         {
-            questions = File.ReadAllLines(Qpath);
-            answers = File.ReadAllLines(Apath);
+            questions = File.ReadAllLines(Qpath).Take(74).ToArray();
+            blackquestions = File.ReadAllLines(Qpath).Skip(74).ToArray();
+            answers = File.ReadAllLines(Apath).Take(74).ToArray();
+            blackanswers = File.ReadAllLines(Apath).Skip(74).ToArray();
         }
         public void NextQuestion()
         {
@@ -63,9 +71,11 @@ namespace AZ_Quiz
                 LoadData();
             }
             question = number.Next(questions.Length);
+            blackquestion = number.Next(blackquestions.Length);
             if(usedQuestions.Contains(question.ToString()))
             {
                 question = number.Next(questions.Length);
+                blackquestion = number.Next(blackquestions.Length);
             }
             usedQuestions.Add(question.ToString());
         }
@@ -85,6 +95,26 @@ namespace AZ_Quiz
                 LoadData();
             }
             return Answer = answers[question];
+        }
+        public string GetBlackQuestion()
+        {
+            if (blackquestions == null || blackquestion < 0)
+            {
+                throw new InvalidOperationException("Call NextQuestion first!");
+            }
+            return BlackQuestion = blackquestions[blackquestion];
+        }
+        public string GetBlackAnswer()
+        {
+            if (blackquestion < 0)
+            {
+                throw new InvalidOperationException("Call NextQuestion first!");
+            }
+            if (blackanswers == null)
+            {
+                LoadData();
+            }
+            return BlackAnswer = blackanswers[blackquestion];
         }
     }
 }

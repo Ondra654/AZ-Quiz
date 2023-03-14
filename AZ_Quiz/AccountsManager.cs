@@ -37,7 +37,7 @@ namespace AZ_Quiz
         {
             string path = Directory.GetCurrentDirectory();
 
-            path = Path.Combine(path, "..", "AZ_Quiz");
+            path = Path.Combine(path);
 
             for (int i = 0; i < segments.Length; i += 1)
             {

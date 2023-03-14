@@ -19,6 +19,7 @@ namespace AZ_Quiz
         GameManager myGameManager = new GameManager();
         AccountsManager myAccountsManager;
         HexagonButton clickedButton = new HexagonButton();
+        Button yesnoButton = new Button();
 
         public bool BlueTurn = false;
         public bool SameQuestionAnswered = false;
@@ -63,16 +64,25 @@ namespace AZ_Quiz
         }
         private void HexagonButton_Click(object sender, EventArgs e)
         {
+            clickedButton = (HexagonButton)sender;
+
             timerQuestion.Start();
             progressBarQuestion.Show();
-            myGameManager.NextQuestion();
-            myGameManager.GetQuestion();
-            myGameManager.GetAnswer();
-            Question.Text = myGameManager.Question;
-            PlayersAnswer.Text = myGameManager.Answer.Substring(0, 1);
-            PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
-
-            clickedButton = (HexagonButton)sender;
+            if(clickedButton.BackColor == Color.Black)
+            {
+                myGameManager.GetBlackQuestion();
+                myGameManager.GetBlackAnswer();
+                Question.Text = myGameManager.BlackQuestion;
+                YesButton.Show();
+                NoButton.Show();
+            }else{
+                myGameManager.NextQuestion();
+                myGameManager.GetQuestion();
+                myGameManager.GetAnswer();
+                Question.Text = myGameManager.Question;
+                PlayersAnswer.Text = myGameManager.Answer.Substring(0, 1);
+                PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
+            }
         }
         private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
@@ -82,7 +92,7 @@ namespace AZ_Quiz
                     Question.Text = "Select Hexagon first!";
                 } else if (PlayersAnswer.Text == myGameManager.Answer) {
                     AnswerWasRight();
-                } else {
+                } else{
                     AnswerWasFalse();
                 }
                 scoreBlue.Text = blueScore.ToString();
@@ -91,25 +101,47 @@ namespace AZ_Quiz
         }
         private void YesButton_Click(object sender, EventArgs e)
         {
-            timerQuestion.Start();
-            progressBarQuestion.Show();
             YesButton.Hide();
             NoButton.Hide();
-            SameQuestionAnswered = true;
-            BlueTurn = !BlueTurn;// z netu
-            DisplayInfo.Text = "Now you can answer: ";
+            yesnoButton = YesButton;
+            if(clickedButton.BackColor == Color.Black)
+            {
+                YesNoAnswer();
+            }else{
+                timerQuestion.Start();
+                progressBarQuestion.Show();
+                SameQuestionAnswered = true;
+                BlueTurn = !BlueTurn;// z netu
+                DisplayInfo.Text = "Now you can answer: ";
+            }
         }
         private void NoButton_Click(object sender, EventArgs e)
         {
-            DisplayInfo.Text = "Ok, " + secondPlayer + ", it´s your turn";
-            this.clickedButton.BackColor = Color.Black;
-            this.clickedButton.TextColor = Color.White;
-            Question.Text = "";
-            PlayersAnswer.Text = "";
-            BlueTurn = !BlueTurn;
             YesButton.Hide();
             NoButton.Hide();
-            SameQuestionAnswered = false;
+            yesnoButton = NoButton;
+            if (clickedButton.BackColor == Color.Black)
+            {
+                YesNoAnswer();
+            }else{
+                DisplayInfo.Text = "Ok, " + secondPlayer + ", it´s your turn";
+                this.clickedButton.BackColor = Color.Black;
+                this.clickedButton.TextColor = Color.White;
+                Question.Text = "";
+                PlayersAnswer.Text = "";
+                BlueTurn = !BlueTurn;
+                SameQuestionAnswered = false;
+            }
+        }
+        private void YesNoAnswer()
+        {
+            if (myGameManager.BlackAnswer == "ano" && yesnoButton == YesButton){
+                AnswerWasRight();
+            }else if (myGameManager.BlackAnswer == "ne" && yesnoButton == NoButton){
+                AnswerWasRight();
+            }else{
+                AnswerWasFalse();
+            }
         }
         private void AnswerWasRight()
         {
@@ -123,6 +155,8 @@ namespace AZ_Quiz
                 this.clickedButton.BackColor = Color.FromArgb(0, 162, 232);
                 BlueTurn = false;
             }
+            scoreBlue.Text = blueScore.ToString();
+            scoreOrange.Text = orangeScore.ToString();
             this.clickedButton.Text = "";
             timerQuestion.Stop();
             progressBarQuestion.Value = 0;
@@ -140,6 +174,8 @@ namespace AZ_Quiz
             } else if (BlueTurn == true) {
                 blueScore = blueScore - 3;
             }
+            scoreBlue.Text = blueScore.ToString();
+            scoreOrange.Text = orangeScore.ToString();
             if (SameQuestionAnswered == false) {
                 Question.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
                 timerQuestion.Stop();
@@ -220,8 +256,8 @@ namespace AZ_Quiz
         {
             int x = (Size.Width / 2) - 26;
             int y = (Size.Height / 2) - 60;
-            int buttonWidth = 52;
-            int buttonHeight = 60;
+            int buttonWidth = 40;
+            int buttonHeight = 48;
             int rows = 7;
             double yGap = 0.15;
 
@@ -236,7 +272,7 @@ namespace AZ_Quiz
                     button.Size = new Size(buttonWidth, buttonHeight);
                     button.Location = new Point(rowX + i * buttonWidth, rowY);
                     button.Text = buttonNumber.ToString();
-                    this.Controls.Add(button);
+                    this.Controls.Add(button);  
                     buttonNumber++;
                 }
             }

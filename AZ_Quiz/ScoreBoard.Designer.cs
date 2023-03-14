@@ -30,8 +30,6 @@
         {
             this.back_button = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Nickname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.DeleteNickname = new System.Windows.Forms.TextBox();
             this.DeletePassword = new System.Windows.Forms.TextBox();
@@ -57,35 +55,18 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nickname,
-            this.Score});
             this.dataGridView1.Location = new System.Drawing.Point(42, 130);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(574, 314);
             this.dataGridView1.TabIndex = 7;
             // 
-            // Nickname
-            // 
-            this.Nickname.HeaderText = "Nickname";
-            this.Nickname.MinimumWidth = 8;
-            this.Nickname.Name = "Nickname";
-            this.Nickname.Width = 150;
-            // 
-            // Score
-            // 
-            this.Score.HeaderText = "Score";
-            this.Score.MinimumWidth = 8;
-            this.Score.Name = "Score";
-            this.Score.Width = 150;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(402, 46);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 27);
             this.button1.TabIndex = 8;
@@ -111,7 +92,7 @@
             // DelAccount
             // 
             this.DelAccount.Location = new System.Drawing.Point(738, 256);
-            this.DelAccount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DelAccount.Margin = new System.Windows.Forms.Padding(2);
             this.DelAccount.Name = "DelAccount";
             this.DelAccount.Size = new System.Drawing.Size(124, 27);
             this.DelAccount.TabIndex = 2;
@@ -140,7 +121,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.back_button);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ScoreBoard";
             this.Size = new System.Drawing.Size(984, 556);
             this.Load += new System.EventHandler(this.ScoreBoard_Load);
@@ -153,8 +134,6 @@
         #endregion
         private Button back_button;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Nickname;
-        private DataGridViewTextBoxColumn Score;
         private Button button1;
         private TextBox DeleteNickname;
         private TextBox DeletePassword;

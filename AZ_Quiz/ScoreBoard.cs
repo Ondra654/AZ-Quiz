@@ -33,12 +33,7 @@ namespace AZ_Quiz
         private void button1_Click(object sender, EventArgs e)
         {
             string[] nick = myAccountmanager.nicknames;
-            List<string> loadNicks = new List<string>(nick);
-            foreach (string stringnick in nick)
-            {
-                loadNicks.Add(stringnick);
-            }
-            dataGridView1.DataSource = new List<string>(loadNicks);
+            dataGridView1.DataSource = nick.ToString();
         }
 
         private void DelAccount_Click(object sender, EventArgs e)
@@ -50,9 +45,7 @@ namespace AZ_Quiz
             {
                 DelLabel.Text = "success";
                 myAccountmanager.DeleteAccount();
-            }
-            else
-            {
+            }else{
                 DelLabel.Text = "smt went wrong";
             }
         }
