@@ -72,6 +72,7 @@ rybách
 Trubec
 Tři
 Wikipedie
+SPLITTER
 ano
 ano
 ne

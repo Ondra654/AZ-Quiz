@@ -61,10 +61,21 @@ namespace AZ_Quiz
         }
         internal void LoadData()
         {
-            questions = File.ReadAllLines(Qpath).Take(74).ToArray();
-            blackquestions = File.ReadAllLines(Qpath).Skip(74).ToArray();
-            answers = File.ReadAllLines(Apath).Take(74).ToArray();
-            blackanswers = File.ReadAllLines(Apath).Skip(74).ToArray();
+            int index = 0;
+            questions = File.ReadAllLines(Qpath);
+            for (int i = 0; i < questions.Length; i++)
+            {
+                string row = questions[i];
+                if (row == "SPLITTER")
+                {
+                    index = i;
+                    break;
+                }
+            }
+            questions = File.ReadAllLines(Qpath).Take(index).ToArray();
+            blackquestions = File.ReadAllLines(Qpath).Skip(index + 1).ToArray();
+            answers = File.ReadAllLines(Apath).Take(index).ToArray();
+            blackanswers = File.ReadAllLines(Apath).Skip(index + 1).ToArray();
         }
         public void NextQuestion()
         {
