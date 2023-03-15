@@ -12,8 +12,25 @@ namespace AZ_Quiz
 {
     public class HexagonButton : Button
     {
+        public class HexagonPosition
+        {
+            public bool rightSide;
+            public bool leftSide;
+            public bool bottomSide;
+
+            public bool ConnectsAllSides()
+            {
+                return (rightSide && leftSide && bottomSide);
+            }
+        }
+
+
         //Fields
         public int hexagonSide = 10;
+
+        public HexagonPosition HexPosition = new HexagonPosition();
+
+        public List<HexagonButton> Neighbours = new List<HexagonButton>();
 
         //Properties
         [Category("Hexagon properties")]
@@ -62,7 +79,7 @@ namespace AZ_Quiz
             int quarterOfSide = rect.Width / 4;
 
             path.StartFigure();
-            
+
             path.AddLine(rect.X, rect.Y + quarterOfSide, rect.X + rect.Width / 2, rect.Y);
             path.AddLine(rect.X + rect.Width / 2, rect.Y, rect.Right, rect.Y + quarterOfSide);
 

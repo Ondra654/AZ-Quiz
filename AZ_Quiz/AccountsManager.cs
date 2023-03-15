@@ -85,7 +85,7 @@ namespace AZ_Quiz
                             AccountExists = false;
                         }
                     }break;
-                }
+                }else {AccountExists= false;}
             }
         }
         public void Register()
@@ -94,6 +94,8 @@ namespace AZ_Quiz
             string[] linkedAccount = new string[] {newNickname,newPassword, NewAccScore};
             string[]NP = new string[] {String.Join(seperator, linkedAccount)};
             File.AppendAllLines(path, NP);
+            LoadData();
+            SplitTextLine();
         }
         public void DeleteAccount()
         {

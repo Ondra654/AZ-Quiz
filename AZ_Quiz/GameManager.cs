@@ -32,6 +32,7 @@ namespace AZ_Quiz
         private int question = -1;
         private int blackquestion = -1;
         public Random number = new Random();
+
         static string QuestionPath(params string[] segments)
         {
             //questions = Resources.Questions.Split("\n");

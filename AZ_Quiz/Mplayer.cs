@@ -10,7 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.XPath;
+using static AZ_Quiz.HexagonButton;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace AZ_Quiz
@@ -69,14 +71,16 @@ namespace AZ_Quiz
 
             timerQuestion.Start();
             progressBarQuestion.Show();
-            if(clickedButton.BackColor == Color.Black)
+            if (clickedButton.BackColor == Color.Black)
             {
                 myGameManager.GetBlackQuestion();
                 myGameManager.GetBlackAnswer();
                 Question.Text = myGameManager.BlackQuestion;
                 YesButton.Show();
                 NoButton.Show();
-            }else{
+            }
+            else
+            {
                 myGameManager.NextQuestion();
                 myGameManager.GetQuestion();
                 myGameManager.GetAnswer();
@@ -89,11 +93,16 @@ namespace AZ_Quiz
         {
             if (e.KeyChar == (char)13)//z netu
             {
-                if (PlayersAnswer.Text == "") {
+                if (PlayersAnswer.Text == "")
+                {
                     Question.Text = "Select Hexagon first!";
-                } else if (PlayersAnswer.Text == myGameManager.Answer) {
+                }
+                else if (PlayersAnswer.Text == myGameManager.Answer)
+                {
                     AnswerWasRight();
-                } else{
+                }
+                else
+                {
                     AnswerWasFalse();
                 }
                 scoreBlue.Text = blueScore.ToString();
@@ -105,10 +114,12 @@ namespace AZ_Quiz
             YesButton.Hide();
             NoButton.Hide();
             yesnoButton = YesButton;
-            if(clickedButton.BackColor == Color.Black)
+            if (clickedButton.BackColor == Color.Black)
             {
                 YesNoAnswer();
-            }else{
+            }
+            else
+            {
                 timerQuestion.Start();
                 progressBarQuestion.Show();
                 SameQuestionAnswered = true;
@@ -124,11 +135,13 @@ namespace AZ_Quiz
             if (clickedButton.BackColor == Color.Black)
             {
                 YesNoAnswer();
-            }else{
+            }
+            else
+            {
+                Question.Text = myGameManager.Answer;
                 DisplayInfo.Text = "Ok, " + secondPlayer + ", it´s your turn";
                 this.clickedButton.BackColor = Color.Black;
                 this.clickedButton.TextColor = Color.White;
-                Question.Text = "";
                 PlayersAnswer.Text = "";
                 BlueTurn = !BlueTurn;
                 SameQuestionAnswered = false;
@@ -137,14 +150,22 @@ namespace AZ_Quiz
         private void YesNoAnswer()
         {
             FindPlayers();
-            if (myGameManager.BlackAnswer == "ano" && yesnoButton == YesButton){
+            if (myGameManager.BlackAnswer == "ano" && yesnoButton == YesButton)
+            {
                 AnswerWasRight();
-            }else if (myGameManager.BlackAnswer == "ne" && yesnoButton == NoButton){
+            }
+            else if (myGameManager.BlackAnswer == "ne" && yesnoButton == NoButton)
+            {
                 AnswerWasRight();
-            }else{
-                if (BlueTurn == false){
+            }
+            else
+            {
+                if (BlueTurn == false)
+                {
                     orangeScore = orangeScore - 3;
-                }else if (BlueTurn == true){
+                }
+                else if (BlueTurn == true)
+                {
                     blueScore = blueScore - 3;
                 }
                 scoreBlue.Text = blueScore.ToString();
@@ -160,11 +181,14 @@ namespace AZ_Quiz
         private void AnswerWasRight()
         {
             FindPlayers();
-            if (BlueTurn == false) {
+            if (BlueTurn == false)
+            {
                 orangeScore = orangeScore + 10;
                 this.clickedButton.BackColor = Color.FromArgb(255, 142, 68);
                 BlueTurn = true;
-            } else if (BlueTurn == true) {
+            }
+            else if (BlueTurn == true)
+            {
                 blueScore = blueScore + 10;
                 this.clickedButton.BackColor = Color.FromArgb(0, 162, 232);
                 BlueTurn = false;
@@ -179,22 +203,70 @@ namespace AZ_Quiz
             DisplayInfo.Text = secondPlayer + ", it´s your turn now.";
             PlayersAnswer.Text = "";
             SameQuestionAnswered = false;
+
+            if (CheckIfGameEnded())
+            {
+                // konec hry
+            }
         }
+
+        private bool CheckIfGameEnded()
+        {
+            Color clickedButtonColor = clickedButton.BackColor;
+
+            HexagonPosition connectedSides = new HexagonPosition();
+            List<HexagonButton> checkedButtons = new List<HexagonButton>();
+
+            GetConnectedSides(clickedButton, clickedButtonColor, connectedSides, checkedButtons);
+
+            return connectedSides.ConnectsAllSides();
+        }
+
+        private void GetConnectedSides(HexagonButton button, Color clickedButtonColor, HexagonPosition connectedSides, List<HexagonButton> checkedButtons)
+        {
+            connectedSides.leftSide |= button.HexPosition.leftSide;
+            connectedSides.rightSide |= button.HexPosition.rightSide;
+            connectedSides.bottomSide |= button.HexPosition.bottomSide;
+
+            checkedButtons.Add(button);
+
+            foreach (HexagonButton neighour in button.Neighbours)
+            {
+                if (connectedSides.ConnectsAllSides())
+                    break;
+
+                if (neighour.BackColor != clickedButtonColor)
+                    continue;
+
+                if (checkedButtons.Contains(neighour))
+                    continue;
+
+                GetConnectedSides(neighour, clickedButtonColor, connectedSides, checkedButtons);
+            }
+        }
+
         private void AnswerWasFalse()
         {
             FindPlayers();
-            if (BlueTurn == false) {
+            if (BlueTurn == false)
+            {
                 orangeScore = orangeScore - 3;
-            }else if (BlueTurn == true) {
+            }
+            else if (BlueTurn == true)
+            {
                 blueScore = blueScore - 3;
             }
             scoreBlue.Text = blueScore.ToString();
             scoreOrange.Text = orangeScore.ToString();
-            
-            if (SameQuestionAnswered == false){
-                if(progressBarQuestion.Value == progressBarQuestion.Maximum){
+
+            if (SameQuestionAnswered == false)
+            {
+                if (progressBarQuestion.Value == progressBarQuestion.Maximum)
+                {
                     DisplayInfo.Text = "Time for answering expired! " + secondPlayer + ", would you like to answer?";
-                }else{
+                }
+                else
+                {
                     DisplayInfo.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
                 }
                 timerQuestion.Stop();
@@ -202,11 +274,16 @@ namespace AZ_Quiz
                 progressBarQuestion.Hide();
                 YesButton.Show();
                 NoButton.Show();
-            }else{
+            }
+            else
+            {
                 timerQuestion.Stop();
-                if (progressBarQuestion.Value == progressBarQuestion.Maximum){
+                if (progressBarQuestion.Value == progressBarQuestion.Maximum)
+                {
                     Question.Text = "Time for answering expired!";
-                }else{
+                }
+                else
+                {
                     Question.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.Answer;
                 }
                 progressBarQuestion.Value = 0;
@@ -226,15 +303,21 @@ namespace AZ_Quiz
             if (result == 0)
             {
                 BlueTurn = false;//orange
-            } else if (result == 1) {
+            }
+            else if (result == 1)
+            {
                 BlueTurn = true;//blue
             }
         }
-        private void FindPlayers(){
-            if (BlueTurn == false){
+        private void FindPlayers()
+        {
+            if (BlueTurn == false)
+            {
                 secondPlayer = bluePlayer;
                 firstPlayer = orangePlayer;
-            } else if (BlueTurn == true){
+            }
+            else if (BlueTurn == true)
+            {
                 secondPlayer = orangePlayer;
                 firstPlayer = bluePlayer;
             }
@@ -267,7 +350,9 @@ namespace AZ_Quiz
                 timerQuestion.Stop();
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
-            }else if(progressBarQuestion.Value == progressBarQuestion.Maximum){
+            }
+            else if (progressBarQuestion.Value == progressBarQuestion.Maximum)
+            {
                 DisplayInfo.Text = "Time for answering expired" + secondPlayer + "would you like to answer?";
                 AnswerWasFalse();
             }
@@ -282,12 +367,13 @@ namespace AZ_Quiz
                 if (blueScore > orangeScore)
                 {
                     gameResult = bluePlayer + ", congratulations! You won!";
-                } else
+                }
+                else
                     gameResult = orangePlayer + ", congratulations! You won!";
                 string caption = "Game Result";
-                
+
                 var result = MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);
-                if(result == DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     this.Hide();
                 }
@@ -304,35 +390,90 @@ namespace AZ_Quiz
             int rows = 7;
             double yGap = 0.15;
 
+            List<List<HexagonButton>> buttonListByRows = new List<List<HexagonButton>>();
+            List<HexagonButton> buttonList = new List<HexagonButton>();
+
             int buttonNumber = 1;
             for (int row = 0; row < rows; row++)
             {
-                int rowX = x - row * (buttonWidth /2);
+                List<HexagonButton> currentRowButtons = new List<HexagonButton>();
+                buttonListByRows.Add(currentRowButtons);
+
+                int rowX = x - row * (buttonWidth / 2);
                 int rowY = y + row * buttonHeight - (int)(row * (buttonHeight * yGap));
                 for (int i = 0; i <= row; i++)
                 {
                     HexagonButton button = new HexagonButton();
-                    button.AutoSize= true;
+                    button.AutoSize = true;
                     button.Size = new Size(buttonWidth, buttonHeight);
                     button.Location = new Point(rowX + i * buttonWidth, rowY);
                     button.Text = buttonNumber.ToString();
                     button.Name = button.Name + button.Text;
-                    this.Controls.Add(button);  
+                    this.Controls.Add(button);
                     buttonNumber++;
+
+                    if (i == 0)
+                        button.HexPosition.leftSide = true;
+
+                    if (i == row)
+                        button.HexPosition.rightSide = true;
+
+                    if (row == rows - 1)
+                        button.HexPosition.bottomSide = true;
+
+                    currentRowButtons.Add(button);
+                    buttonList.Add(button);
                 }
             }
-            foreach (HexagonButton butt in this.Controls.OfType<HexagonButton>())
+
+            // Generate neighbours
+            for (int row = 0; row < buttonListByRows.Count; row++)
             {
-                    butt.Show();
-                    butt.BringToFront();
-                    butt.BackColor = Color.FromArgb(234, 234, 234);
-                    butt.ForeColor = Color.Black;
-                    butt.Click += HexagonButton_Click;
+                List<HexagonButton> rowButtons = buttonListByRows[row];
+
+                for (int column = 0; column < rowButtons.Count; column++)
+                {
+                    HexagonButton button = rowButtons[column];
+
+                    if (column - 1 >= 0)
+                        button.Neighbours.Add(rowButtons[column - 1]);
+
+                    if (column + 1 < rowButtons.Count)
+                        button.Neighbours.Add(rowButtons[column + 1]);
+
+                    if (row - 1 >= 0)
+                    {
+                        if (column - 1 >= 0)
+                            button.Neighbours.Add(buttonListByRows[row - 1][column - 1]);
+
+                        if (column < buttonListByRows[row - 1].Count)
+                            button.Neighbours.Add(buttonListByRows[row - 1][column]);
+                    }
+
+                    if (row + 1 < buttonListByRows.Count)
+                    {
+                        button.Neighbours.Add(buttonListByRows[row + 1][column]);
+
+                        if (column + 1 < buttonListByRows[row + 1].Count)
+                            button.Neighbours.Add(buttonListByRows[row + 1][column + 1]);
+                    }
+                }
+            }
+
+            foreach (HexagonButton butt in buttonList)
+            {
+                butt.Show();
+                butt.BringToFront();
+                butt.BackColor = Color.FromArgb(234, 234, 234);
+                butt.ForeColor = Color.Black;
+                butt.Click += HexagonButton_Click;
             }
         }
         private void back_button_Click(object sender, EventArgs e)
-            {
-                this.Hide();
-            }
+        {
+            this.Hide();
+        }
+
+
     }
 }

@@ -54,6 +54,8 @@ namespace AZ_Quiz
             else if (myAccountsManager.AccountExists == false){
                 ResultLabel.Text = "This Password does not exists!";
             }
+            LoginNickname.Text = "";
+            LoginPassword.Text = "";
         }
         private void RegisterButton_Click(object sender, EventArgs e){
             CheckIfNameAlreadyExists();
@@ -68,6 +70,8 @@ namespace AZ_Quiz
                     this.Hide();
                 }
             }
+            RegisterNickName.Text = "";
+            RegisterPassword.Text = "";
         }        
         private void back_button_Click(object sender, EventArgs e){
             this.Hide();
