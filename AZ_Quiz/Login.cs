@@ -40,7 +40,8 @@ namespace AZ_Quiz
         private void LoginButton_Click(object sender, EventArgs e)
         {
             myAccountsManager.LoginNickname = LoginNickname.Text;
-            myAccountsManager.LoginPassword = LoginPassword.Text;
+            string hashedPassword = LoginPassword.Text.GetHashCode().ToString();
+            myAccountsManager.LoginPassword = hashedPassword;
             myAccountsManager.FindAccount();
             if(myAccountsManager.AccountExists == true){
                 ResultLabel.Text = "success";

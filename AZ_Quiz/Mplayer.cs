@@ -27,6 +27,9 @@ namespace AZ_Quiz
         public bool BlueTurn = false;
         public bool SameQuestionAnswered = false;
 
+        Color customOrange = Color.FromArgb(255, 142, 68);
+        Color customBlue = Color.FromArgb(0, 162, 232);
+
         public string bluePlayer = "";
         public string orangePlayer = "";
         public int blueScore = 0;
@@ -35,6 +38,7 @@ namespace AZ_Quiz
         public string secondPlayer = "";
         public string firstPlayer = "";
         public string gameResult;
+        string caption = "Game Result";
         public void SetAccountsManager(AccountsManager accountManager)
         {
             myAccountsManager = accountManager;
@@ -68,7 +72,10 @@ namespace AZ_Quiz
         private void HexagonButton_Click(object sender, EventArgs e)
         {
             clickedButton = (HexagonButton)sender;
-
+            foreach (HexagonButton hexagon in this.Controls.OfType<HexagonButton>())
+            {
+                hexagon.Click -= HexagonButton_Click;
+            }
             timerQuestion.Start();
             progressBarQuestion.Show();
             if (clickedButton.BackColor == Color.Black)
@@ -176,6 +183,10 @@ namespace AZ_Quiz
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
                 BlueTurn = !BlueTurn;
+                foreach (HexagonButton hexagon in this.Controls.OfType<HexagonButton>())
+                {
+                    hexagon.Click -= HexagonButton_Click;
+                }
             }
         }
         private void AnswerWasRight()
@@ -184,13 +195,13 @@ namespace AZ_Quiz
             if (BlueTurn == false)
             {
                 orangeScore = orangeScore + 10;
-                this.clickedButton.BackColor = Color.FromArgb(255, 142, 68);
+                this.clickedButton.BackColor = customOrange;
                 BlueTurn = true;
             }
             else if (BlueTurn == true)
             {
                 blueScore = blueScore + 10;
-                this.clickedButton.BackColor = Color.FromArgb(0, 162, 232);
+                this.clickedButton.BackColor = customBlue;
                 BlueTurn = false;
             }
             scoreBlue.Text = blueScore.ToString();
@@ -203,13 +214,28 @@ namespace AZ_Quiz
             DisplayInfo.Text = secondPlayer + ", it´s your turn now.";
             PlayersAnswer.Text = "";
             SameQuestionAnswered = false;
+            foreach (HexagonButton hexagon in this.Controls.OfType<HexagonButton>())
+            {
+                hexagon.Click += HexagonButton_Click;
+            }
 
             if (CheckIfGameEnded())
             {
                 // konec hry
+                timerGame.Stop();
+                if (clickedButton.BackColor == customOrange)
+                {
+                    gameResult = orangePlayer + ", congratulations! You won!";
+                }
+                else
+                    gameResult = bluePlayer + ", congratulations! You won!";
+                var result = MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    this.Hide();
+                }
             }
         }
-
         private bool CheckIfGameEnded()
         {
             Color clickedButtonColor = clickedButton.BackColor;
@@ -221,7 +247,6 @@ namespace AZ_Quiz
 
             return connectedSides.ConnectsAllSides();
         }
-
         private void GetConnectedSides(HexagonButton button, Color clickedButtonColor, HexagonPosition connectedSides, List<HexagonButton> checkedButtons)
         {
             connectedSides.leftSide |= button.HexPosition.leftSide;
@@ -244,7 +269,6 @@ namespace AZ_Quiz
                 GetConnectedSides(neighour, clickedButtonColor, connectedSides, checkedButtons);
             }
         }
-
         private void AnswerWasFalse()
         {
             FindPlayers();
@@ -370,7 +394,6 @@ namespace AZ_Quiz
                 }
                 else
                     gameResult = orangePlayer + ", congratulations! You won!";
-                string caption = "Game Result";
 
                 var result = MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
@@ -473,7 +496,5 @@ namespace AZ_Quiz
         {
             this.Hide();
         }
-
-
     }
 }

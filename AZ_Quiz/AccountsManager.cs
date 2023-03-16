@@ -25,6 +25,7 @@ namespace AZ_Quiz
         public int EmptyScore = 0;
         public string newNickname = "";
         public string newPassword = "";
+        public int hashedPassword;
 
         public string LoginNickname = "";
         public string LoginPassword = "";
@@ -73,7 +74,7 @@ namespace AZ_Quiz
             foreach (var checkNickname in nicknames){
                 if (LoginNickname == checkNickname){
                     foreach (var checkPassword in passwords){
-                        if (LoginPassword == checkPassword){   
+                        if (LoginPassword == checkPassword){  
                             JoinTextLine();
                             string EnteredData = (LoginNickname + " " + LoginPassword);
                             foreach (var checkData in accounts){
@@ -91,11 +92,17 @@ namespace AZ_Quiz
         public void Register()
         {
             string NewAccScore = EmptyScore.ToString();
+            HashPasswords();
             string[] linkedAccount = new string[] {newNickname,newPassword, NewAccScore};
             string[]NP = new string[] {String.Join(seperator, linkedAccount)};
             File.AppendAllLines(path, NP);
             LoadData();
             SplitTextLine();
+        }
+        public void HashPasswords()
+        {
+            hashedPassword = newPassword.GetHashCode();
+            newPassword = hashedPassword.ToString();
         }
         public void DeleteAccount()
         {
