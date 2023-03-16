@@ -92,9 +92,7 @@ namespace AZ_Quiz
                 Question.Text = myGameManager.BlackQuestion;
                 YesButton.Show();
                 NoButton.Show();
-            }
-            else
-            {
+            }else{
                 myGameManager.NextQuestion();
                 myGameManager.GetQuestion();
                 myGameManager.GetAnswer();
