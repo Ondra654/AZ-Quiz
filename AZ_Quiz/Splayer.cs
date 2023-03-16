@@ -18,16 +18,6 @@ namespace AZ_Quiz
         }
         private void Splayer_Load(object sender, EventArgs e){
         }
-        public void ResetAll()
-        {
-            SinQuestion.Text = "Press Question button to start";
-            SinAnswer.BackColor = Color.BurlyWood;
-            SinAnswer.Text = "";
-            RevealAnswer.Text = "";
-            RevealAnswer.BackColor = Color.CadetBlue;
-            myGameManager.SinglePlayerScore = 0;
-            score.Text = "score: " + myGameManager.SinglePlayerScore;
-        }
         public void DisplayQuestion()
         {
             myGameManager.NextQuestion();
@@ -67,6 +57,16 @@ namespace AZ_Quiz
                 CountScore();
                 DisplayQuestion();
             }
+        }
+        public void ResetAll()
+        {
+            SinQuestion.Text = "Press Question button to start";
+            SinAnswer.BackColor = Color.BurlyWood;
+            SinAnswer.Text = "";
+            RevealAnswer.Text = "";
+            RevealAnswer.BackColor = Color.CadetBlue;
+            myGameManager.SinglePlayerScore = 0;
+            score.Text = "score: " + myGameManager.SinglePlayerScore;
         }
         private void Backbutton_Click(object sender, EventArgs e)
         {

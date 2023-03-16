@@ -49,11 +49,12 @@ namespace AZ_Quiz
                     myAccountsManager.Account1 = LoginNickname.Text;
                 }else{
                     myAccountsManager.Account2 = LoginNickname.Text;
+                    ResultLabel.Text = "";
                     this.Hide();
                 }
             }
             else if (myAccountsManager.AccountExists == false){
-                ResultLabel.Text = "This Password does not exists!";
+                ResultLabel.Text = "Something went wrong, try again.";
             }
             LoginNickname.Text = "";
             LoginPassword.Text = "";
@@ -68,6 +69,7 @@ namespace AZ_Quiz
                     myAccountsManager.Account1 = RegisterNickName.Text;
                 }else{
                     myAccountsManager.Account2 = RegisterNickName.Text;
+                    ResultLabel.Text = "";
                     this.Hide();
                 }
             }
