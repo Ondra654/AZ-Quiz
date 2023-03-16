@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using AZ_Quiz.Properties;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace AZ_Quiz
 {
@@ -92,17 +93,19 @@ namespace AZ_Quiz
         public void Register()
         {
             string NewAccScore = EmptyScore.ToString();
-            HashPasswords();
+            newPassword = HashPasswords(newPassword);
             string[] linkedAccount = new string[] {newNickname,newPassword, NewAccScore};
             string[]NP = new string[] {String.Join(seperator, linkedAccount)};
             File.AppendAllLines(path, NP);
             LoadData();
             SplitTextLine();
         }
-        public void HashPasswords()
+        public string HashPasswords(string password)
         {
-            hashedPassword = newPassword.GetHashCode();
-            newPassword = hashedPassword.ToString();
+            byte[] bytes = Encoding.UTF8.GetBytes(password);
+            SHA1 hashAlgorithm = SHA1.Create();
+            byte[] hash = hashAlgorithm.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
         }
         public void DeleteAccount()
         {
