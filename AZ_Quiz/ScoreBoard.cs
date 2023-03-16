@@ -25,12 +25,8 @@ namespace AZ_Quiz
             myAccountmanager.LoadData();
             myAccountmanager.SplitTextLine();
         }
-        private void back_button_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             string[] nick = myAccountmanager.nicknames;
             dataGridView1.DataSource = nick.ToString();
@@ -49,10 +45,9 @@ namespace AZ_Quiz
                 DelLabel.Text = "smt went wrong";
             }
         }
-
-        private void hexagonButton1_Click(object sender, EventArgs e)
+        private void Backbutton_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
         }
     }
 }

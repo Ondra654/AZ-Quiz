@@ -51,7 +51,7 @@
             this.back_button.TabIndex = 6;
             this.back_button.Text = "back";
             this.back_button.UseVisualStyleBackColor = false;
-            this.back_button.Click += new System.EventHandler(this.back_button_Click);
+            this.back_button.Click += new System.EventHandler(this.Backbutton_Click);
             // 
             // dataGridView1
             // 
@@ -73,7 +73,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "TEST";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // DeleteNickname
             // 

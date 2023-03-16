@@ -17,8 +17,6 @@ namespace AZ_Quiz
 {
     public partial class GameMenu : Form
     {
-        Form form1 = new Form();
-        GameManager myGameManager = new GameManager();
         AccountsManager myAccountsManager = new AccountsManager();
         public GameMenu()
         {
@@ -54,9 +52,9 @@ namespace AZ_Quiz
             scoreBoard1.Show();
             scoreBoard1.Location = new System.Drawing.Point(0, 0);
         }
-        private void help_Click(object sender, EventArgs e)
+        private void Help_Click(object sender, EventArgs e)
         {
-            myAccountsManager.HelpLoad();
+            AccountsManager.HelpLoad();
         }
         private void END_Click(object sender, EventArgs e)
         {

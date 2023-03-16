@@ -117,7 +117,7 @@
             this.help.TabIndex = 7;
             this.help.Text = "?";
             this.help.UseVisualStyleBackColor = false;
-            this.help.Click += new System.EventHandler(this.help_Click);
+            this.help.Click += new System.EventHandler(this.Help_Click);
             // 
             // label1
             // 

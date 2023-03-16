@@ -12,7 +12,6 @@ namespace AZ_Quiz
 {
     public class GameManager
     {
-        AccountsManager myAccountManager = new AccountsManager();
         List<string> usedQuestions = new List<string>();
 
         string Qpath = QuestionPath ("data", "Questions.txt");
@@ -35,7 +34,6 @@ namespace AZ_Quiz
 
         static string QuestionPath(params string[] segments)
         {
-            //questions = Resources.Questions.Split("\n");
             string Qpath = Directory.GetCurrentDirectory();
 
             Qpath = Path.Combine(Qpath);
@@ -48,7 +46,6 @@ namespace AZ_Quiz
         }
         static string AnswersPath(params string[] segments)
         {
-            //answers = Resources.Answers.Split("\n");
             string Apath = Directory.GetCurrentDirectory();
 
             Apath = Path.Combine(Apath);

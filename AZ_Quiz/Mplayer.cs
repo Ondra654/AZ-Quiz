@@ -492,7 +492,7 @@ namespace AZ_Quiz
                 butt.Click += HexagonButton_Click;
             }
         }
-        private void back_button_Click(object sender, EventArgs e)
+        private void Backbutton_Click(object sender, EventArgs e)
         {
             this.Hide();
         }

@@ -65,7 +65,7 @@
             this.back_button.TabIndex = 6;
             this.back_button.Text = "back";
             this.back_button.UseVisualStyleBackColor = false;
-            this.back_button.Click += new System.EventHandler(this.back_button_Click);
+            this.back_button.Click += new System.EventHandler(this.Backbutton_Click);
             // 
             // pictureBox1
             // 

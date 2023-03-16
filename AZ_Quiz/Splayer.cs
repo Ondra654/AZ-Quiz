@@ -52,7 +52,7 @@ namespace AZ_Quiz
                 score.Text = "score: " + myGameManager.SinglePlayerScore.ToString();
                 RevealAnswer.Text = "Right answer was: " + myGameManager.Answer;
         }
-        public void button1_Click(object sender, EventArgs e)
+        public void Button1_Click(object sender, EventArgs e)
         {
             DisplayQuestion();
         }
@@ -68,7 +68,7 @@ namespace AZ_Quiz
                 DisplayQuestion();
             }
         }
-        private void back_button_Click(object sender, EventArgs e)
+        private void Backbutton_Click(object sender, EventArgs e)
         {
             this.Hide();
             ResetAll();

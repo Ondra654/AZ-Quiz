@@ -16,10 +16,10 @@ namespace AZ_Quiz
     {
         string path = GetPath("data", "Accounts.txt");
         
-        public string[] accounts = new string[0];
-        public string[] nicknames = new string[0];
-        public string[] passwords = new string[0];
-        public string[] highscores= new string[0];
+        public string[] accounts = Array.Empty<string>();
+        public string[] nicknames = Array.Empty<string>();
+        public string[] passwords = Array.Empty<string>();
+        public string[] highscores= Array.Empty<string>();
 
         public bool AccountExists = false;
 
@@ -100,7 +100,7 @@ namespace AZ_Quiz
             LoadData();
             SplitTextLine();
         }
-        public string HashPasswords(string password)
+        public static string HashPasswords(string password)
         {
             byte[] bytes = Encoding.UTF8.GetBytes(password);
             SHA1 hashAlgorithm = SHA1.Create();
@@ -123,7 +123,7 @@ namespace AZ_Quiz
                 }
             }
         }
-        public void HelpLoad() 
+        public static void HelpLoad() 
         {
             string HelpPath = GetPath("data", "rules.html");
             ProcessStartInfo info = new ProcessStartInfo();//z netu
