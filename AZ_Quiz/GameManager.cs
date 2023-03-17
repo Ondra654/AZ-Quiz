@@ -13,6 +13,7 @@ namespace AZ_Quiz
     public class GameManager
     {
         List<string> usedQuestions = new List<string>();
+        List<string> usedBlackQuestions = new List<string>();
 
         string Qpath = QuestionPath ("data", "Questions.txt");
         string Apath = AnswersPath ("data", "Answers.txt");
@@ -81,16 +82,17 @@ namespace AZ_Quiz
             }
             question = number.Next(questions.Length);
             blackquestion = number.Next(blackquestions.Length);
-            if(usedQuestions.Contains(question.ToString()))
+            if(usedQuestions.Contains(question.ToString()) || usedBlackQuestions.Contains(blackquestion.ToString()))
             {
                 question = number.Next(questions.Length);
                 blackquestion = number.Next(blackquestions.Length);
             }
             usedQuestions.Add(question.ToString());
+            usedBlackQuestions.Add(blackquestion.ToString());
         }
         public string GetQuestion()
         {
-            if (questions == null || question < 0) {
+            if (questions == null || question < 0){
                 throw new InvalidOperationException("Call NextQuestion first!");
             }
             return Question = questions[question];

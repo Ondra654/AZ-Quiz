@@ -248,39 +248,6 @@ namespace AZ_Quiz
                 }
             }
         }
-        private bool CheckIfGameEnded()
-        {
-            Color clickedButtonColor = clickedButton.BackColor;
-
-            HexagonPosition connectedSides = new HexagonPosition();
-            List<HexagonButton> checkedButtons = new List<HexagonButton>();
-
-            GetConnectedSides(clickedButton, clickedButtonColor, connectedSides, checkedButtons);
-
-            return connectedSides.ConnectsAllSides();
-        }
-        private void GetConnectedSides(HexagonButton button, Color clickedButtonColor, HexagonPosition connectedSides, List<HexagonButton> checkedButtons)
-        {
-            connectedSides.leftSide |= button.HexPosition.leftSide;
-            connectedSides.rightSide |= button.HexPosition.rightSide;
-            connectedSides.bottomSide |= button.HexPosition.bottomSide;
-
-            checkedButtons.Add(button);
-
-            foreach (HexagonButton neighour in button.Neighbours)
-            {
-                if (connectedSides.ConnectsAllSides())
-                    break;
-
-                if (neighour.BackColor != clickedButtonColor)
-                    continue;
-
-                if (checkedButtons.Contains(neighour))
-                    continue;
-
-                GetConnectedSides(neighour, clickedButtonColor, connectedSides, checkedButtons);
-            }
-        }
         private void AnswerWasFalse()
         {
             FindPlayers();
@@ -334,6 +301,39 @@ namespace AZ_Quiz
                 {
                     hexagon.Click += HexagonButton_Click;
                 }
+            }
+        }
+        private bool CheckIfGameEnded()
+        {
+            Color clickedButtonColor = clickedButton.BackColor;
+
+            HexagonPosition connectedSides = new HexagonPosition();
+            List<HexagonButton> checkedButtons = new List<HexagonButton>();
+
+            GetConnectedSides(clickedButton, clickedButtonColor, connectedSides, checkedButtons);
+
+            return connectedSides.ConnectsAllSides();
+        }
+        private void GetConnectedSides(HexagonButton button, Color clickedButtonColor, HexagonPosition connectedSides, List<HexagonButton> checkedButtons)
+        {
+            connectedSides.leftSide |= button.HexPosition.leftSide;
+            connectedSides.rightSide |= button.HexPosition.rightSide;
+            connectedSides.bottomSide |= button.HexPosition.bottomSide;
+
+            checkedButtons.Add(button);
+
+            foreach (HexagonButton neighour in button.Neighbours)
+            {
+                if (connectedSides.ConnectsAllSides())
+                    break;
+
+                if (neighour.BackColor != clickedButtonColor)
+                    continue;
+
+                if (checkedButtons.Contains(neighour))
+                    continue;
+
+                GetConnectedSides(neighour, clickedButtonColor, connectedSides, checkedButtons);
             }
         }
         private void StartingColor()

@@ -198,6 +198,8 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameMenu";
             this.Text = "AZ Quiz";
+            this.MaximizeBox= false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.tableMenuPanel.ResumeLayout(false);
             this.tableMenuPanel.PerformLayout();
             this.ResumeLayout(false);

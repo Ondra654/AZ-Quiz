@@ -100,13 +100,6 @@ namespace AZ_Quiz
             LoadData();
             SplitTextLine();
         }
-        public static string HashPasswords(string password)
-        {
-            byte[] bytes = Encoding.UTF8.GetBytes(password);
-            SHA1 hashAlgorithm = SHA1.Create();
-            byte[] hash = hashAlgorithm.ComputeHash(bytes);
-            return Convert.ToBase64String(hash);
-        }
         public void DeleteAccount()
         {
             for (int i = 0; i < accounts.Length; i++){
@@ -122,6 +115,13 @@ namespace AZ_Quiz
                     }
                 }
             }
+        }
+        public static string HashPasswords(string password)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(password);
+            SHA1 hashAlgorithm = SHA1.Create();
+            byte[] hash = hashAlgorithm.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
         }
         public static void HelpLoad() 
         {
