@@ -39,16 +39,16 @@ namespace AZ_Quiz
         }
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            myAccountsManager.LoginNickname = LoginNickname.Text;
+            myAccountsManager.loginNickname = LoginNickname.Text;
             string hashedPassword = AccountsManager.HashPasswords(LoginPassword.Text);
-            myAccountsManager.LoginPassword = hashedPassword;
+            myAccountsManager.loginPassword = hashedPassword;
             myAccountsManager.FindAccount();
             if(myAccountsManager.AccountExists == true){
                 ResultLabel.Text = "success";
-                if (myAccountsManager.Account1 == ""){
-                    myAccountsManager.Account1 = LoginNickname.Text;
+                if (myAccountsManager.account1 == ""){
+                    myAccountsManager.account1 = LoginNickname.Text;
                 }else{
-                    myAccountsManager.Account2 = LoginNickname.Text;
+                    myAccountsManager.account2 = LoginNickname.Text;
                     ResultLabel.Text = "";
                     this.Hide();
                 }
@@ -65,10 +65,10 @@ namespace AZ_Quiz
                 myAccountsManager.newNickname = RegisterNickName.Text;
                 myAccountsManager.newPassword = RegisterPassword.Text;
                 myAccountsManager.Register();
-                if (myAccountsManager.Account1 == ""){
-                    myAccountsManager.Account1 = RegisterNickName.Text;
+                if (myAccountsManager.account1 == ""){
+                    myAccountsManager.account1 = RegisterNickName.Text;
                 }else{
-                    myAccountsManager.Account2 = RegisterNickName.Text;
+                    myAccountsManager.account2 = RegisterNickName.Text;
                     ResultLabel.Text = "";
                     this.Hide();
                 }

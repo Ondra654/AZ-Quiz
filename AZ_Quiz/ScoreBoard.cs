@@ -34,8 +34,8 @@ namespace AZ_Quiz
 
         private void DelAccount_Click(object sender, EventArgs e)
         {
-            myAccountmanager.LoginNickname = DeleteNickname.Text;
-            myAccountmanager.LoginPassword = DeletePassword.Text;
+            myAccountmanager.loginNickname = DeleteNickname.Text;
+            myAccountmanager.loginPassword = DeletePassword.Text;
             myAccountmanager.FindAccount();
             if(myAccountmanager.AccountExists == true)
             {

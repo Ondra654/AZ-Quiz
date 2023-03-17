@@ -9,6 +9,7 @@ using AZ_Quiz.Properties;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Security.Cryptography;
+using System.Runtime.Serialization;
 
 namespace AZ_Quiz
 {
@@ -23,18 +24,20 @@ namespace AZ_Quiz
 
         public bool AccountExists = false;
 
-        public int EmptyScore = 0;
+        public int emptyScore = 0;
+        public string seperator = " ";
         public string newNickname = "";
         public string newPassword = "";
         public int hashedPassword;
 
-        public string LoginNickname = "";
-        public string LoginPassword = "";
-        public string DeletingAccount = "";
-        public string seperator = " ";
+        public string loginNickname = "";
+        public string loginPassword = "";
+        public string deletingAccount = "";
 
-        public string Account1 = "";
-        public string Account2 = "";
+        public string account1 = "";
+        public string account2 = "";
+        public int acc1score = 0;
+        public int acc2score = 0;
         static string GetPath(params string[] segments)
         {
             string path = Directory.GetCurrentDirectory();
@@ -53,6 +56,14 @@ namespace AZ_Quiz
             nicknames= new string[accounts.Length];
             passwords= new string[accounts.Length];
             highscores= new string[accounts.Length];
+        }
+        internal void SaveData()
+        {
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                accounts[i] = nicknames[i] + seperator + passwords[i] + seperator + highscores[i];
+            }
+            File.WriteAllLines(path, accounts);
         }
         public void SplitTextLine()
         {
@@ -73,11 +84,11 @@ namespace AZ_Quiz
         public void FindAccount()
         {
             foreach (var checkNickname in nicknames){
-                if (LoginNickname == checkNickname && LoginNickname != Account1){
+                if (loginNickname == checkNickname && loginNickname != account1){
                     foreach (var checkPassword in passwords){
-                        if (LoginPassword == checkPassword){  
+                        if (loginPassword == checkPassword){  
                             JoinTextLine();
-                            string EnteredData = (LoginNickname + " " + LoginPassword);
+                            string EnteredData = (loginNickname + " " + loginPassword);
                             foreach (var checkData in accounts){
                                 if (EnteredData == checkData){
                                     AccountExists = true;
@@ -92,7 +103,7 @@ namespace AZ_Quiz
         }
         public void Register()
         {
-            string NewAccScore = EmptyScore.ToString();
+            string NewAccScore = emptyScore.ToString();
             newPassword = HashPasswords(newPassword);
             string[] linkedAccount = new string[] {newNickname,newPassword, NewAccScore};
             string[]NP = new string[] {String.Join(seperator, linkedAccount)};
@@ -103,14 +114,14 @@ namespace AZ_Quiz
         public void DeleteAccount()
         {
             for (int i = 0; i < accounts.Length; i++){
-                accounts[i] = (accounts[i] + " " + highscores[i]);
+                accounts[i] = (accounts[i] + seperator + highscores[i]);
             }
             for (int y = 0; y < accounts.Length; y++){
                 foreach (var JoinedAccData in accounts){
-                    string NP = (LoginNickname + " " + LoginPassword);
-                    DeletingAccount = (NP + " " + highscores[y]);
-                    if (DeletingAccount == JoinedAccData){
-                        accounts = accounts.Where(e => e != DeletingAccount).ToArray();
+                    string NP = (loginNickname + seperator + loginPassword);
+                    deletingAccount = (NP + seperator + highscores[y]);
+                    if (deletingAccount == JoinedAccData){
+                        accounts = accounts.Where(e => e != deletingAccount).ToArray();
                         File.WriteAllLines(path, accounts);
                     }
                 }
@@ -130,6 +141,29 @@ namespace AZ_Quiz
             info.FileName = HelpPath;
             info.UseShellExecute = true;
             Process.Start(info);
+        }
+        public void RewriteScore()
+        {
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                var account = nicknames[i];
+                int hs = Convert.ToInt32(highscores[i]);
+                int gamesc;
+                int newhs;
+
+                if (account == account1)
+                {
+                    gamesc = Convert.ToInt32(acc1score);
+                    newhs = hs + gamesc;
+                    highscores[i] = newhs.ToString();
+                }else if(account == account2)
+                {
+                    gamesc = Convert.ToInt32(acc2score);
+                    newhs = hs + gamesc;
+                    highscores[i] = newhs.ToString();
+                }
+            }
+            SaveData();
         }
     }
 }

@@ -24,23 +24,23 @@ namespace AZ_Quiz
             myGameManager.GetQuestion();
             myGameManager.GetAnswer();
 
-            SinQuestion.Text = myGameManager.Question;
-            string FirstLetter = myGameManager.Answer.Substring(0, 1);
+            SinQuestion.Text = myGameManager.question;
+            string FirstLetter = myGameManager.answer.Substring(0, 1);
             SinAnswer.Text = FirstLetter;
             SinAnswer.SelectionStart = SinAnswer.Text.Length;//z netu
             SinAnswer.BackColor = Color.White;
         }
         public void CountScore() 
         {
-            if (SinAnswer.Text == myGameManager.Answer){
-                myGameManager.SinglePlayerScore = myGameManager.SinglePlayerScore + 10;
+            if (SinAnswer.Text == myGameManager.answer){
+                myGameManager.singlePlayerScore = myGameManager.singlePlayerScore + 10;
                 RevealAnswer.BackColor = Color.Green;
             }else {
-                myGameManager.SinglePlayerScore = myGameManager.SinglePlayerScore - 3;
+                myGameManager.singlePlayerScore = myGameManager.singlePlayerScore - 3;
                 RevealAnswer.BackColor = Color.Red;
             }
-                score.Text = "score: " + myGameManager.SinglePlayerScore.ToString();
-                RevealAnswer.Text = "Right answer was: " + myGameManager.Answer;
+                score.Text = "score: " + myGameManager.singlePlayerScore.ToString();
+                RevealAnswer.Text = "Right answer was: " + myGameManager.answer;
         }
         public void Button1_Click(object sender, EventArgs e)
         {
@@ -65,8 +65,8 @@ namespace AZ_Quiz
             SinAnswer.Text = "";
             RevealAnswer.Text = "";
             RevealAnswer.BackColor = Color.CadetBlue;
-            myGameManager.SinglePlayerScore = 0;
-            score.Text = "score: " + myGameManager.SinglePlayerScore;
+            myGameManager.singlePlayerScore = 0;
+            score.Text = "score: " + myGameManager.singlePlayerScore;
         }
         private void Backbutton_Click(object sender, EventArgs e)
         {
