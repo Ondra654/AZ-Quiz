@@ -126,6 +126,7 @@ namespace AZ_Quiz
             YesButton.Hide();
             NoButton.Hide();
             yesnoButton = YesButton;
+            PlayersAnswer.KeyPress += PlayersAnswer_Entered;
             if (clickedButton.BackColor == Color.Black)
             {
                 YesNoAnswer();
@@ -146,6 +147,7 @@ namespace AZ_Quiz
             YesButton.Hide();
             NoButton.Hide();
             yesnoButton = NoButton;
+            PlayersAnswer.KeyPress += PlayersAnswer_Entered;
             if (clickedButton.BackColor == Color.Black)
             {
                 YesNoAnswer();
@@ -259,6 +261,7 @@ namespace AZ_Quiz
             {
                 if (progressBarQuestion.Value == progressBarQuestion.Maximum)
                 {
+                    PlayersAnswer.KeyPress -= PlayersAnswer_Entered;
                     DisplayInfo.Text = "Time for answering expired! " + secondPlayer + ", would you like to answer?";
                 }
                 else

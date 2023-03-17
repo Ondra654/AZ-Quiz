@@ -144,20 +144,17 @@ namespace AZ_Quiz
         }
         public void RewriteScore()
         {
-            for (int i = 0; i < accounts.Length; i++)
-            {
+            for (int i = 0; i < accounts.Length; i++){
                 var account = nicknames[i];
                 int hs = Convert.ToInt32(highscores[i]);
                 int gamesc;
                 int newhs;
 
-                if (account == account1)
-                {
+                if (account == account1){
                     gamesc = Convert.ToInt32(acc1score);
                     newhs = hs + gamesc;
                     highscores[i] = newhs.ToString();
-                }else if(account == account2)
-                {
+                }else if(account == account2){
                     gamesc = Convert.ToInt32(acc2score);
                     newhs = hs + gamesc;
                     highscores[i] = newhs.ToString();
