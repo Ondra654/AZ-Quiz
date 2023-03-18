@@ -100,6 +100,7 @@ namespace AZ_Quiz
         }
         public void FindAccount()
         {
+            
             foreach (var checkNickname in nicknames){
                 if (loginNickname == checkNickname && loginNickname != account1){
                     foreach (var checkPassword in passwords){
