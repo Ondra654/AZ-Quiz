@@ -25,7 +25,7 @@ namespace AZ_Quiz
         public bool AccountExists = false;
 
         public int emptyScore = 0;
-        public string seperator = " ";
+        public string seperator = "%?!%";
         public string newNickname = "";
         public string newPassword = "";
         public int hashedPassword;
@@ -69,7 +69,7 @@ namespace AZ_Quiz
         {
             for (int i = 0; i < accounts.Length; i++){
                 string[] splitAccounts;
-                splitAccounts = accounts[i].Split(" ");
+                splitAccounts = accounts[i].Split(seperator);
                 nicknames[i] = splitAccounts[0];
                 passwords[i] = splitAccounts[1];
                 highscores[i] = splitAccounts[2];
@@ -105,7 +105,7 @@ namespace AZ_Quiz
                     foreach (var checkPassword in passwords){
                         if (loginPassword == checkPassword){  
                             JoinTextLine();
-                            string EnteredData = (loginNickname + " " + loginPassword);
+                            string EnteredData = (loginNickname + seperator + loginPassword);
                             foreach (var checkData in accounts){
                                 if (EnteredData == checkData){
                                     AccountExists = true;
