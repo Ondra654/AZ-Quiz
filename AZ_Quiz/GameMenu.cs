@@ -18,7 +18,6 @@ namespace AZ_Quiz
     public partial class GameMenu : Form
     {
         AccountsManager myAccountsManager = new AccountsManager();
-        Form form1 = new Form();
         public GameMenu()
         {
             InitializeComponent();
