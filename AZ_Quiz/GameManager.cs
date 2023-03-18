@@ -32,7 +32,6 @@ namespace AZ_Quiz
 
         private int numQuestion = -1;
         private int numBlackQuestion = -1;
-        public int singlePlayerScore = 0; // proč tady kurwa??? dohledat odkazy
 
         static string QuestionPath(params string[] segments)
         {

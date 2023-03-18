@@ -13,32 +13,11 @@ namespace AZ_Quiz
     public partial class Splayer : UserControl
     {
         GameManager myGameManager = new GameManager();
+
+        int singlePlayerScore = 0;
+
         public Splayer(){
             InitializeComponent();
-        }
-        public void DisplayQuestion()
-        {
-            myGameManager.NextQuestion();
-            myGameManager.GetQuestion();
-            myGameManager.GetAnswer();
-
-            SinQuestion.Text = myGameManager.question;
-            string FirstLetter = myGameManager.answer.Substring(0, 1);
-            SinAnswer.Text = FirstLetter;
-            SinAnswer.SelectionStart = SinAnswer.Text.Length;//z netu
-            SinAnswer.BackColor = Color.White;
-        }
-        public void CountScore() 
-        {
-            if (SinAnswer.Text == myGameManager.answer){
-                myGameManager.singlePlayerScore = myGameManager.singlePlayerScore + 10;
-                RevealAnswer.BackColor = Color.Green;
-            }else {
-                myGameManager.singlePlayerScore = myGameManager.singlePlayerScore - 3;
-                RevealAnswer.BackColor = Color.Red;
-            }
-                score.Text = "score: " + myGameManager.singlePlayerScore.ToString();
-                RevealAnswer.Text = "Right answer was: " + myGameManager.answer;
         }
         public void Button1_Click(object sender, EventArgs e)
         {
@@ -56,6 +35,29 @@ namespace AZ_Quiz
                 DisplayQuestion();
             }
         }
+        public void DisplayQuestion()
+        {
+            myGameManager.NextQuestion();
+            myGameManager.GetQuestion();
+            myGameManager.GetAnswer();
+
+            SinQuestion.Text = myGameManager.question;
+            string FirstLetter = myGameManager.answer.Substring(0, 1);
+            SinAnswer.Text = FirstLetter;
+            SinAnswer.SelectionStart = SinAnswer.Text.Length;//z netu
+        }
+        public void CountScore() 
+        {
+            if (SinAnswer.Text == myGameManager.answer){
+                singlePlayerScore = singlePlayerScore + 10;
+                RevealAnswer.BackColor = Color.Green;
+            }else {
+                singlePlayerScore = singlePlayerScore - 3;
+                RevealAnswer.BackColor = Color.Red;
+            }
+                score.Text = "score: " + singlePlayerScore.ToString();
+                RevealAnswer.Text = "Right answer was: " + myGameManager.answer;
+        }
         public void ResetAll()
         {
             SinQuestion.Text = "Press Question button to start";
@@ -63,8 +65,8 @@ namespace AZ_Quiz
             SinAnswer.Text = "";
             RevealAnswer.Text = "";
             RevealAnswer.BackColor = Color.CadetBlue;
-            myGameManager.singlePlayerScore = 0;
-            score.Text = "score: " + myGameManager.singlePlayerScore;
+            singlePlayerScore = 0;
+            score.Text = "score: " + singlePlayerScore;
         }
         private void Backbutton_Click(object sender, EventArgs e)
         {
