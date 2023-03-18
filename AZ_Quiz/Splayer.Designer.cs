@@ -146,7 +146,6 @@ namespace AZ_Quiz
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Splayer";
             this.Size = new System.Drawing.Size(1230, 695);
-            this.Load += new System.EventHandler(this.Splayer_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

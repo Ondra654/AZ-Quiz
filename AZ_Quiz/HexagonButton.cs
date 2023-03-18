@@ -17,13 +17,11 @@ namespace AZ_Quiz
             public bool rightSide;
             public bool leftSide;
             public bool bottomSide;
-
             public bool ConnectsAllSides()
             {
                 return (rightSide && leftSide && bottomSide);
             }
         }
-
 
         //Fields
         public int hexagonSide = 10;

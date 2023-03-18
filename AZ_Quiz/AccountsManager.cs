@@ -78,8 +78,25 @@ namespace AZ_Quiz
         public void JoinTextLine()
         {
             for (int i = 0; i < accounts.Length; i++){
-                accounts[i] = (nicknames[i] + " " + passwords[i]);
+                accounts[i] = (nicknames[i] + seperator + passwords[i]);
             }
+        }
+        public void Register()
+        {
+            string NewAccScore = emptyScore.ToString();
+            newPassword = HashPasswords(newPassword);
+            string[] linkedAccount = new string[] {newNickname,newPassword, NewAccScore};
+            string[]NP = new string[] {String.Join(seperator, linkedAccount)};
+            File.AppendAllLines(path, NP);
+            LoadData();
+            SplitTextLine();
+        }
+        public static string HashPasswords(string password)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(password);
+            SHA1 hashAlgorithm = SHA1.Create();
+            byte[] hash = hashAlgorithm.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
         }
         public void FindAccount()
         {
@@ -101,16 +118,6 @@ namespace AZ_Quiz
                 }else {AccountExists= false;}
             }
         }
-        public void Register()
-        {
-            string NewAccScore = emptyScore.ToString();
-            newPassword = HashPasswords(newPassword);
-            string[] linkedAccount = new string[] {newNickname,newPassword, NewAccScore};
-            string[]NP = new string[] {String.Join(seperator, linkedAccount)};
-            File.AppendAllLines(path, NP);
-            LoadData();
-            SplitTextLine();
-        }
         public void DeleteAccount()
         {
             for (int i = 0; i < accounts.Length; i++){
@@ -126,21 +133,6 @@ namespace AZ_Quiz
                     }
                 }
             }
-        }
-        public static string HashPasswords(string password)
-        {
-            byte[] bytes = Encoding.UTF8.GetBytes(password);
-            SHA1 hashAlgorithm = SHA1.Create();
-            byte[] hash = hashAlgorithm.ComputeHash(bytes);
-            return Convert.ToBase64String(hash);
-        }
-        public static void HelpLoad() 
-        {
-            string HelpPath = GetPath("data", "rules.html");
-            ProcessStartInfo info = new ProcessStartInfo();//z netu
-            info.FileName = HelpPath;
-            info.UseShellExecute = true;
-            Process.Start(info);
         }
         public void RewriteScore()
         {
@@ -161,6 +153,14 @@ namespace AZ_Quiz
                 }
             }
             SaveData();
+        }
+        public static void HelpLoad() 
+        {
+            string HelpPath = GetPath("data", "rules.html");
+            ProcessStartInfo info = new ProcessStartInfo();//z netu
+            info.FileName = HelpPath;
+            info.UseShellExecute = true;
+            Process.Start(info);
         }
     }
 }

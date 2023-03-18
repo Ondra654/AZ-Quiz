@@ -153,7 +153,6 @@
             // 
             // scoreBoard1
             // 
-            this.scoreBoard1.BackColor = System.Drawing.Color.White;
             this.scoreBoard1.Location = new System.Drawing.Point(17, 1224);
             this.scoreBoard1.Name = "scoreBoard1";
             this.scoreBoard1.Size = new System.Drawing.Size(1230, 695);

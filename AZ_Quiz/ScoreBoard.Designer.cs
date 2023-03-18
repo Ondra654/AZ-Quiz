@@ -35,7 +35,11 @@
             this.DeletePassword = new System.Windows.Forms.TextBox();
             this.DelAccount = new System.Windows.Forms.Button();
             this.DelLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // back_button
@@ -44,7 +48,7 @@
             this.back_button.Cursor = System.Windows.Forms.Cursors.No;
             this.back_button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.back_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.back_button.Location = new System.Drawing.Point(1145, 645);
+            this.back_button.Location = new System.Drawing.Point(1157, 655);
             this.back_button.Margin = new System.Windows.Forms.Padding(4);
             this.back_button.Name = "back_button";
             this.back_button.Size = new System.Drawing.Size(69, 36);
@@ -56,17 +60,20 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(52, 162);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.dataGridView1.Location = new System.Drawing.Point(487, 150);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(718, 392);
+            this.dataGridView1.Size = new System.Drawing.Size(710, 395);
             this.dataGridView1.TabIndex = 7;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(502, 58);
+            this.button1.Location = new System.Drawing.Point(830, 570);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 34);
@@ -77,24 +84,24 @@
             // 
             // DeleteNickname
             // 
-            this.DeleteNickname.Location = new System.Drawing.Point(878, 202);
+            this.DeleteNickname.Location = new System.Drawing.Point(75, 193);
             this.DeleteNickname.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteNickname.Name = "DeleteNickname";
-            this.DeleteNickname.Size = new System.Drawing.Size(254, 31);
+            this.DeleteNickname.Size = new System.Drawing.Size(250, 31);
             this.DeleteNickname.TabIndex = 0;
             // 
             // DeletePassword
             // 
-            this.DeletePassword.Location = new System.Drawing.Point(878, 261);
+            this.DeletePassword.Location = new System.Drawing.Point(75, 250);
             this.DeletePassword.Margin = new System.Windows.Forms.Padding(4);
             this.DeletePassword.Name = "DeletePassword";
             this.DeletePassword.PasswordChar = '*';
-            this.DeletePassword.Size = new System.Drawing.Size(254, 31);
+            this.DeletePassword.Size = new System.Drawing.Size(250, 31);
             this.DeletePassword.TabIndex = 1;
             // 
             // DelAccount
             // 
-            this.DelAccount.Location = new System.Drawing.Point(922, 320);
+            this.DelAccount.Location = new System.Drawing.Point(125, 301);
             this.DelAccount.Margin = new System.Windows.Forms.Padding(2);
             this.DelAccount.Name = "DelAccount";
             this.DelAccount.Size = new System.Drawing.Size(155, 34);
@@ -106,21 +113,45 @@
             // DelLabel
             // 
             this.DelLabel.AutoSize = true;
-            this.DelLabel.Location = new System.Drawing.Point(968, 384);
+            this.DelLabel.Location = new System.Drawing.Point(168, 349);
             this.DelLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DelLabel.Name = "DelLabel";
             this.DelLabel.Size = new System.Drawing.Size(59, 25);
             this.DelLabel.TabIndex = 12;
             this.DelLabel.Text = "label1";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel1.Controls.Add(this.DeleteNickname);
+            this.panel1.Controls.Add(this.DelLabel);
+            this.panel1.Controls.Add(this.DeletePassword);
+            this.panel1.Controls.Add(this.DelAccount);
+            this.panel1.Location = new System.Drawing.Point(50, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(400, 695);
+            this.panel1.TabIndex = 13;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.MinimumWidth = 8;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 150;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column2";
+            this.Column2.MinimumWidth = 8;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 150;
+            // 
             // ScoreBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.DelLabel);
-            this.Controls.Add(this.DelAccount);
-            this.Controls.Add(this.DeletePassword);
-            this.Controls.Add(this.DeleteNickname);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(133)))), ((int)(((byte)(224)))));
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.back_button);
@@ -129,8 +160,9 @@
             this.Size = new System.Drawing.Size(1230, 695);
             this.Load += new System.EventHandler(this.ScoreBoard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -142,5 +174,8 @@
         private TextBox DeletePassword;
         private Button DelAccount;
         private Label DelLabel;
+        private Panel panel1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
     }
 }

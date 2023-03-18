@@ -14,7 +14,6 @@ namespace AZ_Quiz
     public partial class Login : UserControl
     {
         AccountsManager myAccountsManager;
-        GameManager myGamemanager = new GameManager();
 
         public void SetAccountsManager(AccountsManager accountManager)
         {

@@ -15,23 +15,36 @@ namespace AZ_Quiz
     {
         AccountsManager myAccountmanager = new AccountsManager();
 
-
+        string[] sortedNicks;
+        string[] sortedScores;
         public ScoreBoard()
         {
             InitializeComponent();
         }
         private void ScoreBoard_Load(object sender, EventArgs e)
         {
-            myAccountmanager.LoadData();
+            myAccountmanager.LoadData();//nebude třeba -> same accountmanager -> předělat
             myAccountmanager.SplitTextLine();
+            SortData();
         }
-
+        private void SortData()
+        {
+            for (int i = 0; i < myAccountmanager.accounts.Length; i++)
+            {
+                int score = Convert.ToInt32(myAccountmanager.highscores[i]);
+            }
+        }
         private void Button1_Click(object sender, EventArgs e)
         {
-            string[] nick = myAccountmanager.nicknames;
-            dataGridView1.DataSource = nick.ToString();
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Columns[0].HeaderText = "nickname";
+            dataGridView1.Columns[1].HeaderText = "score";
+            for (int i = 0; i < myAccountmanager.accounts.Length; i++)
+            {
+                string[] scoreData = myAccountmanager.nicknames;
+                dataGridView1.Rows.Add(scoreData);
+            }
         }
-
         private void DelAccount_Click(object sender, EventArgs e)
         {
             myAccountmanager.loginNickname = DeleteNickname.Text;
@@ -49,5 +62,6 @@ namespace AZ_Quiz
         {
             this.Hide();
         }
+    
     }
 }

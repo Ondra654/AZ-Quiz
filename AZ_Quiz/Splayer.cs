@@ -16,8 +16,6 @@ namespace AZ_Quiz
         public Splayer(){
             InitializeComponent();
         }
-        private void Splayer_Load(object sender, EventArgs e){
-        }
         public void DisplayQuestion()
         {
             myGameManager.NextQuestion();
