@@ -2,7 +2,7 @@
 
 namespace AZ_Quiz
 {
-    partial class Splayer
+    partial class SinglePlayer
     {
         /// <summary> 
         /// Required designer variable.

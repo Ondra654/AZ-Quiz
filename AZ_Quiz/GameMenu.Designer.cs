@@ -32,13 +32,13 @@
             this.Solo = new System.Windows.Forms.Button();
             this.AC = new System.Windows.Forms.Button();
             this.End_button = new System.Windows.Forms.Button();
-            this.mplayer1 = new AZ_Quiz.Mplayer();
+            this.azQuizGame = new AZ_Quiz.AZQuizGame();
             this.help = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.login1 = new AZ_Quiz.Login();
-            this.splayer1 = new AZ_Quiz.Splayer();
             this.scoreBoard1 = new AZ_Quiz.ScoreBoard();
             this.tableMenuPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.singlePlayer1 = new AZ_Quiz.SinglePlayer();
             this.tableMenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,14 +97,14 @@
             this.End_button.UseVisualStyleBackColor = false;
             this.End_button.Click += new System.EventHandler(this.END_Click);
             // 
-            // mplayer1
+            // azQuizGame
             // 
-            this.mplayer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(194)))), ((int)(((byte)(123)))));
-            this.mplayer1.Location = new System.Drawing.Point(1255, 705);
-            this.mplayer1.Margin = new System.Windows.Forms.Padding(5);
-            this.mplayer1.Name = "mplayer1";
-            this.mplayer1.Size = new System.Drawing.Size(1230, 695);
-            this.mplayer1.TabIndex = 6;
+            this.azQuizGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(194)))), ((int)(((byte)(123)))));
+            this.azQuizGame.Location = new System.Drawing.Point(1302, 705);
+            this.azQuizGame.Margin = new System.Windows.Forms.Padding(5);
+            this.azQuizGame.Name = "azQuizGame";
+            this.azQuizGame.Size = new System.Drawing.Size(1230, 695);
+            this.azQuizGame.TabIndex = 6;
             // 
             // help
             // 
@@ -143,15 +143,6 @@
             this.login1.Size = new System.Drawing.Size(1124, 500);
             this.login1.TabIndex = 9;
             // 
-            // splayer1
-            // 
-            this.splayer1.BackColor = System.Drawing.Color.CadetBlue;
-            this.splayer1.Location = new System.Drawing.Point(1255, 1);
-            this.splayer1.Margin = new System.Windows.Forms.Padding(5);
-            this.splayer1.Name = "splayer1";
-            this.splayer1.Size = new System.Drawing.Size(1230, 695);
-            this.splayer1.TabIndex = 10;
-            // 
             // scoreBoard1
             // 
             this.scoreBoard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(133)))), ((int)(((byte)(224)))));
@@ -186,17 +177,26 @@
             this.tableMenuPanel.Size = new System.Drawing.Size(1230, 695);
             this.tableMenuPanel.TabIndex = 13;
             // 
+            // singlePlayer1
+            // 
+            this.singlePlayer1.BackColor = System.Drawing.Color.CadetBlue;
+            this.singlePlayer1.Location = new System.Drawing.Point(1302, 1);
+            this.singlePlayer1.Margin = new System.Windows.Forms.Padding(4);
+            this.singlePlayer1.Name = "singlePlayer1";
+            this.singlePlayer1.Size = new System.Drawing.Size(1230, 695);
+            this.singlePlayer1.TabIndex = 14;
+            // 
             // GameMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(1228, 694);
+            this.Controls.Add(this.singlePlayer1);
             this.Controls.Add(this.tableMenuPanel);
             this.Controls.Add(this.scoreBoard1);
-            this.Controls.Add(this.splayer1);
             this.Controls.Add(this.login1);
-            this.Controls.Add(this.mplayer1);
+            this.Controls.Add(this.azQuizGame);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -213,12 +213,13 @@
         private Button Solo;
         private Button AC;
         private Button End_button;
-        private Mplayer mplayer1;
+        private AZQuizGame azQuizGame;
         private Button help;
         private Label label1;
         private Login login1;
-        private Splayer splayer1;
+        private SinglePlayer splayer1;
         private ScoreBoard scoreBoard1;
         private TableLayoutPanel tableMenuPanel;
+        private SinglePlayer singlePlayer1;
     }
 }

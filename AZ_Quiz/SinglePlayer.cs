@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace AZ_Quiz
 {
-    public partial class Splayer : UserControl
+    public partial class SinglePlayer : UserControl
     {
         GameManager myGameManager = new GameManager();
 
         int singlePlayerScore = 0;
 
-        public Splayer(){
+        public SinglePlayer(){
             InitializeComponent();
         }
         public void Button1_Click(object sender, EventArgs e)

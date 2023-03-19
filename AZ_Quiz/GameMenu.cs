@@ -21,30 +21,31 @@ namespace AZ_Quiz
         public GameMenu()
         {
             InitializeComponent();
+            singlePlayer1.Hide();
+            azQuizGame.Hide();
             login1.Hide();
             scoreBoard1.Hide();
-            mplayer1.Hide();
-            splayer1.Hide();
 
+            azQuizGame.SetAccountsManager(myAccountsManager);
             login1.SetAccountsManager(myAccountsManager);
-            mplayer1.SetAccountsManager(myAccountsManager);
+            scoreBoard1.SetAccountsManager(myAccountsManager);
         }
         private void PVP_Click(object sender, EventArgs e)
         {
             tableMenuPanel.SendToBack();
             login1.Show();
             login1.BringToFront();
-            int Xcoordinate = (mplayer1.Width - login1.Width) / 2;
-            int Ycoordinate = (mplayer1.Height - login1.Height) / 2;
+            int Xcoordinate = (azQuizGame.Width - login1.Width) / 2;
+            int Ycoordinate = (azQuizGame.Height - login1.Height) / 2;
             login1.Location = new System.Drawing.Point(Xcoordinate, Ycoordinate);
-            mplayer1.Location = new System.Drawing.Point(0,0);
-            mplayer1.Show();
+            azQuizGame.Location = new System.Drawing.Point(0,0);
+            azQuizGame.Show();
         }
         private void Solo_Click(object sender, EventArgs e)
         {
             tableMenuPanel.SendToBack();
-            splayer1.Show();
-            splayer1.Location = new System.Drawing.Point(0,0);
+            singlePlayer1.Show();
+            singlePlayer1.Location = new System.Drawing.Point(0,0);
         }
         private void AC_Click(object sender, EventArgs e)
         {

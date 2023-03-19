@@ -18,7 +18,7 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace AZ_Quiz
 {
-    public partial class Mplayer : UserControl
+    public partial class AZQuizGame : UserControl
     {
         GameManager myGameManager = new GameManager();
         AccountsManager myAccountsManager;
@@ -45,7 +45,7 @@ namespace AZ_Quiz
         {
             myAccountsManager = accountManager;
         }
-        public Mplayer()
+        public AZQuizGame()
         {
             InitializeComponent();
         }

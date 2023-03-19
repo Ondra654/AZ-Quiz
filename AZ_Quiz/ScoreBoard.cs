@@ -13,7 +13,7 @@ namespace AZ_Quiz
 {
     public partial class ScoreBoard : UserControl
     {
-        AccountsManager myAccountmanager = new AccountsManager();
+        AccountsManager myAccountsManager;
 
         string[] sortednicks;
         int[] sortedscore;
@@ -21,10 +21,14 @@ namespace AZ_Quiz
         {
             InitializeComponent();
         }
+        public void SetAccountsManager(AccountsManager accountManager)
+        {
+            myAccountsManager = accountManager;
+        }
         private void ScoreBoard_Load(object sender, EventArgs e)
         {
-            myAccountmanager.LoadData();//nebude třeba -> same accountmanager -> předělat
-            myAccountmanager.SplitTextLine();
+            myAccountsManager.LoadData();//nebude třeba -> same accountmanager -> předělat
+            myAccountsManager.SplitTextLine();
             SortData();
             int rows = sortednicks.Length;
             int rowsize = (dataGridView1.Height - dataGridView1.ColumnHeadersHeight) / rows;
@@ -36,21 +40,21 @@ namespace AZ_Quiz
         }
         private void SortData()
         {
-            sortednicks = new string[myAccountmanager.nicknames.Length];
-            for(int i = 0;i < myAccountmanager.nicknames.Length;i++)
+            sortednicks = new string[myAccountsManager.nicknames.Length];
+            for(int i = 0;i < myAccountsManager.nicknames.Length;i++)
             {
-                string nick = myAccountmanager.nicknames[i];
+                string nick = myAccountsManager.nicknames[i];
                 sortednicks[i]= nick;
             }
-            sortedscore = Array.ConvertAll(myAccountmanager.highscores, int.Parse);
+            sortedscore = Array.ConvertAll(myAccountsManager.highscores, int.Parse);
             Array.Sort(sortedscore, sortednicks);
             Array.Reverse(sortedscore);
             Array.Reverse(sortednicks);
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            myAccountmanager.LoadData();
-            myAccountmanager.SplitTextLine();
+            myAccountsManager.LoadData();
+            myAccountsManager.SplitTextLine();
             SortData();
             dataGridView1.Rows.Clear();
             for (int i = 0; i < sortednicks.Length; i++)
@@ -60,14 +64,14 @@ namespace AZ_Quiz
         }
         private void DelAccount_Click(object sender, EventArgs e)
         {
-            myAccountmanager.loginNickname = DeleteNickname.Text;
+            myAccountsManager.loginNickname = DeleteNickname.Text;
             string hashedPassword = AccountsManager.HashPasswords(DeletePassword.Text);
-            myAccountmanager.loginPassword = hashedPassword;
-            myAccountmanager.FindAccount();
-            if(myAccountmanager.AccountExists == true)
+            myAccountsManager.loginPassword = hashedPassword;
+            myAccountsManager.FindAccount();
+            if(myAccountsManager.AccountExists == true)
             {
                 DelLabel.Text = "success";
-                myAccountmanager.DeleteAccount();
+                myAccountsManager.DeleteAccount();
             }else{
                 DelLabel.Text = "smt went wrong";
             }

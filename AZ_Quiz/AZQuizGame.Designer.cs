@@ -1,6 +1,6 @@
 ﻿namespace AZ_Quiz
 {
-    partial class Mplayer
+    partial class AZQuizGame
     {
         /// <summary> 
         /// Required designer variable.
