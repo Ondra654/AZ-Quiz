@@ -26,9 +26,13 @@ namespace AZ_Quiz
             myAccountmanager.LoadData();//nebude třeba -> same accountmanager -> předělat
             myAccountmanager.SplitTextLine();
             SortData();
-                int rows = sortednicks.Length;
-                int rowsize = (dataGridView1.Height - dataGridView1.ColumnHeadersHeight) / rows;
-                dataGridView1.RowTemplate.Height = rowsize;
+            int rows = sortednicks.Length;
+            int rowsize = (dataGridView1.Height - dataGridView1.ColumnHeadersHeight) / rows;
+            dataGridView1.RowTemplate.Height = rowsize;
+            for (int i = 0; i < sortednicks.Length; i++)
+            {
+                dataGridView1.Rows.Add(sortednicks[i], sortedscore[i]);
+            }
         }
         private void SortData()
         {
@@ -45,6 +49,10 @@ namespace AZ_Quiz
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            myAccountmanager.LoadData();
+            myAccountmanager.SplitTextLine();
+            SortData();
+            dataGridView1.Rows.Clear();
             for (int i = 0; i < sortednicks.Length; i++)
             {
                 dataGridView1.Rows.Add(sortednicks[i], sortedscore[i]);
@@ -53,7 +61,8 @@ namespace AZ_Quiz
         private void DelAccount_Click(object sender, EventArgs e)
         {
             myAccountmanager.loginNickname = DeleteNickname.Text;
-            myAccountmanager.loginPassword = DeletePassword.Text;
+            string hashedPassword = AccountsManager.HashPasswords(DeletePassword.Text);
+            myAccountmanager.loginPassword = hashedPassword;
             myAccountmanager.FindAccount();
             if(myAccountmanager.AccountExists == true)
             {

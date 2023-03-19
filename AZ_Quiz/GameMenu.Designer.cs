@@ -77,7 +77,7 @@
             this.AC.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.AC.Size = new System.Drawing.Size(300, 70);
             this.AC.TabIndex = 3;
-            this.AC.Text = "Manage Account";
+            this.AC.Text = "Manage Account/Scoreboard";
             this.AC.UseVisualStyleBackColor = true;
             this.AC.Click += new System.EventHandler(this.AC_Click);
             // 
@@ -99,6 +99,7 @@
             // 
             // mplayer1
             // 
+            this.mplayer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(194)))), ((int)(((byte)(123)))));
             this.mplayer1.Location = new System.Drawing.Point(1255, 705);
             this.mplayer1.Margin = new System.Windows.Forms.Padding(5);
             this.mplayer1.Name = "mplayer1";
@@ -153,7 +154,9 @@
             // 
             // scoreBoard1
             // 
+            this.scoreBoard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(133)))), ((int)(((byte)(224)))));
             this.scoreBoard1.Location = new System.Drawing.Point(17, 1224);
+            this.scoreBoard1.Margin = new System.Windows.Forms.Padding(2);
             this.scoreBoard1.Name = "scoreBoard1";
             this.scoreBoard1.Size = new System.Drawing.Size(1230, 695);
             this.scoreBoard1.TabIndex = 12;
@@ -194,11 +197,11 @@
             this.Controls.Add(this.splayer1);
             this.Controls.Add(this.login1);
             this.Controls.Add(this.mplayer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "GameMenu";
             this.Text = "AZ Quiz";
-            this.MaximizeBox= false;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.tableMenuPanel.ResumeLayout(false);
             this.tableMenuPanel.PerformLayout();
             this.ResumeLayout(false);

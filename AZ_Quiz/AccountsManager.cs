@@ -99,8 +99,7 @@ namespace AZ_Quiz
             return Convert.ToBase64String(hash);
         }
         public void FindAccount()
-        {
-            
+        {            
             foreach (var checkNickname in nicknames){
                 if (loginNickname == checkNickname && loginNickname != account1){
                     foreach (var checkPassword in passwords){

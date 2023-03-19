@@ -35,7 +35,7 @@ namespace AZ_Quiz
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Reloadbutton = new System.Windows.Forms.Button();
             this.DeleteNickname = new System.Windows.Forms.TextBox();
             this.DeletePassword = new System.Windows.Forms.TextBox();
             this.DelAccount = new System.Windows.Forms.Button();
@@ -62,7 +62,12 @@ namespace AZ_Quiz
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -72,9 +77,11 @@ namespace AZ_Quiz
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 34;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(487, 150);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
@@ -84,7 +91,8 @@ namespace AZ_Quiz
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 20;
-            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowTemplate.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.Size = new System.Drawing.Size(710, 395);
             this.dataGridView1.TabIndex = 7;
             // 
@@ -102,16 +110,17 @@ namespace AZ_Quiz
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // button1
+            // Reloadbutton
             // 
-            this.button1.Location = new System.Drawing.Point(830, 570);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 34);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "TEST";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.Reloadbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.Reloadbutton.Location = new System.Drawing.Point(782, 549);
+            this.Reloadbutton.Margin = new System.Windows.Forms.Padding(2);
+            this.Reloadbutton.Name = "Reloadbutton";
+            this.Reloadbutton.Size = new System.Drawing.Size(136, 34);
+            this.Reloadbutton.TabIndex = 8;
+            this.Reloadbutton.Text = "Refresh";
+            this.Reloadbutton.UseVisualStyleBackColor = false;
+            this.Reloadbutton.Click += new System.EventHandler(this.Button1_Click);
             // 
             // DeleteNickname
             // 
@@ -143,13 +152,11 @@ namespace AZ_Quiz
             // 
             // DelLabel
             // 
-            this.DelLabel.AutoSize = true;
-            this.DelLabel.Location = new System.Drawing.Point(168, 349);
+            this.DelLabel.Location = new System.Drawing.Point(125, 349);
             this.DelLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DelLabel.Name = "DelLabel";
-            this.DelLabel.Size = new System.Drawing.Size(59, 25);
+            this.DelLabel.Size = new System.Drawing.Size(155, 25);
             this.DelLabel.TabIndex = 12;
-            this.DelLabel.Text = "label1";
             // 
             // panel1
             // 
@@ -169,7 +176,7 @@ namespace AZ_Quiz
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(133)))), ((int)(((byte)(224)))));
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Reloadbutton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.back_button);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -186,7 +193,7 @@ namespace AZ_Quiz
         #endregion
         private Button back_button;
         private DataGridView dataGridView1;
-        private Button button1;
+        private Button Reloadbutton;
         private TextBox DeleteNickname;
         private TextBox DeletePassword;
         private Button DelAccount;
