@@ -37,14 +37,22 @@ namespace AZ_Quiz
         }
         public void DisplayQuestion()
         {
-            myGameManager.NextQuestion();
             myGameManager.GetQuestion();
-            myGameManager.GetAnswer();
+            if(myGameManager.questionsListFull == true)
+            {
+                var result = MessageBox.Show("You went through all questions, program needs to reset your progress","Question used list is full", MessageBoxButtons.OK);
+                if (result == DialogResult.OK)
+                {
+                    ResetAll();
+                }
+            }else{
+                myGameManager.GetAnswer();
 
-            SinQuestion.Text = myGameManager.question;
-            string FirstLetter = myGameManager.answer.Substring(0, 1);
-            SinAnswer.Text = FirstLetter;
-            SinAnswer.SelectionStart = SinAnswer.Text.Length;//z netu
+                SinQuestion.Text = myGameManager.question;
+                string FirstLetter = myGameManager.answer.Substring(0, 1);
+                SinAnswer.Text = FirstLetter;
+                SinAnswer.SelectionStart = SinAnswer.Text.Length;//z netu
+            }
         }
         public void CountScore() 
         {
@@ -61,12 +69,13 @@ namespace AZ_Quiz
         public void ResetAll()
         {
             SinQuestion.Text = "Press Question button to start";
-            SinAnswer.BackColor = Color.BurlyWood;
             SinAnswer.Text = "";
             RevealAnswer.Text = "";
             RevealAnswer.BackColor = Color.CadetBlue;
             singlePlayerScore = 0;
             score.Text = "score: " + singlePlayerScore;
+            myGameManager.questionsListFull = false;
+            myGameManager.ResetQuestionLists();
         }
         private void Backbutton_Click(object sender, EventArgs e)
         {

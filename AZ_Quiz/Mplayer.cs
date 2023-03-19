@@ -93,7 +93,6 @@ namespace AZ_Quiz
                 YesButton.Show();
                 NoButton.Show();
             }else{
-                myGameManager.NextQuestion();
                 myGameManager.GetQuestion();
                 myGameManager.GetAnswer();
                 Question.Text = myGameManager.question;
@@ -235,7 +234,7 @@ namespace AZ_Quiz
                 }
                 else
                     gameResult = bluePlayer + ", congratulations! You won!";
-                var result = MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                var result = MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);        
                 if (result == DialogResult.OK)
                 {
                     ResetAll();
@@ -515,6 +514,7 @@ namespace AZ_Quiz
                 hexagon.HexPosition.rightSide = default;
                 hexagon.HexPosition.bottomSide = default;
             }
+            myGameManager.ResetQuestionLists();
             YesButton.Hide();
             NoButton.Hide();
             timerGame.Stop();

@@ -15,7 +15,7 @@ namespace AZ_Quiz
 {
     public class AccountsManager
     {
-        string path = GetPath("data", "Accounts.txt");
+        string accPath = GetPath("data", "Accounts.txt");
         
         public string[] accounts = Array.Empty<string>();
         public string[] nicknames = Array.Empty<string>();
@@ -52,7 +52,7 @@ namespace AZ_Quiz
         }
         internal void LoadData()
         {
-            accounts = File.ReadAllLines(path);
+            accounts = File.ReadAllLines(accPath);
             nicknames= new string[accounts.Length];
             passwords= new string[accounts.Length];
             highscores= new string[accounts.Length];
@@ -63,7 +63,7 @@ namespace AZ_Quiz
             {
                 accounts[i] = nicknames[i] + seperator + passwords[i] + seperator + highscores[i];
             }
-            File.WriteAllLines(path, accounts);
+            File.WriteAllLines(accPath, accounts);
         }
         public void SplitTextLine()
         {
@@ -87,7 +87,7 @@ namespace AZ_Quiz
             newPassword = HashPasswords(newPassword);
             string[] linkedAccount = new string[] {newNickname,newPassword, NewAccScore};
             string[]NP = new string[] {String.Join(seperator, linkedAccount)};
-            File.AppendAllLines(path, NP);
+            File.AppendAllLines(accPath, NP);
             LoadData();
             SplitTextLine();
         }
@@ -130,7 +130,7 @@ namespace AZ_Quiz
                     deletingAccount = (NP + seperator + highscores[y]);
                     if (deletingAccount == JoinedAccData){
                         accounts = accounts.Where(e => e != deletingAccount).ToArray();
-                        File.WriteAllLines(path, accounts);
+                        File.WriteAllLines(accPath, accounts);
                     }
                 }
             }

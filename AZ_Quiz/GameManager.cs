@@ -14,9 +14,7 @@ namespace AZ_Quiz
     {
         List<string> usedQuestions = new List<string>();
         List<string> usedBlackQuestions = new List<string>();
-
-        string Qpath = QuestionPath ("data", "Questions.txt");
-        string Apath = AnswersPath ("data", "Answers.txt");
+        public bool questionsListFull = false;
 
         private string[] questions;
         private string[] answers;
@@ -33,32 +31,22 @@ namespace AZ_Quiz
         private int numQuestion = -1;
         private int numBlackQuestion = -1;
 
-        static string QuestionPath(params string[] segments)
+        static string GetPath(params string[] segments)
         {
-            string Qpath = Directory.GetCurrentDirectory();
+            string path = Directory.GetCurrentDirectory();
 
-            Qpath = Path.Combine(Qpath);
+            path = Path.Combine(path);
 
             for (int i = 0; i < segments.Length; i += 1)
             {
-                Qpath = Path.Combine(Qpath, segments[i]);
+                path = Path.Combine(path, segments[i]);
             }
-            return Qpath;
-        }
-        static string AnswersPath(params string[] segments)
-        {
-            string Apath = Directory.GetCurrentDirectory();
-
-            Apath = Path.Combine(Apath);
-
-            for (int i = 0; i < segments.Length; i += 1)
-            {
-                Apath = Path.Combine(Apath, segments[i]);
-            }
-            return Apath;
+            return path;
         }
         internal void LoadData()
         {
+            string Qpath = GetPath("data", "Questions.txt");
+            string Apath = GetPath("data", "Answers.txt");
             int index = 0;
             questions = File.ReadAllLines(Qpath);
             for (int i = 0; i < questions.Length; i++)
@@ -75,57 +63,70 @@ namespace AZ_Quiz
             answers = File.ReadAllLines(Apath).Take(index).ToArray();
             blackanswers = File.ReadAllLines(Apath).Skip(index + 1).ToArray();
         }
-        public void NextQuestion()
+        public void GetQuestion()
         {
-            if (questions == null) {
+            if (questions == null)
+            {
                 LoadData();
             }
-            numQuestion = number.Next(questions.Length);
-            numBlackQuestion = number.Next(blackquestions.Length);
-            if(usedQuestions.Contains(numQuestion.ToString()) || usedBlackQuestions.Contains(numBlackQuestion.ToString()))
+            if(usedQuestions.Count == questions.Length)
+            {
+                questionsListFull = true;
+            }
+            else
             {
                 numQuestion = number.Next(questions.Length);
-                numBlackQuestion = number.Next(blackquestions.Length);
+                question = questions[numQuestion];
+
+                if (usedQuestions.Contains(question))
+                {
+                    GetQuestion();
+                }else
+                    usedQuestions.Add(question);
             }
-            usedQuestions.Add(numQuestion.ToString());
-            //usedBlackQuestions.Add(numBlackQuestion.ToString());
-        }
-        public string GetQuestion()
-        {
-            if (questions == null || numQuestion < 0){
-                throw new InvalidOperationException("Call NextQuestion first!");
-            }
-            return question = questions[numQuestion];
         }
         public string GetAnswer()
         {
             if (numQuestion < 0) {
-                throw new InvalidOperationException("Call NextQuestion first!");
+                throw new InvalidOperationException("Call question first!");
             }
             if (answers == null) {
                 LoadData();
             }
             return answer = answers[numQuestion];
         }
-        public string GetBlackQuestion()
+        public void GetBlackQuestion()
         {
-            if (blackquestions == null || numBlackQuestion < 0)
+            if (blackQuestion == null)
             {
-                throw new InvalidOperationException("Call NextQuestion first!");
+                LoadData();
             }
-            return blackQuestion = blackquestions[numBlackQuestion];
+            
+            numBlackQuestion = number.Next(blackquestions.Length);
+            blackQuestion = blackquestions[numBlackQuestion];
+            
+            if (usedBlackQuestions.Contains(blackQuestion))
+            {
+                GetBlackQuestion();
+            }else
+                usedBlackQuestions.Add(blackQuestion);            
         }
         public string GetBlackAnswer()
         {
             if (numBlackQuestion < 0)
             {
-                throw new InvalidOperationException("Call NextQuestion first!");
+                GetBlackQuestion();
             }
             if (blackanswers == null)
             {
                 LoadData();
             }
             return blackAnswer = blackanswers[numBlackQuestion];
+        }
+        public void ResetQuestionLists()
+        {
+            usedQuestions.Clear();
+            usedBlackQuestions.Clear();
         }
     }
 }
