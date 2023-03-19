@@ -32,7 +32,8 @@ namespace AZ_Quiz
         }
         private void SearchForSeparator()
         {
-            if(RegisterNickName.Text.Contains("%"))
+            char character = '%';
+            if (RegisterNickName.Text.Contains(character))
             {
                 nickContain = true;
             }
@@ -106,7 +107,7 @@ namespace AZ_Quiz
             RegisterNickName.Text = "";
             RegisterPassword.Text = "";
         }        
-        private void back_button_Click(object sender, EventArgs e){
+        private void Backbutton_Click(object sender, EventArgs e){
             this.Hide();
         }
     }

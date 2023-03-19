@@ -217,7 +217,6 @@
         private Button help;
         private Label label1;
         private Login login1;
-        private SinglePlayer splayer1;
         private ScoreBoard scoreBoard1;
         private TableLayoutPanel tableMenuPanel;
         private SinglePlayer singlePlayer1;
