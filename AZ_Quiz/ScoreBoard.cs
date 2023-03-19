@@ -15,8 +15,8 @@ namespace AZ_Quiz
     {
         AccountsManager myAccountmanager = new AccountsManager();
 
-        string[] sortedNicks;
-        string[] sortedScores;
+        string[] sortednicks;
+        int[] sortedscore;
         public ScoreBoard()
         {
             InitializeComponent();
@@ -26,23 +26,28 @@ namespace AZ_Quiz
             myAccountmanager.LoadData();//nebude třeba -> same accountmanager -> předělat
             myAccountmanager.SplitTextLine();
             SortData();
+                int rows = sortednicks.Length;
+                int rowsize = (dataGridView1.Height - dataGridView1.ColumnHeadersHeight) / rows;
+                dataGridView1.RowTemplate.Height = rowsize;
         }
         private void SortData()
         {
-            for (int i = 0; i < myAccountmanager.accounts.Length; i++)
+            sortednicks = new string[myAccountmanager.nicknames.Length];
+            for(int i = 0;i < myAccountmanager.nicknames.Length;i++)
             {
-                int score = Convert.ToInt32(myAccountmanager.highscores[i]);
+                string nick = myAccountmanager.nicknames[i];
+                sortednicks[i]= nick;
             }
+            sortedscore = Array.ConvertAll(myAccountmanager.highscores, int.Parse);
+            Array.Sort(sortedscore, sortednicks);
+            Array.Reverse(sortedscore);
+            Array.Reverse(sortednicks);
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Columns[0].HeaderText = "nickname";
-            dataGridView1.Columns[1].HeaderText = "score";
-            for (int i = 0; i < myAccountmanager.accounts.Length; i++)
+            for (int i = 0; i < sortednicks.Length; i++)
             {
-                string[] scoreData = myAccountmanager.nicknames;
-                dataGridView1.Rows.Add(scoreData);
+                dataGridView1.Rows.Add(sortednicks[i], sortedscore[i]);
             }
         }
         private void DelAccount_Click(object sender, EventArgs e)
