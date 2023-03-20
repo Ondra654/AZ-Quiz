@@ -223,7 +223,7 @@ namespace AZ_Quiz
             EnableHexagonClick();
 
             if (CheckIfGameEnded())
-            {// konec hry
+            {
                 timerGame.Stop();
                 myAccountsManager.acc1score = blueScore;
                 myAccountsManager.acc2score = orangeScore;
