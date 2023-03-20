@@ -514,6 +514,9 @@ namespace AZ_Quiz
                 hexagon.HexPosition.rightSide = default;
                 hexagon.HexPosition.bottomSide = default;
             }
+            myAccountsManager.acc1score = blueScore;
+            myAccountsManager.acc2score = orangeScore;
+            myAccountsManager.RewriteScore();
             myGameManager.ResetQuestionLists();
             YesButton.Hide();
             NoButton.Hide();
