@@ -276,13 +276,13 @@
             this.progressBarGame.Size = new System.Drawing.Size(675, 14);
             this.progressBarGame.TabIndex = 37;
             // 
-            // Mplayer
+            // AZQuizGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(194)))), ((int)(((byte)(123)))));
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Mplayer";
+            this.Name = "AZQuizGame";
             this.Size = new System.Drawing.Size(984, 556);
             this.Load += new System.EventHandler(this.Mplayer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
