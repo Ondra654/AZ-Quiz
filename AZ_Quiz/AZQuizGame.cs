@@ -39,7 +39,7 @@ namespace AZ_Quiz
 
         public string firstPlayer = "";
         public string secondPlayer = "";
-        public string gameResult;
+        public string? gameResult;
         string caption = "Game Result";
         public void SetAccountsManager(AccountsManager accountManager)
         {
@@ -76,9 +76,15 @@ namespace AZ_Quiz
             timerGame.Start();
             DisplayInfo.Text = "Great, " + firstPlayer + ", it´s your turn!";
         }
-        private void HexagonButton_Click(object sender, EventArgs e)
+        private void HexagonButton_Click(object? sender, EventArgs e)
         {
+            if (sender == null)
+                return;
+
             clickedButton = (HexagonButton)sender;
+            if (clickedButton == null)
+                return;
+
             foreach (HexagonButton hexagon in buttonList)
             {
                 hexagon.Click -= HexagonButton_Click;

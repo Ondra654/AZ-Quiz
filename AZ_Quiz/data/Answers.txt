@@ -77,3 +77,6 @@ ano
 ano
 ne
 ne
+ano
+ne
+ne
