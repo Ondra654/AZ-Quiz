@@ -75,6 +75,9 @@ namespace AZ_Quiz
         }
         public void GetQuestion()
         {
+            if( numQuestion < 0){
+                throw new InvalidOperationException("questions/answers data inside 'Questions/Answers' folder are missing/or has been edited, redownload this data or put them back inside this file.");
+            }
             if (questions == null)
             {
                 LoadData();
@@ -97,9 +100,6 @@ namespace AZ_Quiz
         }
         public string GetAnswer()
         {
-            if (numQuestion < 0) {
-                throw new InvalidOperationException("Call question first!");
-            }
             if (answers == null) {
                 LoadData();
             }
