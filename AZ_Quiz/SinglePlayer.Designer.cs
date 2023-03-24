@@ -137,7 +137,7 @@ namespace AZ_Quiz
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1230, 695);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
-            // Splayer
+            // Singleplayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

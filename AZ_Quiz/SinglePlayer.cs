@@ -12,6 +12,7 @@ namespace AZ_Quiz
 {
     public partial class SinglePlayer : UserControl
     {
+        MyMessageBox messagebox = new MyMessageBox();
         GameManager myGameManager = new GameManager();
 
         int singlePlayerScore = 0;
@@ -37,14 +38,14 @@ namespace AZ_Quiz
         }
         public void DisplayQuestion()
         {
+            myGameManager.LoadData();
             myGameManager.GetQuestion();
             if(myGameManager.questionsListFull == true)
             {
-                var result = System.Windows.Forms.MessageBox.Show("You went through all questions, program needs to reset your progress","Question used list is full", MessageBoxButtons.OK);
-                if (result == DialogResult.OK)
-                {
-                    ResetAll();
-                }
+                messagebox.Location = new System.Drawing.Point (0, 0);
+                messagebox.message = "You went through all questions, program needs to reset your progress";
+                messagebox.Show();
+                ResetAll();
             }else{
                 myGameManager.GetAnswer();
 

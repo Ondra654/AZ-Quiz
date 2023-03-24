@@ -75,9 +75,6 @@ namespace AZ_Quiz
         }
         public void GetQuestion()
         {
-            if( numQuestion < 0){
-                throw new InvalidOperationException("questions/answers data inside 'Questions/Answers' folder are missing/or has been edited, redownload this data or put them back inside this file.");
-            }
             if (questions == null)
             {
                 LoadData();
@@ -89,6 +86,9 @@ namespace AZ_Quiz
             else
             {
                 numQuestion = number.Next(questions.Length);
+                if(numQuestion < 0){
+                    throw new InvalidOperationException("questions/answers data inside 'Questions/Answers' folder are missing/or has been edited, redownload this data or put them back inside this file.");
+                }else
                 question = questions[numQuestion];
 
                 if (usedQuestions.Contains(question))

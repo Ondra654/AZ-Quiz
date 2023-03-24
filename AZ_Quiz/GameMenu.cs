@@ -21,6 +21,7 @@ namespace AZ_Quiz
         public GameMenu()
         {
             InitializeComponent();
+            myMessageBox1.Hide();
             singlePlayer1.Hide();
             azQuizGame.Hide();
             login1.Hide();

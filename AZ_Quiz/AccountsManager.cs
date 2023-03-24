@@ -52,12 +52,9 @@ namespace AZ_Quiz
         }
         internal void LoadData()
         {
-            try
-            {
+            try{
                 accounts = File.ReadAllLines(accPath);
-            }
-            catch (FileNotFoundException)
-            {
+            }catch (FileNotFoundException){
                 throw new FileNotFoundException("File 'Accounts' is not located in 'data' folder, redownload game or put this file back");
             }
             nicknames= new string[accounts.Length];
