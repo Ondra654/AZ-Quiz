@@ -40,7 +40,7 @@ namespace AZ_Quiz
             myGameManager.GetQuestion();
             if(myGameManager.questionsListFull == true)
             {
-                var result = MessageBox.Show("You went through all questions, program needs to reset your progress","Question used list is full", MessageBoxButtons.OK);
+                var result = System.Windows.Forms.MessageBox.Show("You went through all questions, program needs to reset your progress","Question used list is full", MessageBoxButtons.OK);
                 if (result == DialogResult.OK)
                 {
                     ResetAll();

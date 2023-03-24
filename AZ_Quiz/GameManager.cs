@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Windows.Forms.Design;
 using static System.Windows.Forms.LinkLabel;
 
 namespace AZ_Quiz
@@ -48,7 +50,11 @@ namespace AZ_Quiz
             string Qpath = GetPath("data", "Questions.txt");
             string Apath = GetPath("data", "Answers.txt");
             int index = 0;
-            questions = File.ReadAllLines(Qpath);
+            try{
+                questions = File.ReadAllLines(Qpath);
+            }catch (FileNotFoundException){
+                throw new FileNotFoundException ("File 'Questions' is not located in 'data' folder, redownload game or put this file back");
+            }
             for (int i = 0; i < questions.Length; i++)
             {
                 string row = questions[i];
@@ -60,7 +66,11 @@ namespace AZ_Quiz
             }
             questions = File.ReadAllLines(Qpath).Take(index).ToArray();
             blackquestions = File.ReadAllLines(Qpath).Skip(index + 1).ToArray();
-            answers = File.ReadAllLines(Apath).Take(index).ToArray();
+            try{
+                answers = File.ReadAllLines(Apath).Take(index).ToArray();
+            }catch(FileNotFoundException){
+                throw new FileNotFoundException("File 'Answers' is not located in 'data' folder, redownload game or put this file back");
+            }
             blackanswers = File.ReadAllLines(Apath).Skip(index + 1).ToArray();
         }
         public void GetQuestion()

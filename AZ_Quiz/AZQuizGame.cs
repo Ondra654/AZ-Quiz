@@ -240,7 +240,7 @@ namespace AZ_Quiz
                 }
                 else
                     gameResult = bluePlayer + ", congratulations! You won!";
-                var result = MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);        
+                var result = System.Windows.Forms.MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);        
                 if (result == DialogResult.OK)
                 {
                     ResetAll();
@@ -415,7 +415,7 @@ namespace AZ_Quiz
                 else
                     gameResult = orangePlayer + ", congratulations! You won!";
 
-                var result = MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                var result = System.Windows.Forms.MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
                     ResetAll();
