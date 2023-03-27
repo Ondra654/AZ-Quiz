@@ -12,10 +12,15 @@ namespace AZ_Quiz
 {
     public partial class MyMessageBox : UserControl
     {
+        SinglePlayer mySinglePlayer;
         public string message = "";
         public MyMessageBox()
         {
             InitializeComponent();
+        }
+        public void SetmySinglePlayer(SinglePlayer singleplayer)
+        {
+            mySinglePlayer = singleplayer;
         }
         private void MyMessageBox_Load(object sender, EventArgs e)
         {
@@ -24,6 +29,7 @@ namespace AZ_Quiz
 
         private void button1_Click(object sender, EventArgs e)
         {
+            mySinglePlayer.ResetAll();
             this.Hide();
         }
     }

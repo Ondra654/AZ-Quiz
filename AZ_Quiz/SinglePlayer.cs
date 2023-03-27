@@ -12,14 +12,11 @@ namespace AZ_Quiz
 {
     public partial class SinglePlayer : UserControl
     {
-        MyMessageBox mymessagebox1;
+        MyMessageBox myMessagebox = new MyMessageBox();
         GameManager myGameManager = new GameManager();
 
         int singlePlayerScore = 0;
 
-        public void SetMessageBox(MyMessageBox mymessagebox){
-            mymessagebox1 = mymessagebox;
-        }
         public SinglePlayer(){
             InitializeComponent();
         }
@@ -43,11 +40,17 @@ namespace AZ_Quiz
         {
             myGameManager.LoadData();
             myGameManager.GetQuestion();
+            myMessagebox.SetmySinglePlayer(this);
             if(myGameManager.questionsListFull == true)
             {
-                mymessagebox1.message = "You went through all questions, program needs to reset your progress";
-                mymessagebox1.Show();
-                ResetAll();
+                int x = (this.Width - myMessagebox.Width) / 2;
+                int y = (this.Height - myMessagebox.Height) / 2;
+                myMessagebox.message = "You went through all questions, program needs to reset your progress";
+                this.Parent.Controls.Add(myMessagebox);
+                myMessagebox.Location = new System.Drawing.Point(x, y);
+                myMessagebox.BringToFront();
+                button1.Enabled = false;
+                SinAnswer.Enabled = false;
             }else{
                 myGameManager.GetAnswer();
 
@@ -71,6 +74,8 @@ namespace AZ_Quiz
         }
         public void ResetAll()
         {
+            button1.Enabled = true;
+            SinAnswer.Enabled = true;
             SinQuestion.Text = "Press Question button to start";
             SinAnswer.Text = "";
             RevealAnswer.Text = "";

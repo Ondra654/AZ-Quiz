@@ -45,9 +45,9 @@
             // message1
             // 
             this.message1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.message1.Location = new System.Drawing.Point(3, 48);
+            this.message1.Location = new System.Drawing.Point(3, 20);
             this.message1.Name = "message1";
-            this.message1.Size = new System.Drawing.Size(327, 25);
+            this.message1.Size = new System.Drawing.Size(327, 61);
             this.message1.TabIndex = 1;
             this.message1.Text = "message";
             this.message1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
