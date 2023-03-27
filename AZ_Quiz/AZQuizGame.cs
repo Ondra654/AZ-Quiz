@@ -243,12 +243,8 @@ namespace AZ_Quiz
                 }
                 else
                     myMessageBox.message = bluePlayer + ", congratulations! You won!";
-                int x = (this.Width - myMessageBox.Width) / 2;
-                int y = (this.Height - myMessageBox.Height) / 2;
 
-                this.Parent.Controls.Add(myMessageBox);
-                myMessageBox.Location = new System.Drawing.Point(x, y);
-                myMessageBox.BringToFront();
+                ShowMessageBox();
             }
         }
         private void AnswerWasFalse()
@@ -413,17 +409,12 @@ namespace AZ_Quiz
                 DisplayInfo.Text = "Game time expired.";
                 if (blueScore > orangeScore)
                 {
-                    gameResult = bluePlayer + ", congratulations! You won!";
+                    myMessageBox.message = bluePlayer + ", congratulations! You won!";
                 }
                 else
-                    gameResult = orangePlayer + ", congratulations! You won!";
+                    myMessageBox.message = orangePlayer + ", congratulations! You won!";
 
-                var result = System.Windows.Forms.MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
-                {
-                    ResetAll();
-                    this.Hide();
-                }
+                ShowMessageBox();
             }
         }
         private void GenerateHexagons()
@@ -511,6 +502,15 @@ namespace AZ_Quiz
                 hexagon.Click += HexagonButton_Click;
             }
         }
+        private void ShowMessageBox()
+        {
+            int x = (this.Width - myMessageBox.Width) / 2;
+            int y = (this.Height - myMessageBox.Height) / 2;
+
+            this.Parent.Controls.Add(myMessageBox);
+            myMessageBox.Location = new System.Drawing.Point(x, y);
+            myMessageBox.BringToFront();
+        }
         public void ResetAll()
         {
             foreach (HexagonButton hexagon in buttonList)
@@ -551,6 +551,7 @@ namespace AZ_Quiz
             scoreBlue.Text = "0";
             scoreOrange.Text = "0";
             myMessageBox.singlePlayer = false;
+            this.Hide();
         }
         private void Backbutton_Click(object sender, EventArgs e)
         {

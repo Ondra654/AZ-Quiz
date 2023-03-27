@@ -88,6 +88,7 @@ namespace AZ_Quiz
         private void Backbutton_Click(object sender, EventArgs e)
         {
             this.Hide();
+            myMessagebox.SendToBack();
             ResetAll();
         }
     }

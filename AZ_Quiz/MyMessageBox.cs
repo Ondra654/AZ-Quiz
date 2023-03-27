@@ -40,7 +40,7 @@ namespace AZ_Quiz
             }else
                 myMultiPlayer.ResetAll();
 
-            this.Hide();
+            this.SendToBack();
         }
     }
 }

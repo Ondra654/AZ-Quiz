@@ -13,6 +13,7 @@ namespace AZ_Quiz
 {
     public partial class ScoreBoard : UserControl
     {
+        MyMessageBox myMessagebox = new MyMessageBox();
         AccountsManager myAccountsManager;
 
         string[] sortednicks;
@@ -75,11 +76,13 @@ namespace AZ_Quiz
             }else{
                 DelLabel.Text = "smt went wrong";
             }
+            Button1_Click(sender, e);
+            DeleteNickname.Text = string.Empty;
+            DeletePassword.Text = string.Empty;
         }
         private void Backbutton_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
-    
     }
 }
