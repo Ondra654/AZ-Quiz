@@ -21,8 +21,9 @@ namespace AZ_Quiz
         public GameMenu()
         {
             InitializeComponent();
-            myMessageBox1.Hide();
+            //myMessageBox1.Hide();
             singlePlayer1.Hide();
+            myMessageBox1.Location = new System.Drawing.Point(100, 50);
             azQuizGame.Hide();
             login1.Hide();
             scoreBoard1.Hide();
