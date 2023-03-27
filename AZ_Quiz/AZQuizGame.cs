@@ -20,6 +20,7 @@ namespace AZ_Quiz
 {
     public partial class AZQuizGame : UserControl
     {
+        MyMessageBox myMessageBox = new MyMessageBox();
         GameManager myGameManager = new GameManager();
         AccountsManager myAccountsManager;
         HexagonButton clickedButton = new HexagonButton();
@@ -234,18 +235,20 @@ namespace AZ_Quiz
                 myAccountsManager.acc1score = blueScore;
                 myAccountsManager.acc2score = orangeScore;
                 myAccountsManager.RewriteScore();
+                myMessageBox.SetmyMultiPlayer(this);
+                myMessageBox.singlePlayer = true;
                 if (clickedButton.BackColor == customOrange)
                 {
-                    gameResult = orangePlayer + ", congratulations! You won!";
+                    myMessageBox.message = orangePlayer + ", congratulations! You won!";
                 }
                 else
-                    gameResult = bluePlayer + ", congratulations! You won!";
-                var result = System.Windows.Forms.MessageBox.Show(gameResult, caption, MessageBoxButtons.OK, MessageBoxIcon.Question);        
-                if (result == DialogResult.OK)
-                {
-                    ResetAll();
-                    this.Hide();
-                }
+                    myMessageBox.message = bluePlayer + ", congratulations! You won!";
+                int x = (this.Width - myMessageBox.Width) / 2;
+                int y = (this.Height - myMessageBox.Height) / 2;
+
+                this.Parent.Controls.Add(myMessageBox);
+                myMessageBox.Location = new System.Drawing.Point(x, y);
+                myMessageBox.BringToFront();
             }
         }
         private void AnswerWasFalse()
@@ -508,7 +511,7 @@ namespace AZ_Quiz
                 hexagon.Click += HexagonButton_Click;
             }
         }
-        private void ResetAll()
+        public void ResetAll()
         {
             foreach (HexagonButton hexagon in buttonList)
             {
@@ -547,6 +550,7 @@ namespace AZ_Quiz
             player2.Text = "";
             scoreBlue.Text = "0";
             scoreOrange.Text = "0";
+            myMessageBox.singlePlayer = false;
         }
         private void Backbutton_Click(object sender, EventArgs e)
         {

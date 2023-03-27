@@ -18,7 +18,6 @@ namespace AZ_Quiz
     public partial class GameMenu : Form
     {
         AccountsManager myAccountsManager = new AccountsManager();
-        //SinglePlayer mySinglePlayer = new SinglePlayer();
         public GameMenu()
         {
             InitializeComponent();
@@ -28,7 +27,6 @@ namespace AZ_Quiz
             login1.Hide();
             scoreBoard1.Hide();
 
-            //myMessageBox1.SetmySinglePlayer(mySinglePlayer);
             azQuizGame.SetAccountsManager(myAccountsManager);
             login1.SetAccountsManager(myAccountsManager);
             scoreBoard1.SetAccountsManager(myAccountsManager);
