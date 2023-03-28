@@ -1,20 +1,14 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AZ_Quiz.Properties;
-using System.Text.RegularExpressions;
+﻿using System.Text;
 using System.Diagnostics;
 using System.Security.Cryptography;
-using System.Runtime.Serialization;
 
 namespace AZ_Quiz
 {
     public class AccountsManager
     {
+        MyMessageBox myMessageBox = new MyMessageBox();
+        AZQuizGame azquiz;
+
         string accPath = GetPath("data", "Accounts.txt");
         
         public string[] accounts = Array.Empty<string>();
@@ -29,6 +23,8 @@ namespace AZ_Quiz
         public string newNickname = "";
         public string newPassword = "";
         public int hashedPassword;
+
+        public string errormsg = "";
 
         public string loginNickname = "";
         public string loginPassword = "";
@@ -55,6 +51,10 @@ namespace AZ_Quiz
             try{
                 accounts = File.ReadAllLines(accPath);
             }catch (FileNotFoundException){
+                myMessageBox.message = "File 'Accounts' is not located in 'data' folder, redownload game or put this file back";
+                myMessageBox.BringToFront();
+                myMessageBox.errorMsg = true;
+                //this.azquiz.Parent.Controls.Add(myMessageBox);
                 throw new FileNotFoundException("File 'Accounts' is not located in 'data' folder, redownload game or put this file back");
             }
             nicknames= new string[accounts.Length];
@@ -157,6 +157,15 @@ namespace AZ_Quiz
                 }
             }
             SaveData();
+        }
+        public void ErrorMsgBox()
+        {
+            string title = "Error MessageBox";
+            var result = MessageBox.Show(errormsg, title, MessageBoxButtons.OK);
+            if (result == DialogResult.OK)
+            {
+                Environment.Exit(0);
+            }
         }
         public static void HelpLoad() 
         {

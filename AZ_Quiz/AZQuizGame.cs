@@ -1,20 +1,4 @@
-﻿using AZ_Quiz.Properties;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml;
-using System.Xml.XPath;
-using static AZ_Quiz.HexagonButton;
-using static System.Formats.Asn1.AsnWriter;
+﻿using static AZ_Quiz.HexagonButton;
 
 namespace AZ_Quiz
 {
@@ -41,7 +25,6 @@ namespace AZ_Quiz
         public string firstPlayer = "";
         public string secondPlayer = "";
         public string? gameResult;
-        string caption = "Game Result";
         public void SetAccountsManager(AccountsManager accountManager)
         {
             myAccountsManager = accountManager;
@@ -104,6 +87,7 @@ namespace AZ_Quiz
                 myGameManager.GetAnswer();
                 Question.Text = myGameManager.question;
                 PlayersAnswer.Text = myGameManager.answer.Substring(0, 1);
+                PlayersAnswer.Focus();
                 PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
             }
         }
@@ -186,10 +170,12 @@ namespace AZ_Quiz
                 if (BlueTurn == false)
                 {
                     orangeScore = orangeScore - 3;
+                    clickedButton.BackColor = customBlue;
                 }
                 else if (BlueTurn == true)
                 {
                     blueScore = blueScore - 3;
+                    clickedButton.BackColor = customOrange;
                 }
                 scoreBlue.Text = blueScore.ToString();
                 scoreOrange.Text = orangeScore.ToString();
@@ -551,11 +537,6 @@ namespace AZ_Quiz
             scoreBlue.Text = "0";
             scoreOrange.Text = "0";
             myMessageBox.singlePlayer = false;
-            this.Hide();
-        }
-        private void Backbutton_Click(object sender, EventArgs e)
-        {
-            ResetAll();
             this.Hide();
         }
     }

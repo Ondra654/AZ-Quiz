@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿
 namespace AZ_Quiz
 {
     public partial class Login : UserControl
@@ -106,9 +94,6 @@ namespace AZ_Quiz
             }
             RegisterNickName.Text = "";
             RegisterPassword.Text = "";
-        }        
-        private void Backbutton_Click(object sender, EventArgs e){
-            this.Hide();
         }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.back_button = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.StartGameButton = new System.Windows.Forms.Button();
@@ -51,21 +50,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // back_button
-            // 
-            this.back_button.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.back_button.BackColor = System.Drawing.Color.Red;
-            this.back_button.Cursor = System.Windows.Forms.Cursors.No;
-            this.back_button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.back_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.back_button.Location = new System.Drawing.Point(613, 105);
-            this.back_button.Name = "back_button";
-            this.back_button.Size = new System.Drawing.Size(55, 24);
-            this.back_button.TabIndex = 6;
-            this.back_button.Text = "back";
-            this.back_button.UseVisualStyleBackColor = false;
-            this.back_button.Click += new System.EventHandler(this.Backbutton_Click);
             // 
             // pictureBox1
             // 
@@ -134,7 +118,6 @@
             this.Question.Name = "Question";
             this.Question.Size = new System.Drawing.Size(878, 44);
             this.Question.TabIndex = 29;
-            this.Question.Text = "label1";
             this.Question.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DisplayInfo
@@ -250,7 +233,6 @@
             this.tableLayoutPanel1.Controls.Add(this.Question, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.scoreBlue, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.scoreOrange, 5, 3);
-            this.tableLayoutPanel1.Controls.Add(this.back_button, 4, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -294,7 +276,6 @@
         }
 
         #endregion
-        private Button back_button;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private Button StartGameButton;
