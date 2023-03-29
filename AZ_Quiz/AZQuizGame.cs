@@ -60,7 +60,7 @@ namespace AZ_Quiz
             timerGame.Start();
             DisplayInfo.Text = "Great, " + firstPlayer + ", it´s your turn!";
         }
-        private void HexagonButton_Click(object? sender, EventArgs e)
+        private void HexagonButton_Click(object? sender, EventArgs e)//ten ? co jako????
         {
             if (sender == null)
                 return;
@@ -71,7 +71,7 @@ namespace AZ_Quiz
 
             foreach (HexagonButton hexagon in buttonList)
             {
-                hexagon.Click -= HexagonButton_Click;
+                hexagon.Click -= HexagonButton_Click;//learned and implemented from: https://stackoverflow.com/questions/34284232/disable-click-button-event-c-sharp
             }
             timerQuestion.Start();
             progressBarQuestion.Show();
@@ -87,13 +87,13 @@ namespace AZ_Quiz
                 myGameManager.GetAnswer();
                 Question.Text = myGameManager.question;
                 PlayersAnswer.Text = myGameManager.answer.Substring(0, 1);
-                PlayersAnswer.Focus();
-                PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
+                PlayersAnswer.Focus();//used and implemented from: https://social.msdn.microsoft.com/Forums/en-US/30ebf576-6b11-4cb2-83e0-c76c266d5f27/how-to-put-cursor-in-text-box-automatically-after-button-click-event?forum=winappswithcsharp
+                PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//implemented after previous take over in "SinglePlayer - DisplayQuestion method".
             }
         }
         private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)13)//z netu
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))//learned and used after first take over in "SinglePlayer - SinAnswer_Entered method".
             {
                 if (PlayersAnswer.Text == "")
                 {
@@ -126,9 +126,9 @@ namespace AZ_Quiz
                 timerQuestion.Start();
                 progressBarQuestion.Show();
                 PlayersAnswer.Text = myGameManager.answer.Substring(0, 1);
-                PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//z netu
+                PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//implemented after previous take over in "SinglePlayer - DisplayQuestion method".
                 SameQuestionAnswered = true;
-                BlueTurn = !BlueTurn;// z netu
+                BlueTurn = !BlueTurn;//learned and take over from: https://stackoverflow.com/questions/8912353/can-i-invert-a-bool
                 DisplayInfo.Text = "Now you can answer: ";
             }
         }
@@ -177,6 +177,7 @@ namespace AZ_Quiz
                     blueScore = blueScore - 3;
                     clickedButton.BackColor = customOrange;
                 }
+                clickedButton.Text = "";
                 scoreBlue.Text = blueScore.ToString();
                 scoreOrange.Text = orangeScore.ToString();
                 Question.Text = "This answer wasn´t right. Right answer was: " + myGameManager.blackAnswer;
@@ -194,18 +195,18 @@ namespace AZ_Quiz
             if (BlueTurn == false)
             {
                 orangeScore = orangeScore + 10;
-                this.clickedButton.BackColor = customOrange;
+                clickedButton.BackColor = customOrange;
                 BlueTurn = true;
             }
             else if (BlueTurn == true)
             {
                 blueScore = blueScore + 10;
-                this.clickedButton.BackColor = customBlue;
+                clickedButton.BackColor = customBlue;
                 BlueTurn = false;
             }
             scoreBlue.Text = blueScore.ToString();
             scoreOrange.Text = orangeScore.ToString();
-            this.clickedButton.Text = "";
+            clickedButton.Text = "";
             timerQuestion.Stop();
             progressBarQuestion.Value = 0;
             progressBarQuestion.Hide();
@@ -277,8 +278,8 @@ namespace AZ_Quiz
                 }
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
-                this.clickedButton.BackColor = Color.Black;
-                this.clickedButton.TextColor = Color.White;
+                clickedButton.BackColor = Color.Black;
+                clickedButton.TextColor = Color.White;
                 DisplayInfo.Text = secondPlayer + ", it´s your turn";
                 PlayersAnswer.Text = "";
                 BlueTurn = !BlueTurn;
@@ -286,7 +287,7 @@ namespace AZ_Quiz
                 EnableHexagonClick();
             }
         }
-        private bool CheckIfGameEnded()
+        private bool CheckIfGameEnded()//1 of 2 methods, which check if someone won. This algoritm was completed with AI help - Chat GPT.
         {
             Color clickedButtonColor = clickedButton.BackColor;
 
@@ -297,7 +298,7 @@ namespace AZ_Quiz
 
             return connectedSides.ConnectsAllSides();
         }
-        private void GetConnectedSides(HexagonButton button, Color clickedButtonColor, HexagonPosition connectedSides, List<HexagonButton> checkedButtons)
+        private void GetConnectedSides(HexagonButton button, Color clickedButtonColor, HexagonPosition connectedSides, List<HexagonButton> checkedButtons)// 2/2 methods, which check if someone won. This algoritm was completed with AI help - Chat GPT.
         {
             connectedSides.leftSide |= button.HexPosition.leftSide;
             connectedSides.rightSide |= button.HexPosition.rightSide;
@@ -321,8 +322,8 @@ namespace AZ_Quiz
         }
         private void StartingColor()
         {
-            Random rnd = new Random();
-            int result = rnd.Next(0, 2);
+            Random radomnumber = new Random();
+            int result = radomnumber.Next(0, 2);
             if (result == 0)
             {
                 BlueTurn = false;//orange
@@ -336,13 +337,13 @@ namespace AZ_Quiz
         {
             if (BlueTurn == false)
             {
-                secondPlayer = bluePlayer;
                 firstPlayer = orangePlayer;
+                secondPlayer = bluePlayer;
             }
             else if (BlueTurn == true)
             {
-                secondPlayer = orangePlayer;
                 firstPlayer = bluePlayer;
+                secondPlayer = orangePlayer;
             }
         }
         private void EnableHexagonClick()
@@ -385,8 +386,8 @@ namespace AZ_Quiz
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
             }
-        }
-        private void IncreaseProgressBar(object sender, EventArgs e)
+        }//both methods - TimeLimit and GameProgressBar were completed with undertook parts from: https://stackoverflow.com/questions/7259511/increase-a-progressbar-with-timer-in-winforms and https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.progressbar.increment?view=windowsdesktop-7.0
+        private void GameProgressBar(object sender, EventArgs e)
         {
             progressBarGame.Increment(1);
             if (progressBarGame.Value == progressBarGame.Maximum)

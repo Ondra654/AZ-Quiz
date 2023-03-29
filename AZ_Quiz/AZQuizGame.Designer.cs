@@ -193,7 +193,7 @@
             // timerGame
             // 
             this.timerGame.Interval = 900;
-            this.timerGame.Tick += new System.EventHandler(this.IncreaseProgressBar);
+            this.timerGame.Tick += new System.EventHandler(this.GameProgressBar);
             // 
             // timerQuestion
             // 

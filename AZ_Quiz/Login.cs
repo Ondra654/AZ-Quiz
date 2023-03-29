@@ -1,5 +1,4 @@
-﻿
-namespace AZ_Quiz
+﻿namespace AZ_Quiz
 {
     public partial class Login : UserControl
     {
@@ -63,7 +62,7 @@ namespace AZ_Quiz
             LoginPassword.Text = "";
         }
         private void RegisterButton_Click(object sender, EventArgs e){
-            if (string.IsNullOrWhiteSpace(RegisterNickName.Text)||string.IsNullOrWhiteSpace(RegisterPassword.Text))
+            if (string.IsNullOrWhiteSpace(RegisterNickName.Text)||string.IsNullOrWhiteSpace(RegisterPassword.Text))//string.IsNullOrWhiteSpace implemented from: https://learn.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace?view=net-7.0
             {
                 ResultLabel.Text = "Your new account data must contain some characters.";
             }else if(RegisterNickName.Text.Substring(0,1) == " "||RegisterPassword.Text.Substring(0, 1) == " ")//.Substring(O,1) implemented after previous take over in "SinglePlayer - DisplayQuestion method.
