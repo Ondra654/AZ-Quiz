@@ -6,7 +6,6 @@ namespace AZ_Quiz
         AccountsManager myAccountsManager;
 
         bool nickContain = false;
-
         public void SetAccountsManager(AccountsManager accountManager)
         {
             myAccountsManager = accountManager;
@@ -67,7 +66,7 @@ namespace AZ_Quiz
             if (string.IsNullOrWhiteSpace(RegisterNickName.Text)||string.IsNullOrWhiteSpace(RegisterPassword.Text))
             {
                 ResultLabel.Text = "Your new account data must contain some characters.";
-            }else if(RegisterNickName.Text.Substring(0,1) == " "||RegisterPassword.Text.Substring(0, 1) == " ")
+            }else if(RegisterNickName.Text.Substring(0,1) == " "||RegisterPassword.Text.Substring(0, 1) == " ")//.Substring(O,1) implemented after previous take over in "SinglePlayer - DisplayQuestion method.
             {
                 ResultLabel.Text = "Your new nickname/password can not start with empty gap";
             }else{

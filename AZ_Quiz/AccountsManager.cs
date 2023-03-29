@@ -7,7 +7,6 @@ namespace AZ_Quiz
     public class AccountsManager
     {
         MyMessageBox myMessageBox = new MyMessageBox();
-        AZQuizGame azquiz;
 
         string accPath = GetPath("data", "Accounts.txt");
         
@@ -34,7 +33,7 @@ namespace AZ_Quiz
         public string account2 = "";
         public int acc1score = 0;
         public int acc2score = 0;
-        static string GetPath(params string[] segments)
+        static string GetPath(params string[] segments)//sorted from Lecture22 from our teacher: https://github.com/redwormik/gymspit-pg4-2022/tree/main/Lecture22
         {
             string path = Directory.GetCurrentDirectory();
 
@@ -51,10 +50,6 @@ namespace AZ_Quiz
             try{
                 accounts = File.ReadAllLines(accPath);
             }catch (FileNotFoundException){
-                myMessageBox.message = "File 'Accounts' is not located in 'data' folder, redownload game or put this file back";
-                myMessageBox.BringToFront();
-                myMessageBox.errorMsg = true;
-                //this.azquiz.Parent.Controls.Add(myMessageBox);
                 throw new FileNotFoundException("File 'Accounts' is not located in 'data' folder, redownload game or put this file back");
             }
             nicknames= new string[accounts.Length];
@@ -95,7 +90,7 @@ namespace AZ_Quiz
             LoadData();
             SplitTextLine();
         }
-        public static string HashPasswords(string password)
+        public static string HashPasswords(string password)//made with AI bot help - Chat GPT (more informations in documentation)
         {
             byte[] bytes = Encoding.UTF8.GetBytes(password);
             SHA1 hashAlgorithm = SHA1.Create();
@@ -132,7 +127,7 @@ namespace AZ_Quiz
                     string NP = (loginNickname + seperator + loginPassword);
                     deletingAccount = (NP + seperator + highscores[y]);
                     if (deletingAccount == JoinedAccData){
-                        accounts = accounts.Where(e => e != deletingAccount).ToArray();
+                        accounts = accounts.Where(item => item != deletingAccount).ToArray();//after finding how .Where method works, made with/from examples of this method: https://www.dotnetperls.com/where
                         File.WriteAllLines(accPath, accounts);
                     }
                 }
@@ -158,7 +153,7 @@ namespace AZ_Quiz
             }
             SaveData();
         }
-        public void ErrorMsgBox()
+        public void ErrorMsgBox()//????????????????????????????
         {
             string title = "Error MessageBox";
             var result = MessageBox.Show(errormsg, title, MessageBoxButtons.OK);
@@ -167,13 +162,17 @@ namespace AZ_Quiz
                 Environment.Exit(0);
             }
         }
-        public static void HelpLoad() 
+        public static void HelpLoad()
         {
             string HelpPath = GetPath("data", "rules.html");
-            ProcessStartInfo info = new ProcessStartInfo();//z netu
+            ProcessStartInfo info = new ProcessStartInfo();//partially taken from and implemented to my code: https://social.msdn.microsoft.com/Forums/vstudio/en-US/30c27bf5-bd21-47b0-92c2-4e644d319197/create-an-html-file-and-display-it-on-button-press-c?forum=csharpgeneral
             info.FileName = HelpPath;
             info.UseShellExecute = true;
-            Process.Start(info);
+            try{
+                Process.Start(info);
+            }catch(System.ComponentModel.Win32Exception){
+                throw new FileNotFoundException("File 'rules' is not located in 'data' folder, redownload game or put this file back.");
+            }
         }
     }
 }

@@ -33,7 +33,7 @@ namespace AZ_Quiz
         private int numQuestion = -1;
         private int numBlackQuestion = -1;
 
-        static string GetPath(params string[] segments)
+        static string GetPath(params string[] segments)//sorted from Lecture22 from our teacher: https://github.com/redwormik/gymspit-pg4-2022/tree/main/Lecture22
         {
             string path = Directory.GetCurrentDirectory();
 
@@ -111,7 +111,6 @@ namespace AZ_Quiz
             {
                 LoadData();
             }
-            
             numBlackQuestion = number.Next(blackquestions.Length);
             blackQuestion = blackquestions[numBlackQuestion];
             

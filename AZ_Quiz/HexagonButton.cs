@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing;
-using System.Drawing.Drawing2D;
+﻿using System.Drawing.Drawing2D;
 using System.ComponentModel;
 
 namespace AZ_Quiz
 {
-    public class HexagonButton : Button
+    public class HexagonButton : Button //whole code was fully adopted from https://rjcodeadvance.com/rounded-button-custom-controls-winform-c/ except "GetFigurePath" method, which was rewrote for drawing button as hexagon.
     {
-        public class HexagonPosition
+        public class HexagonPosition//added to fully adopted code - used for game result
         {
             public bool rightSide;
             public bool leftSide;
