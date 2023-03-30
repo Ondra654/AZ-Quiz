@@ -5,6 +5,7 @@ namespace AZ_Quiz
     public partial class AZQuizGame : UserControl
     {
         MyMessageBox myMessageBox = new MyMessageBox();
+        ScoreBoard myScoreBoard = new ScoreBoard();
         GameManager myGameManager = new GameManager();
         AccountsManager myAccountsManager;
         HexagonButton clickedButton = new HexagonButton();
@@ -39,6 +40,7 @@ namespace AZ_Quiz
         {
             YesButton.Hide();
             NoButton.Hide();
+            PlayersAnswer.Hide();
             progressBarQuestion.Hide();
             DisplayInfo.Text = "Press StartButton to start game.";
             GenerateHexagons();
@@ -51,6 +53,8 @@ namespace AZ_Quiz
                 hexagon.BringToFront();
             }
             StartGameButton.Hide();
+            PlayersAnswer.Show();
+            PlayersAnswer.Focus();
             player1.Text = myAccountsManager.account1;
             player2.Text = myAccountsManager.account2;
             bluePlayer = myAccountsManager.account1;
@@ -77,10 +81,12 @@ namespace AZ_Quiz
             }
             timerQuestion.Start();
             progressBarQuestion.Show();
+            PlayersAnswer.Show();
             if (clickedButton.BackColor == Color.Black){
                 myGameManager.GetBlackQuestion();
                 myGameManager.GetBlackAnswer();
                 Question.Text = myGameManager.blackQuestion;
+                PlayersAnswer.Hide();
                 YesButton.Show();
                 NoButton.Show();
             }else{
@@ -128,9 +134,10 @@ namespace AZ_Quiz
             {
                 YesNoAnswer();
             }else{
+                PlayersAnswer.Show();
+                PlayersAnswer.Focus();
                 timerQuestion.Start();
                 progressBarQuestion.Show();
-                PlayersAnswer.Focus();
                 PlayersAnswer.Text = myGameManager.answer.Substring(0, 1);
                 PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//implemented after previous take over in "SinglePlayer - DisplayQuestion method".
                 SameQuestionAnswered = true;
@@ -247,6 +254,8 @@ namespace AZ_Quiz
                 timerQuestion.Stop();
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
+                PlayersAnswer.Hide();
+                PlayersAnswer.Focus();
                 YesButton.Show();
                 NoButton.Show();
             }else{
@@ -346,16 +355,22 @@ namespace AZ_Quiz
                     if (BlueTurn == false)
                     {
                         orangeScore = orangeScore - 3;
-                    }else if (BlueTurn == true){
+                        clickedButton.BackColor = customBlue;
+                    }
+                    else if (BlueTurn == true){
                         blueScore = blueScore - 3;
+                        clickedButton.BackColor = customOrange;
                     }
                     timerQuestion.Stop();
+                    clickedButton.Text = "";
                     Question.Text = "Time for answering expired!";
                     YesButton.Hide();
                     NoButton.Hide();
                     scoreBlue.Text = blueScore.ToString();
                     scoreOrange.Text = orangeScore.ToString();
                     BlueTurn = !BlueTurn;
+                    EnableHexagonClick();
+                    PlayersAnswer.Enabled = true;
                     DisplayInfo.Text = secondPlayer + ", it´s your turn now.";
                 }else{
                     AnswerWasFalse();
@@ -416,6 +431,7 @@ namespace AZ_Quiz
                     hexagon.Location = new Point(rowX + i * buttonWidth, rowY);
                     hexagon.Text = buttonNumber.ToString();
                     hexagon.Name = hexagon.Text;
+                    hexagon.TabStop = false;
                     this.Controls.Add(hexagon);
                     buttonNumber++;
 

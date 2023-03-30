@@ -18,6 +18,7 @@ namespace AZ_Quiz
         string[] sortednicks;
         int[] sortedscore;
         int rowsize;
+        int maxrowsize = 60;
         public ScoreBoard()
         {
             InitializeComponent();
@@ -28,11 +29,16 @@ namespace AZ_Quiz
         }
         private void ScoreBoard_Load(object sender, EventArgs e)//for working datagridview I used this: https://www.youtube.com/watch?v=GyLlpBZGsrE&t=201s and https://learn.microsoft.com/cs-cz/dotnet/api/system.windows.forms.datagridview?view=windowsdesktop-7.0for for learning how this tool works.
         {
+            LoadDataGridView();
+        }
+        public void LoadDataGridView()
+        {
             myAccountsManager.LoadData();
             myAccountsManager.SplitTextLine();
             SortData();
+            dataGridView1.Rows.Clear();
             int rows = sortednicks.Length;
-            if(sortednicks.Length > 10)
+            if (sortednicks.Length > 10)
             {
                 rows = 10;
             }
@@ -40,8 +46,16 @@ namespace AZ_Quiz
             {
                 rowsize = (dataGridView1.Height - dataGridView1.ColumnHeadersHeight);
                 dataInfo.Text = "0 existing profiles, create some to display scoreboard";
-            }else
+                dataInfo.Show();
+            }
+            else
+            {
                 rowsize = (dataGridView1.Height - dataGridView1.ColumnHeadersHeight) / rows;
+                if(rowsize > maxrowsize){
+                    rowsize = maxrowsize;
+                }
+                dataInfo.Hide();
+            }
             dataGridView1.RowTemplate.Height = rowsize;
             for (int i = 0; i < sortednicks.Length; i++)
             {
@@ -63,14 +77,7 @@ namespace AZ_Quiz
         }
         private void Reloadbutton_Click(object sender, EventArgs e)
         {
-            myAccountsManager.LoadData();
-            myAccountsManager.SplitTextLine();
-            SortData();
-            dataGridView1.Rows.Clear();
-            for (int i = 0; i < sortednicks.Length; i++)
-            {
-                dataGridView1.Rows.Add(sortednicks[i], sortedscore[i]);
-            }
+            LoadDataGridView();
         }
         private void DelAccount_Click(object sender, EventArgs e)
         {
@@ -85,7 +92,7 @@ namespace AZ_Quiz
             }else{
                 DelLabel.Text = "smt went wrong";
             }
-            Reloadbutton_Click(sender, e);
+            LoadDataGridView();
             DeleteNickname.Text = string.Empty;
             DeletePassword.Text = string.Empty;
         }
