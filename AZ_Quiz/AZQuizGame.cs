@@ -217,7 +217,6 @@ namespace AZ_Quiz
                 myAccountsManager.acc2score = orangeScore;
                 myAccountsManager.RewriteScore();
                 myMessageBox.SetmyMultiPlayer(this);
-                myMessageBox.singlePlayer = true;
                 if (clickedButton.BackColor == customOrange)
                 {
                     myMessageBox.message = orangePlayer + ", congratulations! You won!";
@@ -369,10 +368,16 @@ namespace AZ_Quiz
             if (progressBarGame.Value == progressBarGame.Maximum)
             {
                 timerGame.Stop();
+                myAccountsManager.acc1score = blueScore;
+                myAccountsManager.acc2score = orangeScore;
+                myAccountsManager.RewriteScore();
+                myMessageBox.SetmyMultiPlayer(this);
                 DisplayInfo.Text = "Game time expired.";
                 if (blueScore > orangeScore)
                 {
                     myMessageBox.message = bluePlayer + ", congratulations! You won!";
+                }else if(blueScore == orangeScore){
+                    myMessageBox.message = "Draw! Well played, both of you.";
                 }else
                     myMessageBox.message = orangePlayer + ", congratulations! You won!";
 
@@ -464,6 +469,7 @@ namespace AZ_Quiz
         }
         private void ShowMessageBox()
         {
+            myMessageBox.singlePlayer = true;
             int x = (this.Width - myMessageBox.Width) / 2;
             int y = (this.Height - myMessageBox.Height) / 2;
 

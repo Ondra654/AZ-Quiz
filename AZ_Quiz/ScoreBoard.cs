@@ -17,6 +17,7 @@ namespace AZ_Quiz
 
         string[] sortednicks;
         int[] sortedscore;
+        int rowsize;
         public ScoreBoard()
         {
             InitializeComponent();
@@ -35,7 +36,12 @@ namespace AZ_Quiz
             {
                 rows = 10;
             }
-            int rowsize = (dataGridView1.Height - dataGridView1.ColumnHeadersHeight) / rows;
+            if (rows == 0)
+            {
+                rowsize = (dataGridView1.Height - dataGridView1.ColumnHeadersHeight);
+                dataInfo.Text = "0 existing profiles, create some to display scoreboard";
+            }else
+                rowsize = (dataGridView1.Height - dataGridView1.ColumnHeadersHeight) / rows;
             dataGridView1.RowTemplate.Height = rowsize;
             for (int i = 0; i < sortednicks.Length; i++)
             {
@@ -55,7 +61,7 @@ namespace AZ_Quiz
             Array.Reverse(sortedscore);
             Array.Reverse(sortednicks);
         }
-        private void Button1_Click(object sender, EventArgs e)
+        private void Reloadbutton_Click(object sender, EventArgs e)
         {
             myAccountsManager.LoadData();
             myAccountsManager.SplitTextLine();
@@ -79,7 +85,7 @@ namespace AZ_Quiz
             }else{
                 DelLabel.Text = "smt went wrong";
             }
-            Button1_Click(sender, e);
+            Reloadbutton_Click(sender, e);
             DeleteNickname.Text = string.Empty;
             DeletePassword.Text = string.Empty;
         }
