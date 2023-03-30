@@ -55,10 +55,10 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox1.Image = global::AZ_Quiz.Properties.Resources.BlueTabel;
-            this.pictureBox1.Location = new System.Drawing.Point(102, 272);
+            this.pictureBox1.Location = new System.Drawing.Point(61, 165);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 386);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 361);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
@@ -67,10 +67,10 @@
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox2.Image = global::AZ_Quiz.Properties.Resources.OrangeTabel;
-            this.pictureBox2.Location = new System.Drawing.Point(925, 272);
+            this.pictureBox2.Location = new System.Drawing.Point(718, 165);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(200, 386);
+            this.pictureBox2.Size = new System.Drawing.Size(200, 361);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 25;
             this.pictureBox2.TabStop = false;
@@ -78,10 +78,10 @@
             // StartGameButton
             // 
             this.StartGameButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.StartGameButton.Location = new System.Drawing.Point(558, 206);
+            this.StartGameButton.Location = new System.Drawing.Point(445, 165);
             this.StartGameButton.Margin = new System.Windows.Forms.Padding(2);
             this.StartGameButton.Name = "StartGameButton";
-            this.StartGameButton.Size = new System.Drawing.Size(112, 32);
+            this.StartGameButton.Size = new System.Drawing.Size(90, 26);
             this.StartGameButton.TabIndex = 26;
             this.StartGameButton.Text = "StartGame";
             this.StartGameButton.UseVisualStyleBackColor = true;
@@ -91,30 +91,30 @@
             // 
             this.player1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.player1.AutoSize = true;
-            this.player1.Location = new System.Drawing.Point(202, 172);
+            this.player1.Location = new System.Drawing.Point(161, 138);
             this.player1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.player1.Name = "player1";
-            this.player1.Size = new System.Drawing.Size(0, 25);
+            this.player1.Size = new System.Drawing.Size(0, 20);
             this.player1.TabIndex = 27;
             // 
             // player2
             // 
             this.player2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.player2.AutoSize = true;
-            this.player2.Location = new System.Drawing.Point(1025, 172);
+            this.player2.Location = new System.Drawing.Point(818, 138);
             this.player2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.player2.Name = "player2";
-            this.player2.Size = new System.Drawing.Size(0, 25);
+            this.player2.Size = new System.Drawing.Size(0, 20);
             this.player2.TabIndex = 28;
             // 
             // Question
             // 
             this.Question.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.SetColumnSpan(this.Question, 5);
-            this.Question.Location = new System.Drawing.Point(65, 11);
+            this.Question.Location = new System.Drawing.Point(51, 9);
             this.Question.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Question.Name = "Question";
-            this.Question.Size = new System.Drawing.Size(1098, 55);
+            this.Question.Size = new System.Drawing.Size(878, 44);
             this.Question.TabIndex = 29;
             this.Question.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -122,10 +122,10 @@
             // 
             this.DisplayInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.SetColumnSpan(this.DisplayInfo, 5);
-            this.DisplayInfo.Location = new System.Drawing.Point(65, 72);
+            this.DisplayInfo.Location = new System.Drawing.Point(51, 58);
             this.DisplayInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DisplayInfo.Name = "DisplayInfo";
-            this.DisplayInfo.Size = new System.Drawing.Size(1098, 48);
+            this.DisplayInfo.Size = new System.Drawing.Size(878, 38);
             this.DisplayInfo.TabIndex = 31;
             this.DisplayInfo.Text = "label2";
             this.DisplayInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -133,10 +133,10 @@
             // PlayersAnswer
             // 
             this.PlayersAnswer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PlayersAnswer.Location = new System.Drawing.Point(502, 169);
+            this.PlayersAnswer.Location = new System.Drawing.Point(400, 135);
             this.PlayersAnswer.Margin = new System.Windows.Forms.Padding(2);
             this.PlayersAnswer.Name = "PlayersAnswer";
-            this.PlayersAnswer.Size = new System.Drawing.Size(223, 31);
+            this.PlayersAnswer.Size = new System.Drawing.Size(179, 27);
             this.PlayersAnswer.TabIndex = 32;
             this.PlayersAnswer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayersAnswer_BackSpaced);
             this.PlayersAnswer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PlayersAnswer_Entered);
@@ -145,30 +145,30 @@
             // 
             this.scoreBlue.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.scoreBlue.AutoSize = true;
-            this.scoreBlue.Location = new System.Drawing.Point(202, 134);
+            this.scoreBlue.Location = new System.Drawing.Point(161, 107);
             this.scoreBlue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreBlue.Name = "scoreBlue";
-            this.scoreBlue.Size = new System.Drawing.Size(0, 25);
+            this.scoreBlue.Size = new System.Drawing.Size(0, 20);
             this.scoreBlue.TabIndex = 33;
             // 
             // scoreOrange
             // 
             this.scoreOrange.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.scoreOrange.AutoSize = true;
-            this.scoreOrange.Location = new System.Drawing.Point(1025, 134);
+            this.scoreOrange.Location = new System.Drawing.Point(818, 107);
             this.scoreOrange.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreOrange.Name = "scoreOrange";
-            this.scoreOrange.Size = new System.Drawing.Size(0, 25);
+            this.scoreOrange.Size = new System.Drawing.Size(0, 20);
             this.scoreOrange.TabIndex = 34;
             // 
             // YesButton
             // 
             this.YesButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.YesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.YesButton.Location = new System.Drawing.Point(393, 169);
+            this.YesButton.Location = new System.Drawing.Point(313, 135);
             this.YesButton.Margin = new System.Windows.Forms.Padding(2);
             this.YesButton.Name = "YesButton";
-            this.YesButton.Size = new System.Drawing.Size(92, 32);
+            this.YesButton.Size = new System.Drawing.Size(74, 26);
             this.YesButton.TabIndex = 35;
             this.YesButton.Text = "Yes";
             this.YesButton.UseVisualStyleBackColor = false;
@@ -178,10 +178,10 @@
             // 
             this.NoButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.NoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.NoButton.Location = new System.Drawing.Point(743, 169);
+            this.NoButton.Location = new System.Drawing.Point(592, 135);
             this.NoButton.Margin = new System.Windows.Forms.Padding(2);
             this.NoButton.Name = "NoButton";
-            this.NoButton.Size = new System.Drawing.Size(92, 32);
+            this.NoButton.Size = new System.Drawing.Size(74, 26);
             this.NoButton.TabIndex = 36;
             this.NoButton.Text = "No";
             this.NoButton.UseVisualStyleBackColor = false;
@@ -200,11 +200,10 @@
             // progressBarQuestion
             // 
             this.progressBarQuestion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.progressBarQuestion.Location = new System.Drawing.Point(539, 134);
-            this.progressBarQuestion.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBarQuestion.Location = new System.Drawing.Point(430, 107);
             this.progressBarQuestion.Maximum = 20;
             this.progressBarQuestion.Name = "progressBarQuestion";
-            this.progressBarQuestion.Size = new System.Drawing.Size(150, 25);
+            this.progressBarQuestion.Size = new System.Drawing.Size(120, 20);
             this.progressBarQuestion.TabIndex = 38;
             // 
             // tableLayoutPanel1
@@ -243,29 +242,27 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.716F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.884049F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.6406679F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1230, 695);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 556);
             this.tableLayoutPanel1.TabIndex = 39;
             // 
             // progressBarGame
             // 
             this.progressBarGame.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.tableLayoutPanel1.SetColumnSpan(this.progressBarGame, 5);
-            this.progressBarGame.Location = new System.Drawing.Point(192, 664);
-            this.progressBarGame.Margin = new System.Windows.Forms.Padding(4);
-            this.progressBarGame.Maximum = 1000;
+            this.progressBarGame.Location = new System.Drawing.Point(152, 532);
+            this.progressBarGame.Maximum = 900;
             this.progressBarGame.Name = "progressBarGame";
-            this.progressBarGame.Size = new System.Drawing.Size(844, 18);
+            this.progressBarGame.Size = new System.Drawing.Size(675, 14);
             this.progressBarGame.TabIndex = 37;
             // 
             // AZQuizGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(194)))), ((int)(((byte)(123)))));
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AZQuizGame";
-            this.Size = new System.Drawing.Size(1230, 695);
+            this.Size = new System.Drawing.Size(984, 556);
             this.Load += new System.EventHandler(this.Mplayer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -64,7 +64,6 @@ namespace AZ_Quiz
         {
             GraphicsPath path = new();
 
-            int thirdOfSide = rect.Width / 3;
             int quarterOfSide = rect.Width / 4;
 
             path.StartFigure();
