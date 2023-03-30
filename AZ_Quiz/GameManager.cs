@@ -33,7 +33,7 @@ namespace AZ_Quiz
         private int numQuestion = -1;
         private int numBlackQuestion = -1;
 
-        static string GetPath(params string[] segments)//sorted from Lecture22 from our teacher: https://github.com/redwormik/gymspit-pg4-2022/tree/main/Lecture22
+        static string GetPath(params string[] segments)//take over from Lecture22 from our teacher: https://github.com/redwormik/gymspit-pg4-2022/tree/main/Lecture22
         {
             string path = Directory.GetCurrentDirectory();
 
@@ -82,9 +82,7 @@ namespace AZ_Quiz
             if(usedQuestions.Count == questions.Length)
             {
                 questionsListFull = true;
-            }
-            else
-            {
+            }else{
                 numQuestion = number.Next(questions.Length);
                 if(numQuestion < 0){
                     throw new InvalidOperationException("questions/answers data inside 'Questions/Answers' folder are missing/or has been edited, redownload this data or put them back inside this file.");

@@ -24,7 +24,9 @@ namespace AZ_Quiz
 
         public string firstPlayer = "";
         public string secondPlayer = "";
-        public string? gameResult;
+        public string gameResult;
+        public string firstLetter = string.Empty;
+
         public void SetAccountsManager(AccountsManager accountManager)
         {
             myAccountsManager = accountManager;
@@ -60,7 +62,7 @@ namespace AZ_Quiz
             timerGame.Start();
             DisplayInfo.Text = "Great, " + firstPlayer + ", it´s your turn!";
         }
-        private void HexagonButton_Click(object? sender, EventArgs e)//ten ? co jako????
+        private void HexagonButton_Click(object? sender, EventArgs e)
         {
             if (sender == null)
                 return;
@@ -75,8 +77,7 @@ namespace AZ_Quiz
             }
             timerQuestion.Start();
             progressBarQuestion.Show();
-            if (clickedButton.BackColor == Color.Black)
-            {
+            if (clickedButton.BackColor == Color.Black){
                 myGameManager.GetBlackQuestion();
                 myGameManager.GetBlackAnswer();
                 Question.Text = myGameManager.blackQuestion;
@@ -86,27 +87,29 @@ namespace AZ_Quiz
                 myGameManager.GetQuestion();
                 myGameManager.GetAnswer();
                 Question.Text = myGameManager.question;
-                PlayersAnswer.Text = myGameManager.answer.Substring(0, 1);
+                firstLetter = myGameManager.answer.Substring(0, 1);
+                PlayersAnswer.Text = firstLetter;
                 PlayersAnswer.Focus();//used and implemented from: https://social.msdn.microsoft.com/Forums/en-US/30ebf576-6b11-4cb2-83e0-c76c266d5f27/how-to-put-cursor-in-text-box-automatically-after-button-click-event?forum=winappswithcsharp
                 PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//implemented after previous take over in "SinglePlayer - DisplayQuestion method".
             }
         }
-        private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        private void PlayersAnswer_BackSpaced(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))//learned and used after first take over in "SinglePlayer - SinAnswer_Entered method".
+            if (e.KeyCode == Keys.Back && PlayersAnswer.Text.Length == 1)
             {
-                if (PlayersAnswer.Text == "")
-                {
+                e.SuppressKeyPress = true;//take over from: https://stackoverflow.com/questions/33172914/textbox-first-seven-characters-cannot-be-delete
+            }
+        }
+        private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)//learned and used after first take over in "SinglePlayer - SinAnswer_Entered method".
+            {
+                if (PlayersAnswer.Text == ""){
                     Question.Text = "Select Hexagon first!";
-                }
-                else if (PlayersAnswer.Text == myGameManager.answer)
-                {
+                }else if (PlayersAnswer.Text == myGameManager.answer){
                     AnswerWasRight();
-                }
-                else
-                {
+                }else
                     AnswerWasFalse();
-                }
                 scoreBlue.Text = blueScore.ToString();
                 scoreOrange.Text = orangeScore.ToString();
             }
@@ -116,15 +119,14 @@ namespace AZ_Quiz
             YesButton.Hide();
             NoButton.Hide();
             yesnoButton = YesButton;
-            PlayersAnswer.KeyPress += PlayersAnswer_Entered;
+            PlayersAnswer.KeyUp += PlayersAnswer_Entered;
             if (clickedButton.BackColor == Color.Black)
             {
                 YesNoAnswer();
-            }
-            else
-            {
+            }else{
                 timerQuestion.Start();
                 progressBarQuestion.Show();
+                PlayersAnswer.Focus();
                 PlayersAnswer.Text = myGameManager.answer.Substring(0, 1);
                 PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//implemented after previous take over in "SinglePlayer - DisplayQuestion method".
                 SameQuestionAnswered = true;
@@ -137,17 +139,15 @@ namespace AZ_Quiz
             YesButton.Hide();
             NoButton.Hide();
             yesnoButton = NoButton;
-            PlayersAnswer.KeyPress += PlayersAnswer_Entered;
+            PlayersAnswer.KeyUp += PlayersAnswer_Entered;
             if (clickedButton.BackColor == Color.Black)
             {
                 YesNoAnswer();
-            }
-            else
-            {
+            }else{
                 Question.Text = myGameManager.answer;
                 DisplayInfo.Text = "Ok, " + secondPlayer + ", it´s your turn";
-                this.clickedButton.BackColor = Color.Black;
-                this.clickedButton.TextColor = Color.White;
+                clickedButton.BackColor = Color.Black;
+                clickedButton.TextColor = Color.White;
                 PlayersAnswer.Text = "";
                 BlueTurn = !BlueTurn;
                 SameQuestionAnswered = false;
@@ -160,9 +160,7 @@ namespace AZ_Quiz
             if (myGameManager.blackAnswer == "ano" && yesnoButton == YesButton)
             {
                 AnswerWasRight();
-            }
-            else if (myGameManager.blackAnswer == "ne" && yesnoButton == NoButton)
-            {
+            }else if (myGameManager.blackAnswer == "ne" && yesnoButton == NoButton){
                 AnswerWasRight();
             }
             else
@@ -171,9 +169,7 @@ namespace AZ_Quiz
                 {
                     orangeScore = orangeScore - 3;
                     clickedButton.BackColor = customBlue;
-                }
-                else if (BlueTurn == true)
-                {
+                }else if (BlueTurn == true){
                     blueScore = blueScore - 3;
                     clickedButton.BackColor = customOrange;
                 }
@@ -197,9 +193,7 @@ namespace AZ_Quiz
                 orangeScore = orangeScore + 10;
                 clickedButton.BackColor = customOrange;
                 BlueTurn = true;
-            }
-            else if (BlueTurn == true)
-            {
+            }else if (BlueTurn == true){
                 blueScore = blueScore + 10;
                 clickedButton.BackColor = customBlue;
                 BlueTurn = false;
@@ -227,36 +221,28 @@ namespace AZ_Quiz
                 if (clickedButton.BackColor == customOrange)
                 {
                     myMessageBox.message = orangePlayer + ", congratulations! You won!";
-                }
-                else
+                }else
                     myMessageBox.message = bluePlayer + ", congratulations! You won!";
 
                 ShowMessageBox();
             }
         }
         private void AnswerWasFalse()
-        {
+         {
             FindPlayers();
             if (BlueTurn == false)
             {
                 orangeScore = orangeScore - 3;
-            }
-            else if (BlueTurn == true)
-            {
+            }else if (BlueTurn == true){
                 blueScore = blueScore - 3;
             }
-            scoreBlue.Text = blueScore.ToString();
-            scoreOrange.Text = orangeScore.ToString();
-
             if (SameQuestionAnswered == false)
             {
                 if (progressBarQuestion.Value == progressBarQuestion.Maximum)
                 {
-                    PlayersAnswer.KeyPress -= PlayersAnswer_Entered;
+                    PlayersAnswer.KeyUp -= PlayersAnswer_Entered;
                     DisplayInfo.Text = "Time for answering expired! " + secondPlayer + ", would you like to answer?";
-                }
-                else
-                {
+                }else{
                     DisplayInfo.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
                 }
                 timerQuestion.Stop();
@@ -264,16 +250,12 @@ namespace AZ_Quiz
                 progressBarQuestion.Hide();
                 YesButton.Show();
                 NoButton.Show();
-            }
-            else
-            {
+            }else{
                 timerQuestion.Stop();
                 if (progressBarQuestion.Value == progressBarQuestion.Maximum)
                 {
                     Question.Text = "Time for answering expired!";
-                }
-                else
-                {
+                }else{
                     Question.Text = "This answer also wasn´t right. Right answer was: " + myGameManager.answer;
                 }
                 progressBarQuestion.Value = 0;
@@ -308,15 +290,15 @@ namespace AZ_Quiz
 
             foreach (HexagonButton neighour in button.Neighbours)
             {
-                if (connectedSides.ConnectsAllSides())
+                if (connectedSides.ConnectsAllSides()){
                     break;
-
-                if (neighour.BackColor != clickedButtonColor)
+                }
+                if (neighour.BackColor != clickedButtonColor){
                     continue;
-
-                if (checkedButtons.Contains(neighour))
+                }
+                if (checkedButtons.Contains(neighour)){
                     continue;
-
+                }
                 GetConnectedSides(neighour, clickedButtonColor, connectedSides, checkedButtons);
             }
         }
@@ -327,9 +309,7 @@ namespace AZ_Quiz
             if (result == 0)
             {
                 BlueTurn = false;//orange
-            }
-            else if (result == 1)
-            {
+            }else if (result == 1){
                 BlueTurn = true;//blue
             }
         }
@@ -337,13 +317,11 @@ namespace AZ_Quiz
         {
             if (BlueTurn == false)
             {
-                firstPlayer = orangePlayer;
                 secondPlayer = bluePlayer;
-            }
-            else if (BlueTurn == true)
-            {
-                firstPlayer = bluePlayer;
+                firstPlayer = orangePlayer;
+            }else if (BlueTurn == true){
                 secondPlayer = orangePlayer;
+                firstPlayer = bluePlayer;
             }
         }
         private void EnableHexagonClick()
@@ -355,7 +333,7 @@ namespace AZ_Quiz
                     hexagon.Click += HexagonButton_Click;
             }
         }
-        private void TimeLimit(object sender, EventArgs e)
+        private void TimeLimit(object sender, EventArgs e)//both methods - TimeLimit and GameProgressBar were completed with undertook parts from: https://stackoverflow.com/questions/7259511/increase-a-progressbar-with-timer-in-winforms and https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.progressbar.increment?view=windowsdesktop-7.0
         {
             progressBarQuestion.Increment(1);
             if (progressBarQuestion.Value == progressBarQuestion.Maximum)
@@ -366,9 +344,7 @@ namespace AZ_Quiz
                     if (BlueTurn == false)
                     {
                         orangeScore = orangeScore - 3;
-                    }
-                    else if (BlueTurn == true)
-                    {
+                    }else if (BlueTurn == true){
                         blueScore = blueScore - 3;
                     }
                     timerQuestion.Stop();
@@ -386,7 +362,7 @@ namespace AZ_Quiz
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
             }
-        }//both methods - TimeLimit and GameProgressBar were completed with undertook parts from: https://stackoverflow.com/questions/7259511/increase-a-progressbar-with-timer-in-winforms and https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.progressbar.increment?view=windowsdesktop-7.0
+        }
         private void GameProgressBar(object sender, EventArgs e)
         {
             progressBarGame.Increment(1);
@@ -397,8 +373,7 @@ namespace AZ_Quiz
                 if (blueScore > orangeScore)
                 {
                     myMessageBox.message = bluePlayer + ", congratulations! You won!";
-                }
-                else
+                }else
                     myMessageBox.message = orangePlayer + ", congratulations! You won!";
 
                 ShowMessageBox();
@@ -418,7 +393,7 @@ namespace AZ_Quiz
             List<List<HexagonButton>> buttonListByRows = new List<List<HexagonButton>>();
 
             int buttonNumber = 1;
-            for (int row = 0; row < rows; row++)
+            for (int row = 0; row < rows; row++)//completed with help/inspiration from:https://www.codeproject.com/Questions/5293567/Dynamically-generate-buttons-Csharp and https://stackoverflow.com/questions/47732560/how-can-i-create-a-button-programmatically-in-c-sharp-window-app
             {
                 List<HexagonButton> currentRowButtons = new List<HexagonButton>();
                 buttonListByRows.Add(currentRowButtons);
@@ -436,21 +411,20 @@ namespace AZ_Quiz
                     this.Controls.Add(hexagon);
                     buttonNumber++;
 
-                    if (i == 0)
+                    if (i == 0){
                         hexagon.HexPosition.leftSide = true;
-
-                    if (i == row)
+                    }
+                    if (i == row){
                         hexagon.HexPosition.rightSide = true;
-
-                    if (row == rows - 1)
+                    }
+                    if (row == rows - 1){
                         hexagon.HexPosition.bottomSide = true;
-
+                    }
                     currentRowButtons.Add(hexagon);
                     buttonList.Add(hexagon);
                 }
             }
-            // Generate neighbours
-            for (int row = 0; row < buttonListByRows.Count; row++)
+            for (int row = 0; row < buttonListByRows.Count; row++)//Generate neighbours; after research and asking AI for best option of how to evaluate the game -> using lists and columns to search through neighbours
             {
                 List<HexagonButton> rowButtons = buttonListByRows[row];
 
@@ -458,27 +432,26 @@ namespace AZ_Quiz
                 {
                     HexagonButton button = rowButtons[column];
 
-                    if (column - 1 >= 0)
+                    if (column - 1 >= 0){
                         button.Neighbours.Add(rowButtons[column - 1]);
-
-                    if (column + 1 < rowButtons.Count)
-                        button.Neighbours.Add(rowButtons[column + 1]);
-
-                    if (row - 1 >= 0)
-                    {
-                        if (column - 1 >= 0)
-                            button.Neighbours.Add(buttonListByRows[row - 1][column - 1]);
-
-                        if (column < buttonListByRows[row - 1].Count)
-                            button.Neighbours.Add(buttonListByRows[row - 1][column]);
                     }
-
-                    if (row + 1 < buttonListByRows.Count)
-                    {
+                    if (column + 1 < rowButtons.Count){
+                        button.Neighbours.Add(rowButtons[column + 1]);
+                    }
+                    if (row - 1 >= 0){
+                        if (column - 1 >= 0){
+                            button.Neighbours.Add(buttonListByRows[row - 1][column - 1]);
+                        }
+                        if (column < buttonListByRows[row - 1].Count){
+                            button.Neighbours.Add(buttonListByRows[row - 1][column]);
+                        }
+                    }
+                    if (row + 1 < buttonListByRows.Count){
                         button.Neighbours.Add(buttonListByRows[row + 1][column]);
 
-                        if (column + 1 < buttonListByRows[row + 1].Count)
+                        if (column + 1 < buttonListByRows[row + 1].Count){
                             button.Neighbours.Add(buttonListByRows[row + 1][column + 1]);
+                        }
                     }
                 }
             }

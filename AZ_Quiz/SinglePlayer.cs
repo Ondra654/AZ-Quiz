@@ -6,6 +6,7 @@
         GameManager myGameManager = new GameManager();
 
         int singlePlayerScore = 0;
+        string firstLetter = string.Empty;
 
         public SinglePlayer(){
             InitializeComponent();
@@ -18,12 +19,19 @@
         {
             if(e.KeyChar == Convert.ToChar(Keys.Enter))//for KeyChar exception I inspired my self from: https://stackoverflow.com/questions/12318164/enter-key-press-in-c-sharp and adapted this part.
             {
-                if (SinAnswer.Text == "")
+                if (SinAnswer.Text == "" && firstLetter != string.Empty)
+                {
+                    CountScore();
+                    DisplayQuestion();
+                }else if(SinAnswer.Text == "")
+                {
+                    RevealAnswer.Text = "You need to generete new question first!";
+                }else if(SinAnswer.Text.Length > 0 && firstLetter == string.Empty)
                 {
                     RevealAnswer.Text = "You need to generete new question first!";
                 }else
-                CountScore();
-                DisplayQuestion();
+                    CountScore();
+                    DisplayQuestion();
             }
         }
         public void DisplayQuestion()
@@ -38,6 +46,7 @@
                 myMessagebox.message = "You went through all questions, program needs to reset your progress";
                 this.Parent.Controls.Add(myMessagebox);//made with AI bot help - Chat GPT. I let AI explain me how to use "this.Parent." and with his help I implement it.
                 myMessagebox.Location = new System.Drawing.Point(x, y);
+                myMessagebox.Show();
                 myMessagebox.BringToFront();
                 button1.Enabled = false;
                 SinAnswer.Enabled = false;
@@ -45,8 +54,8 @@
                 myGameManager.GetAnswer();
 
                 SinQuestion.Text = myGameManager.question;
-                string FirstLetter = myGameManager.answer.Substring(0, 1);//Adopted from: https://codelikeadev.com/blog/get-first-character-of-string-c-sharp
-                SinAnswer.Text = FirstLetter;
+                firstLetter = myGameManager.answer.Substring(0, 1);//Adopted from: https://codelikeadev.com/blog/get-first-character-of-string-c-sharp
+                SinAnswer.Text = firstLetter;
                 SinAnswer.SelectionStart = SinAnswer.Text.Length;//Adopted from: https://stackoverflow.com/questions/8206723/change-cursor-position-in-textbox-in-c-sharp-windows
             }
         }
@@ -55,7 +64,7 @@
             if (SinAnswer.Text == myGameManager.answer){
                 singlePlayerScore = singlePlayerScore + 10;
                 RevealAnswer.BackColor = Color.Green;
-            }else {
+            }else{
                 singlePlayerScore = singlePlayerScore - 3;
                 RevealAnswer.BackColor = Color.Red;
             }
@@ -64,6 +73,7 @@
         }
         public void ResetAll()
         {
+            firstLetter = string.Empty;
             button1.Enabled = true;
             SinAnswer.Enabled = true;
             SinQuestion.Text = "Press Question button to start";
@@ -72,6 +82,8 @@
             RevealAnswer.BackColor = Color.CadetBlue;
             singlePlayerScore = 0;
             score.Text = "score: " + singlePlayerScore;
+            myGameManager.answer = "";
+            myGameManager.question = "";
             myGameManager.questionsListFull = false;
             myGameManager.ResetQuestionLists();
         }

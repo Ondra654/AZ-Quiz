@@ -15,7 +15,6 @@ namespace AZ_Quiz
                 return (rightSide && leftSide && bottomSide);
             }
         }
-
         //Fields
         public int hexagonSide = 10;
 

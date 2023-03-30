@@ -25,7 +25,6 @@ namespace AZ_Quiz
         {
             message1.Text = message;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (singlePlayer == false){
@@ -33,7 +32,7 @@ namespace AZ_Quiz
             }else
                 myMultiPlayer.ResetAll();
 
-            this.SendToBack();
+            this.Hide();
         }
     }
 }

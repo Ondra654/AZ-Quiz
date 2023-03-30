@@ -6,7 +6,7 @@
         public GameMenu()
         {
             InitializeComponent();
-            myMessageBox1.SendToBack();
+            myMessageBox1.Hide();
             singlePlayer1.Hide();
             azQuizGame.Hide();
             login1.Hide();

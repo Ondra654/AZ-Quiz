@@ -153,15 +153,6 @@ namespace AZ_Quiz
             }
             SaveData();
         }
-        public void ErrorMsgBox()//????????????????????????????
-        {
-            string title = "Error MessageBox";
-            var result = MessageBox.Show(errormsg, title, MessageBoxButtons.OK);
-            if (result == DialogResult.OK)
-            {
-                Environment.Exit(0);
-            }
-        }
         public static void HelpLoad()
         {
             string HelpPath = GetPath("data", "rules.html");

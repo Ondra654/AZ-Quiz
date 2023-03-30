@@ -54,20 +54,22 @@
                     ResultLabel.Text = "";
                     this.Hide();
                 }
-            }
-            else if (myAccountsManager.AccountExists == false){
+            }else if (myAccountsManager.AccountExists == false){
                 ResultLabel.Text = "Something went wrong, try again.";
             }
             LoginNickname.Text = "";
             LoginPassword.Text = "";
         }
         private void RegisterButton_Click(object sender, EventArgs e){
-            if (string.IsNullOrWhiteSpace(RegisterNickName.Text)||string.IsNullOrWhiteSpace(RegisterPassword.Text))//string.IsNullOrWhiteSpace implemented from: https://learn.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace?view=net-7.0
+            if (string.IsNullOrWhiteSpace(RegisterNickName.Text)||string.IsNullOrWhiteSpace(RegisterPassword.Text))//string.IsNullOrWhiteSpace implemented from: https://www.educative.io/answers/how-to-check-if-a-string-has-only-whitespace-or-is-empty-in-c-sharp
             {
                 ResultLabel.Text = "Your new account data must contain some characters.";
             }else if(RegisterNickName.Text.Substring(0,1) == " "||RegisterPassword.Text.Substring(0, 1) == " ")//.Substring(O,1) implemented after previous take over in "SinglePlayer - DisplayQuestion method.
             {
-                ResultLabel.Text = "Your new nickname/password can not start with empty gap";
+                ResultLabel.Text = "Your new nickname/password can not start with empty gap.";
+            }else if(RegisterPassword.Text.Length < 4 || RegisterNickName.Text.Length < 4)
+            {
+                ResultLabel.Text = "Your nickname/password must contain at least 4 characters.";
             }else{
                 SearchForSeparator();
                 if (nickContain == false)

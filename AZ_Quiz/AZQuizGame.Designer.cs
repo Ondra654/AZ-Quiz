@@ -140,7 +140,8 @@
             this.PlayersAnswer.Name = "PlayersAnswer";
             this.PlayersAnswer.Size = new System.Drawing.Size(179, 27);
             this.PlayersAnswer.TabIndex = 32;
-            this.PlayersAnswer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PlayersAnswer_Entered);
+            this.PlayersAnswer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PlayersAnswer_Entered);
+            this.PlayersAnswer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayersAnswer_BackSpaced);
             // 
             // scoreBlue
             // 
@@ -274,6 +275,8 @@
             this.ResumeLayout(false);
 
         }
+
+        
 
         #endregion
         private PictureBox pictureBox1;
