@@ -102,6 +102,10 @@ namespace AZ_Quiz
         }
         private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyEventArgs e)
         {
+            if(progressBarQuestion.Value == progressBarQuestion.Maximum)
+            {
+                PlayersAnswer.Enabled = false;
+            }
             if (e.KeyCode == Keys.Enter)//learned and used after first take over in "SinglePlayer - SinAnswer_Entered method".
             {
                 if (PlayersAnswer.Text == ""){
@@ -119,7 +123,7 @@ namespace AZ_Quiz
             YesButton.Hide();
             NoButton.Hide();
             yesnoButton = YesButton;
-            PlayersAnswer.KeyUp += PlayersAnswer_Entered;
+            PlayersAnswer.Enabled = true;
             if (clickedButton.BackColor == Color.Black)
             {
                 YesNoAnswer();
@@ -139,7 +143,7 @@ namespace AZ_Quiz
             YesButton.Hide();
             NoButton.Hide();
             yesnoButton = NoButton;
-            PlayersAnswer.KeyUp += PlayersAnswer_Entered;
+            PlayersAnswer.Enabled = true;
             if (clickedButton.BackColor == Color.Black)
             {
                 YesNoAnswer();
@@ -162,9 +166,7 @@ namespace AZ_Quiz
                 AnswerWasRight();
             }else if (myGameManager.blackAnswer == "ne" && yesnoButton == NoButton){
                 AnswerWasRight();
-            }
-            else
-            {
+            }else{
                 if (BlueTurn == false)
                 {
                     orangeScore = orangeScore - 3;
@@ -181,7 +183,6 @@ namespace AZ_Quiz
                 timerQuestion.Stop();
                 progressBarQuestion.Value = 0;
                 progressBarQuestion.Hide();
-                BlueTurn = !BlueTurn;
                 EnableHexagonClick();
             }
         }
@@ -239,7 +240,6 @@ namespace AZ_Quiz
             {
                 if (progressBarQuestion.Value == progressBarQuestion.Maximum)
                 {
-                    PlayersAnswer.KeyUp -= PlayersAnswer_Entered;
                     DisplayInfo.Text = "Time for answering expired! " + secondPlayer + ", would you like to answer?";
                 }else{
                     DisplayInfo.Text = "This answer wasn´t right, " + secondPlayer + ", would you like to answer?";
@@ -337,6 +337,9 @@ namespace AZ_Quiz
             progressBarQuestion.Increment(1);
             if (progressBarQuestion.Value == progressBarQuestion.Maximum)
             {
+                PlayersAnswer.Enabled = false;
+                scoreBlue.Text = blueScore.ToString();
+                scoreOrange.Text = orangeScore.ToString();
                 if (progressBarQuestion.Value == progressBarQuestion.Maximum && clickedButton.BackColor == Color.Black)
                 {
                     FindPlayers();
