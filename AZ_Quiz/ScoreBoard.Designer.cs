@@ -49,12 +49,13 @@ namespace AZ_Quiz
             // back_button
             // 
             this.back_button.BackColor = System.Drawing.Color.Red;
-            this.back_button.Cursor = System.Windows.Forms.Cursors.No;
+            this.back_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.back_button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.back_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.back_button.Location = new System.Drawing.Point(908, 507);
+            this.back_button.Location = new System.Drawing.Point(1135, 634);
+            this.back_button.Margin = new System.Windows.Forms.Padding(4);
             this.back_button.Name = "back_button";
-            this.back_button.Size = new System.Drawing.Size(55, 29);
+            this.back_button.Size = new System.Drawing.Size(69, 36);
             this.back_button.TabIndex = 6;
             this.back_button.Text = "back";
             this.back_button.UseVisualStyleBackColor = false;
@@ -83,7 +84,7 @@ namespace AZ_Quiz
             this.Column2});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(390, 120);
+            this.dataGridView1.Location = new System.Drawing.Point(488, 150);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -93,7 +94,7 @@ namespace AZ_Quiz
             this.dataGridView1.RowTemplate.Height = 20;
             this.dataGridView1.RowTemplate.ReadOnly = true;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.Size = new System.Drawing.Size(568, 316);
+            this.dataGridView1.Size = new System.Drawing.Size(710, 395);
             this.dataGridView1.TabIndex = 7;
             // 
             // Column1
@@ -113,10 +114,11 @@ namespace AZ_Quiz
             // Reloadbutton
             // 
             this.Reloadbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.Reloadbutton.Location = new System.Drawing.Point(626, 439);
+            this.Reloadbutton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Reloadbutton.Location = new System.Drawing.Point(782, 549);
             this.Reloadbutton.Margin = new System.Windows.Forms.Padding(2);
             this.Reloadbutton.Name = "Reloadbutton";
-            this.Reloadbutton.Size = new System.Drawing.Size(109, 27);
+            this.Reloadbutton.Size = new System.Drawing.Size(136, 34);
             this.Reloadbutton.TabIndex = 8;
             this.Reloadbutton.Text = "Refresh";
             this.Reloadbutton.UseVisualStyleBackColor = false;
@@ -124,25 +126,28 @@ namespace AZ_Quiz
             // 
             // DeleteNickname
             // 
-            this.DeleteNickname.Location = new System.Drawing.Point(60, 154);
+            this.DeleteNickname.Location = new System.Drawing.Point(75, 192);
+            this.DeleteNickname.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteNickname.Name = "DeleteNickname";
-            this.DeleteNickname.Size = new System.Drawing.Size(201, 27);
+            this.DeleteNickname.Size = new System.Drawing.Size(250, 31);
             this.DeleteNickname.TabIndex = 0;
             // 
             // DeletePassword
             // 
-            this.DeletePassword.Location = new System.Drawing.Point(60, 200);
+            this.DeletePassword.Location = new System.Drawing.Point(75, 250);
+            this.DeletePassword.Margin = new System.Windows.Forms.Padding(4);
             this.DeletePassword.Name = "DeletePassword";
             this.DeletePassword.PasswordChar = '*';
-            this.DeletePassword.Size = new System.Drawing.Size(201, 27);
+            this.DeletePassword.Size = new System.Drawing.Size(250, 31);
             this.DeletePassword.TabIndex = 1;
             // 
             // DelAccount
             // 
-            this.DelAccount.Location = new System.Drawing.Point(100, 241);
+            this.DelAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DelAccount.Location = new System.Drawing.Point(125, 301);
             this.DelAccount.Margin = new System.Windows.Forms.Padding(2);
             this.DelAccount.Name = "DelAccount";
-            this.DelAccount.Size = new System.Drawing.Size(124, 27);
+            this.DelAccount.Size = new System.Drawing.Size(155, 34);
             this.DelAccount.TabIndex = 2;
             this.DelAccount.Text = "Delete Account";
             this.DelAccount.UseVisualStyleBackColor = true;
@@ -150,10 +155,10 @@ namespace AZ_Quiz
             // 
             // DelLabel
             // 
-            this.DelLabel.Location = new System.Drawing.Point(60, 279);
+            this.DelLabel.Location = new System.Drawing.Point(75, 349);
             this.DelLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DelLabel.Name = "DelLabel";
-            this.DelLabel.Size = new System.Drawing.Size(200, 52);
+            this.DelLabel.Size = new System.Drawing.Size(250, 65);
             this.DelLabel.TabIndex = 12;
             this.DelLabel.Text = "For deleting, enter account´s nickname and password";
             this.DelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -165,26 +170,26 @@ namespace AZ_Quiz
             this.panel1.Controls.Add(this.DelLabel);
             this.panel1.Controls.Add(this.DeletePassword);
             this.panel1.Controls.Add(this.DelAccount);
-            this.panel1.Location = new System.Drawing.Point(40, 0);
+            this.panel1.Location = new System.Drawing.Point(50, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(320, 556);
+            this.panel1.Size = new System.Drawing.Size(400, 695);
             this.panel1.TabIndex = 13;
             // 
             // dataInfo
             // 
             this.dataInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataInfo.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.dataInfo.Location = new System.Drawing.Point(511, 267);
+            this.dataInfo.Location = new System.Drawing.Point(639, 334);
             this.dataInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dataInfo.Name = "dataInfo";
-            this.dataInfo.Size = new System.Drawing.Size(340, 52);
+            this.dataInfo.Size = new System.Drawing.Size(425, 65);
             this.dataInfo.TabIndex = 14;
             this.dataInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ScoreBoard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(133)))), ((int)(((byte)(224)))));
             this.Controls.Add(this.dataInfo);
@@ -194,7 +199,7 @@ namespace AZ_Quiz
             this.Controls.Add(this.back_button);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ScoreBoard";
-            this.Size = new System.Drawing.Size(984, 556);
+            this.Size = new System.Drawing.Size(1230, 695);
             this.Load += new System.EventHandler(this.ScoreBoard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

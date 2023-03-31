@@ -476,6 +476,7 @@ namespace AZ_Quiz
                     hexagon.Text = buttonNumber.ToString();
                     hexagon.Name = hexagon.Text;
                     hexagon.TabStop = false;
+                    hexagon.Cursor = Cursors.Hand;
                     this.Controls.Add(hexagon);
                     buttonNumber++;
 

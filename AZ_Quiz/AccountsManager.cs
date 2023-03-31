@@ -15,6 +15,7 @@ namespace AZ_Quiz
         public string[] passwords = Array.Empty<string>();
         public string[] highscores= Array.Empty<string>();
 
+
         public bool AccountExists = false;
 
         public int emptyScore = 0;

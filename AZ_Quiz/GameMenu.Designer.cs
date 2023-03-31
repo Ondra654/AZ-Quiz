@@ -46,10 +46,12 @@
             // PVP
             // 
             this.PVP.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PVP.Location = new System.Drawing.Point(368, 249);
+            this.PVP.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PVP.Location = new System.Drawing.Point(459, 312);
+            this.PVP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PVP.Name = "PVP";
             this.PVP.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.PVP.Size = new System.Drawing.Size(240, 56);
+            this.PVP.Size = new System.Drawing.Size(300, 70);
             this.PVP.TabIndex = 1;
             this.PVP.TabStop = false;
             this.PVP.Text = "PVP";
@@ -59,10 +61,12 @@
             // Solo
             // 
             this.Solo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Solo.Location = new System.Drawing.Point(53, 249);
+            this.Solo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Solo.Location = new System.Drawing.Point(66, 312);
+            this.Solo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Solo.Name = "Solo";
             this.Solo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Solo.Size = new System.Drawing.Size(240, 56);
+            this.Solo.Size = new System.Drawing.Size(300, 70);
             this.Solo.TabIndex = 2;
             this.Solo.TabStop = false;
             this.Solo.Text = "Solo";
@@ -72,10 +76,12 @@
             // AC
             // 
             this.AC.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.AC.Location = new System.Drawing.Point(683, 249);
+            this.AC.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AC.Location = new System.Drawing.Point(852, 312);
+            this.AC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AC.Name = "AC";
             this.AC.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.AC.Size = new System.Drawing.Size(240, 56);
+            this.AC.Size = new System.Drawing.Size(300, 70);
             this.AC.TabIndex = 3;
             this.AC.TabStop = false;
             this.AC.Text = "Manage Account/Scoreboard";
@@ -86,12 +92,13 @@
             // 
             this.End_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.End_button.BackColor = System.Drawing.Color.Red;
-            this.End_button.Cursor = System.Windows.Forms.Cursors.No;
+            this.End_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.End_button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.End_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.End_button.Location = new System.Drawing.Point(903, 506);
+            this.End_button.Location = new System.Drawing.Point(1126, 634);
+            this.End_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.End_button.Name = "End_button";
-            this.End_button.Size = new System.Drawing.Size(55, 29);
+            this.End_button.Size = new System.Drawing.Size(69, 36);
             this.End_button.TabIndex = 4;
             this.End_button.TabStop = false;
             this.End_button.Text = "quit";
@@ -101,21 +108,22 @@
             // azQuizGame
             // 
             this.azQuizGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(194)))), ((int)(((byte)(123)))));
-            this.azQuizGame.Location = new System.Drawing.Point(1042, 564);
-            this.azQuizGame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.azQuizGame.Location = new System.Drawing.Point(1302, 705);
+            this.azQuizGame.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.azQuizGame.Name = "azQuizGame";
-            this.azQuizGame.Size = new System.Drawing.Size(984, 556);
+            this.azQuizGame.Size = new System.Drawing.Size(1230, 695);
             this.azQuizGame.TabIndex = 6;
             // 
             // help
             // 
             this.help.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.help.BackColor = System.Drawing.Color.Yellow;
+            this.help.Cursor = System.Windows.Forms.Cursors.Hand;
             this.help.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.help.Location = new System.Drawing.Point(929, 18);
+            this.help.Location = new System.Drawing.Point(1159, 22);
             this.help.Margin = new System.Windows.Forms.Padding(2);
             this.help.Name = "help";
-            this.help.Size = new System.Drawing.Size(30, 27);
+            this.help.Size = new System.Drawing.Size(38, 34);
             this.help.TabIndex = 7;
             this.help.TabStop = false;
             this.help.Text = "?";
@@ -128,9 +136,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Gold;
-            this.label1.Location = new System.Drawing.Point(395, 78);
+            this.label1.Location = new System.Drawing.Point(498, 99);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 50);
+            this.label1.Size = new System.Drawing.Size(222, 60);
             this.label1.TabIndex = 8;
             this.label1.Text = "AZ Quiz";
             // 
@@ -138,29 +147,29 @@
             // 
             this.login1.BackColor = System.Drawing.Color.SeaGreen;
             this.login1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.login1.Location = new System.Drawing.Point(35, 564);
-            this.login1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.login1.Location = new System.Drawing.Point(44, 705);
+            this.login1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.login1.Name = "login1";
-            this.login1.Size = new System.Drawing.Size(900, 400);
+            this.login1.Size = new System.Drawing.Size(1124, 500);
             this.login1.TabIndex = 9;
             // 
             // scoreBoard1
             // 
             this.scoreBoard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(133)))), ((int)(((byte)(224)))));
-            this.scoreBoard1.Location = new System.Drawing.Point(14, 979);
+            this.scoreBoard1.Location = new System.Drawing.Point(18, 1224);
             this.scoreBoard1.Margin = new System.Windows.Forms.Padding(2);
             this.scoreBoard1.Name = "scoreBoard1";
-            this.scoreBoard1.Size = new System.Drawing.Size(984, 556);
+            this.scoreBoard1.Size = new System.Drawing.Size(1230, 695);
             this.scoreBoard1.TabIndex = 12;
             // 
             // tableMenuPanel
             // 
             this.tableMenuPanel.ColumnCount = 5;
-            this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableMenuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableMenuPanel.Controls.Add(this.help, 3, 1);
             this.tableMenuPanel.Controls.Add(this.End_button, 3, 3);
             this.tableMenuPanel.Controls.Add(this.PVP, 2, 2);
@@ -171,38 +180,38 @@
             this.tableMenuPanel.Margin = new System.Windows.Forms.Padding(2);
             this.tableMenuPanel.Name = "tableMenuPanel";
             this.tableMenuPanel.RowCount = 5;
-            this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableMenuPanel.Size = new System.Drawing.Size(984, 556);
+            this.tableMenuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableMenuPanel.Size = new System.Drawing.Size(1230, 695);
             this.tableMenuPanel.TabIndex = 13;
             // 
             // singlePlayer1
             // 
             this.singlePlayer1.BackColor = System.Drawing.Color.CadetBlue;
-            this.singlePlayer1.Location = new System.Drawing.Point(1042, 1);
-            this.singlePlayer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.singlePlayer1.Location = new System.Drawing.Point(1302, 1);
+            this.singlePlayer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.singlePlayer1.Name = "singlePlayer1";
-            this.singlePlayer1.Size = new System.Drawing.Size(984, 556);
+            this.singlePlayer1.Size = new System.Drawing.Size(1230, 695);
             this.singlePlayer1.TabIndex = 14;
             // 
             // myMessageBox1
             // 
             this.myMessageBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.myMessageBox1.Location = new System.Drawing.Point(570, 1005);
-            this.myMessageBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.myMessageBox1.Location = new System.Drawing.Point(712, 1256);
+            this.myMessageBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.myMessageBox1.Name = "myMessageBox1";
-            this.myMessageBox1.Size = new System.Drawing.Size(416, 188);
+            this.myMessageBox1.Size = new System.Drawing.Size(520, 235);
             this.myMessageBox1.TabIndex = 15;
             // 
             // GameMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(982, 553);
+            this.ClientSize = new System.Drawing.Size(1228, 691);
             this.Controls.Add(this.myMessageBox1);
             this.Controls.Add(this.singlePlayer1);
             this.Controls.Add(this.tableMenuPanel);
@@ -210,6 +219,7 @@
             this.Controls.Add(this.login1);
             this.Controls.Add(this.azQuizGame);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "GameMenu";
             this.Text = "AZ Quiz";
