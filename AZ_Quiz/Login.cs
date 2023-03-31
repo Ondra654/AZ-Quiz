@@ -9,10 +9,12 @@
         {
             myAccountsManager = accountManager;
         }
-        public Login(){
+        public Login()
+        {
             InitializeComponent();
         }
-        private void Login_Load(object sender, EventArgs e){
+        private void Login_Load(object sender, EventArgs e)
+        {
             myAccountsManager.LoadData();
             myAccountsManager.SplitTextLine();
         }
@@ -24,16 +26,23 @@
                 nickContain = true;
             }
         }
-        public void CheckIfNameAlreadyExists(){
-            if(myAccountsManager.nicknames.Length == 0)
+        public void CheckIfNameAlreadyExists()
+        {
+            if (myAccountsManager.nicknames.Length == 0)
             {
                 ResultLabel.Text = "success";
-            }else{
-                foreach (var checkNickname in myAccountsManager.nicknames){
-                    if (RegisterNickName.Text == checkNickname){
+            }
+            else
+            {
+                foreach (var checkNickname in myAccountsManager.nicknames)
+                {
+                    if (RegisterNickName.Text == checkNickname)
+                    {
                         ResultLabel.Text = "This name already exists!";
                         break;
-                    }else{
+                    }
+                    else
+                    {
                         ResultLabel.Text = "success";
                     }
                 }
@@ -45,47 +54,64 @@
             string hashedPassword = AccountsManager.HashPasswords(LoginPassword.Text);
             myAccountsManager.loginPassword = hashedPassword;
             myAccountsManager.FindAccount();
-            if(myAccountsManager.AccountExists == true){
+            if (myAccountsManager.AccountExists == true)
+            {
                 ResultLabel.Text = "success";
-                if (myAccountsManager.account1 == ""){
+                if (myAccountsManager.account1 == "")
+                {
                     myAccountsManager.account1 = LoginNickname.Text;
-                }else{
+                }
+                else
+                {
                     myAccountsManager.account2 = LoginNickname.Text;
                     ResultLabel.Text = "";
                     this.Hide();
                 }
-            }else if (myAccountsManager.AccountExists == false){
+            }
+            else if (myAccountsManager.AccountExists == false)
+            {
                 ResultLabel.Text = "Something went wrong, try again.";
             }
             LoginNickname.Text = "";
             LoginPassword.Text = "";
         }
-        private void RegisterButton_Click(object sender, EventArgs e){
-            if (string.IsNullOrWhiteSpace(RegisterNickName.Text)||string.IsNullOrWhiteSpace(RegisterPassword.Text))//string.IsNullOrWhiteSpace implemented from: https://www.educative.io/answers/how-to-check-if-a-string-has-only-whitespace-or-is-empty-in-c-sharp
+        private void RegisterButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(RegisterNickName.Text) || string.IsNullOrWhiteSpace(RegisterPassword.Text))//string.IsNullOrWhiteSpace implemented from: https://www.educative.io/answers/how-to-check-if-a-string-has-only-whitespace-or-is-empty-in-c-sharp
             {
                 ResultLabel.Text = "Your new account data must contain some characters.";
-            }else if(RegisterNickName.Text.Substring(0,1) == " "||RegisterPassword.Text.Substring(0, 1) == " ")//.Substring(O,1) implemented after previous take over in "SinglePlayer - DisplayQuestion method.
+            }
+            else if (RegisterNickName.Text.Substring(0, 1) == " " || RegisterPassword.Text.Substring(0, 1) == " ")//.Substring(O,1) implemented after previous take over in "SinglePlayer - DisplayQuestion method.
             {
                 ResultLabel.Text = "Your new nickname/password can not start with empty gap.";
-            }else if(RegisterPassword.Text.Length < 4 || RegisterNickName.Text.Length < 4)
+            }
+            else if (RegisterPassword.Text.Length < 4 || RegisterNickName.Text.Length < 4)
             {
                 ResultLabel.Text = "Your nickname/password must contain at least 4 characters.";
-            }else{
+            }
+            else
+            {
                 SearchForSeparator();
                 if (nickContain == false)
                 {
                     CheckIfNameAlreadyExists();
-                }else{
+                }
+                else
+                {
                     ResultLabel.Text = "Your nick can not contain '%', try again please.";
                     nickContain = false;
                 }
-                if(ResultLabel.Text == "success"){
+                if (ResultLabel.Text == "success")
+                {
                     myAccountsManager.newNickname = RegisterNickName.Text;
                     myAccountsManager.newPassword = RegisterPassword.Text;
                     myAccountsManager.Register();
-                    if (myAccountsManager.account1 == ""){
+                    if (myAccountsManager.account1 == "")
+                    {
                         myAccountsManager.account1 = RegisterNickName.Text;
-                    }else{
+                    }
+                    else
+                    {
                         myAccountsManager.account2 = RegisterNickName.Text;
                         ResultLabel.Text = "";
                         this.Hide();

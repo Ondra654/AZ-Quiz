@@ -1,6 +1,3 @@
-using System.Drawing.Text;
-using System.Security.Cryptography.X509Certificates;
-
 namespace AZ_Quiz
 {
     internal static class Program
@@ -16,6 +13,6 @@ namespace AZ_Quiz
             ApplicationConfiguration.Initialize();
             Application.Run(new GameMenu());
         }
-       
+
     }
 }
