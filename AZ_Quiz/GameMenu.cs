@@ -24,14 +24,14 @@
             int Xcoordinate = (azQuizGame.Width - login1.Width) / 2;
             int Ycoordinate = (azQuizGame.Height - login1.Height) / 2;
             login1.Location = new System.Drawing.Point(Xcoordinate, Ycoordinate);
-            azQuizGame.Location = new System.Drawing.Point(0,0);
+            azQuizGame.Location = new System.Drawing.Point(0, 0);
             azQuizGame.Show();
         }
         private void Solo_Click(object sender, EventArgs e)
         {
             tableMenuPanel.SendToBack();
             singlePlayer1.Show();
-            singlePlayer1.Location = new System.Drawing.Point(0,0);
+            singlePlayer1.Location = new System.Drawing.Point(0, 0);
         }
         private void AC_Click(object sender, EventArgs e)
         {

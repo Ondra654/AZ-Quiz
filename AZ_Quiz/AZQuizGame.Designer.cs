@@ -216,7 +216,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.5F));
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 5, 5);
             this.tableLayoutPanel1.Controls.Add(this.player1, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.player2, 5, 4);
@@ -230,6 +229,7 @@
             this.tableLayoutPanel1.Controls.Add(this.Question, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.scoreBlue, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.scoreOrange, 5, 3);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";

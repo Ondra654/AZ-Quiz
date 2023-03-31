@@ -27,9 +27,11 @@ namespace AZ_Quiz
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (singlePlayer == false){
+            if (singlePlayer == false)
+            {
                 mySinglePlayer.ResetAll();
-            }else
+            }
+            else
                 myMultiPlayer.ResetAll();
 
             this.Hide();

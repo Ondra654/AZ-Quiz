@@ -209,14 +209,14 @@
             this.tableLayoutPanel1.Controls.Add(this.RegisterButton, 5, 4);
             this.tableLayoutPanel1.Controls.Add(this.RegisterLabel1, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.RegisterLabel2, 4, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.LoginPassword, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.LoginButton, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.LoginLabel1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.LoginLabel2, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.LoginNickname, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.ResultLabel, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.LoginNickname, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 2, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 62);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";

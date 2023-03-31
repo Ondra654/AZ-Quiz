@@ -175,7 +175,7 @@ namespace AZ_Quiz
             // 
             this.dataInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataInfo.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.dataInfo.Location = new System.Drawing.Point(506, 270);
+            this.dataInfo.Location = new System.Drawing.Point(511, 267);
             this.dataInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dataInfo.Name = "dataInfo";
             this.dataInfo.Size = new System.Drawing.Size(340, 52);

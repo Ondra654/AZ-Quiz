@@ -119,8 +119,8 @@ namespace AZ_Quiz
             this.tableLayoutPanel1.Controls.Add(this.back_button, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.score, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.RevealAnswer, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.SinAnswer, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.SinQuestion, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.SinAnswer, 1, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
