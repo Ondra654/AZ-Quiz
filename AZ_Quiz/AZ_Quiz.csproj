@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>AZ-Quiz-icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="AZ-Quiz-icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
