@@ -18,7 +18,7 @@
             myAccountsManager.LoadData();
             myAccountsManager.SplitTextLine();
         }
-        private void SearchForSeparator()
+        private void SearchForSeparator()///used so user wouldn´t be able to register account with character '%'
         {
             char character = '%';
             if (RegisterNickName.Text.Contains(character))
@@ -26,7 +26,7 @@
                 nickContain = true;
             }
         }
-        public void CheckIfNameAlreadyExists()
+        public void CheckIfNameAlreadyExists()///checks if nickname already exists -> so user wouldn´t be able to register same
         {
             if (myAccountsManager.nicknames.Length == 0)
             {
@@ -51,7 +51,7 @@
         private void LoginButton_Click(object sender, EventArgs e)
         {
             myAccountsManager.loginNickname = LoginNickname.Text;
-            string hashedPassword = AccountsManager.HashPasswords(LoginPassword.Text);
+            string hashedPassword = AccountsManager.HashPasswords(LoginPassword.Text);///hashing so programm can check this one with existing account´s hashes
             myAccountsManager.loginPassword = hashedPassword;
             myAccountsManager.FindAccount();
             if (myAccountsManager.AccountExists == true)
@@ -81,7 +81,7 @@
             {
                 ResultLabel.Text = "Your new account data must contain some characters.";
             }
-            else if (RegisterNickName.Text.Substring(0, 1) == " " || RegisterPassword.Text.Substring(0, 1) == " ")//.Substring(O,1) implemented after previous take over in "SinglePlayer - DisplayQuestion method.
+            else if (RegisterNickName.Text.Substring(0, 1) == " " || RegisterPassword.Text.Substring(0, 1) == " ")
             {
                 ResultLabel.Text = "Your new nickname/password can not start with empty gap.";
             }

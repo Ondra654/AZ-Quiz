@@ -43,7 +43,7 @@
             myGameManager.LoadData();
             myGameManager.GetQuestion();
             myMessagebox.SetmySinglePlayer(this);
-            if (myGameManager.questionsListFull == true)
+            if (myGameManager.questionsListFull == true)///displays msg box user control with info => all questions were used
             {
                 int x = (this.Width - myMessagebox.Width) / 2;
                 int y = (this.Height - myMessagebox.Height) / 2;
@@ -65,7 +65,7 @@
                 SinAnswer.SelectionStart = SinAnswer.Text.Length;//Adopted from: https://stackoverflow.com/questions/8206723/change-cursor-position-in-textbox-in-c-sharp-windows
             }
         }
-        public void CountScore()
+        public void CountScore()///counts score for singleplayer section
         {
             if (SinAnswer.Text == myGameManager.answer)
             {
@@ -96,7 +96,7 @@
             myGameManager.questionsListFull = false;
             myGameManager.ResetQuestionLists();
         }
-        private void Backbutton_Click(object sender, EventArgs e)
+        private void Backbutton_Click(object sender, EventArgs e)///go back to game menu
         {
             this.Hide();
             myMessagebox.SendToBack();

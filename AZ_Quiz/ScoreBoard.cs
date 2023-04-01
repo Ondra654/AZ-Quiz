@@ -20,7 +20,7 @@
         {
             LoadDataGridView();
         }
-        public void LoadDataGridView()
+        public void LoadDataGridView()///sets whole DataGrigView
         {
             myAccountsManager.LoadData();
             myAccountsManager.SplitTextLine();
@@ -52,7 +52,7 @@
                 dataGridView1.Rows.Add(sortednicks[i], sortedscore[i]);
             }
         }
-        private void SortData()
+        private void SortData()///sorts data for scoreboard - from highest score to lowest
         {
             sortednicks = new string[myAccountsManager.nicknames.Length];
             for (int i = 0; i < myAccountsManager.nicknames.Length; i++)
@@ -88,7 +88,7 @@
             DeleteNickname.Text = string.Empty;
             DeletePassword.Text = string.Empty;
         }
-        private void Backbutton_Click(object sender, EventArgs e)
+        private void Backbutton_Click(object sender, EventArgs e)///go back to game menu
         {
             DeleteNickname.Text = "";
             DeletePassword.Text = "";

@@ -5,7 +5,6 @@ namespace AZ_Quiz
     public partial class AZQuizGame : UserControl
     {
         MyMessageBox myMessageBox = new MyMessageBox();
-        ScoreBoard myScoreBoard = new ScoreBoard();
         GameManager myGameManager = new GameManager();
         AccountsManager myAccountsManager;
         HexagonButton clickedButton = new HexagonButton();
@@ -102,7 +101,7 @@ namespace AZ_Quiz
                 PlayersAnswer.SelectionStart = PlayersAnswer.Text.Length;//implemented after previous take over in "SinglePlayer - DisplayQuestion method".
             }
         }
-        private void PlayersAnswer_BackSpaced(object sender, System.Windows.Forms.KeyEventArgs e)
+        private void PlayersAnswer_BackSpaced(object sender, System.Windows.Forms.KeyEventArgs e)///first "hint" letter wouldn´t be deleted
         {
             if (e.KeyCode == Keys.Back && PlayersAnswer.Text.Length == 1)
             {
@@ -111,11 +110,11 @@ namespace AZ_Quiz
         }
         private void PlayersAnswer_Entered(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (progressBarQuestion.Value == progressBarQuestion.Maximum)
+            if (progressBarQuestion.Value == progressBarQuestion.Maximum)///here so player wouldn´t be able to answer after time
             {
                 PlayersAnswer.Enabled = false;
             }
-            if (e.KeyCode == Keys.Enter)//learned and used after first take over in "SinglePlayer - SinAnswer_Entered method".
+            if (e.KeyCode == Keys.Enter)
             {
                 if (PlayersAnswer.Text == "")
                 {
@@ -176,7 +175,7 @@ namespace AZ_Quiz
                 EnableHexagonClick();
             }
         }
-        private void YesNoAnswer()
+        private void YesNoAnswer()///evaluate black hexagon answer
         {
             FindPlayers();
             if (myGameManager.blackAnswer == "ano" && yesnoButton == YesButton)
@@ -237,7 +236,7 @@ namespace AZ_Quiz
             SameQuestionAnswered = false;
             EnableHexagonClick();
 
-            if (CheckIfGameEnded())
+            if (CheckIfGameEnded())///= someone connected all 3 sides -> game result
             {
                 timerGame.Stop();
                 myAccountsManager.acc1score = blueScore;
@@ -265,7 +264,7 @@ namespace AZ_Quiz
             {
                 blueScore = blueScore - 3;
             }
-            if (SameQuestionAnswered == false)
+            if (SameQuestionAnswered == false)///finds out if the question is being answered for the first time or sec.
             {
                 if (progressBarQuestion.Value == progressBarQuestion.Maximum)
                 {
@@ -347,11 +346,11 @@ namespace AZ_Quiz
             int result = radomnumber.Next(0, 2);
             if (result == 0)
             {
-                BlueTurn = false;//orange
+                BlueTurn = false;///orange starts
             }
             else if (result == 1)
             {
-                BlueTurn = true;//blue
+                BlueTurn = true;///blue starts
             }
         }
         private void FindPlayers()
@@ -367,7 +366,7 @@ namespace AZ_Quiz
                 firstPlayer = bluePlayer;
             }
         }
-        private void EnableHexagonClick()
+        private void EnableHexagonClick()///sets which hexagon can have click control
         {
             foreach (HexagonButton hexagon in buttonList)
             {
@@ -379,8 +378,8 @@ namespace AZ_Quiz
                     hexagon.Click += HexagonButton_Click;
             }
         }
-        private void TimeLimit(object sender, EventArgs e)//both methods - TimeLimit and GameProgressBar were completed with undertook parts from: https://stackoverflow.com/questions/7259511/increase-a-progressbar-with-timer-in-winforms and https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.progressbar.increment?view=windowsdesktop-7.0
-        {
+        private void TimeLimit(object sender, EventArgs e)//both methods - TimeLimit and GameProgressBar were completed with inspiration from: https://stackoverflow.com/questions/7259511/increase-a-progressbar-with-timer-in-winforms and https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.progressbar.increment?view=windowsdesktop-7.0
+        {///answering time timer/progressbar
             progressBarQuestion.Increment(1);
             if (progressBarQuestion.Value == progressBarQuestion.Maximum)
             {
@@ -421,7 +420,7 @@ namespace AZ_Quiz
                 progressBarQuestion.Hide();
             }
         }
-        private void GameProgressBar(object sender, EventArgs e)
+        private void GameProgressBar(object sender, EventArgs e)///whole game timer/progress bar
         {
             progressBarGame.Increment(1);
             if (progressBarGame.Value == progressBarGame.Maximum)
@@ -446,7 +445,7 @@ namespace AZ_Quiz
                 ShowMessageBox();
             }
         }
-        private void GenerateHexagons()
+        private void GenerateHexagons()///generates hexagons to triagle + neigbours for endgame algoritm
         {
             int x = (Size.Width / 2) - 26;
             int y = (Size.Height / 2) - 60;

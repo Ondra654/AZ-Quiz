@@ -21,7 +21,7 @@
         private int numQuestion = -1;
         private int numBlackQuestion = -1;
 
-        static string GetPath(params string[] segments)//take over from Lecture22 from our teacher: https://github.com/redwormik/gymspit-pg4-2022/tree/main/Lecture22
+        static string GetPath(params string[] segments)//used from Lecture22 from our teacher: https://github.com/redwormik/gymspit-pg4-2022/tree/main/Lecture22
         {
             string path = Directory.GetCurrentDirectory();
 
@@ -46,7 +46,7 @@
             {
                 throw new FileNotFoundException("File 'Questions' is not located in 'data' folder, redownload game or put this file back");
             }
-            for (int i = 0; i < questions.Length; i++)
+            for (int i = 0; i < questions.Length; i++)///finds out on what row inside data is SPLITTER -> set index number, which is used right after to split data correctly
             {
                 string row = questions[i];
                 if (row == "SPLITTER")
@@ -67,7 +67,7 @@
             }
             blackanswers = File.ReadAllLines(Apath).Skip(index + 1).ToArray();
         }
-        public void GetQuestion()
+        public void GetQuestion()///loads a new question
         {
             if (questions == null)
             {
@@ -95,7 +95,7 @@
                     usedQuestions.Add(question);
             }
         }
-        public string GetAnswer()
+        public string GetAnswer()///loads a new answer for loaded question
         {
             if (answers == null)
             {
@@ -103,7 +103,7 @@
             }
             return answer = answers[numQuestion];
         }
-        public void GetBlackQuestion()
+        public void GetBlackQuestion()///loads a new YES/NO question
         {
             if (blackQuestion == null)
             {
@@ -119,7 +119,7 @@
             else
                 usedBlackQuestions.Add(blackQuestion);
         }
-        public string GetBlackAnswer()
+        public string GetBlackAnswer()///loads a new YES/NO answer for loaded YES/NO question
         {
             if (numBlackQuestion < 0)
             {
@@ -131,7 +131,7 @@
             }
             return blackAnswer = blackanswers[numBlackQuestion];
         }
-        public void ResetQuestionLists()
+        public void ResetQuestionLists()///clears lists of used questions
         {
             usedQuestions.Clear();
             usedBlackQuestions.Clear();

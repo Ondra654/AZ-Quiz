@@ -25,7 +25,7 @@ namespace AZ_Quiz
         {
             message1.Text = message;
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)///finds out where was msg box displayed and in that section - ResetAll
         {
             if (singlePlayer == false)
             {

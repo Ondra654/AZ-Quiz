@@ -34,7 +34,7 @@ namespace AZ_Quiz
         public string account2 = "";
         public int acc1score = 0;
         public int acc2score = 0;
-        static string GetPath(params string[] segments)//sorted from Lecture22 from our teacher: https://github.com/redwormik/gymspit-pg4-2022/tree/main/Lecture22
+        static string GetPath(params string[] segments)//used from Lecture22 from our teacher: https://github.com/redwormik/gymspit-pg4-2022/tree/main/Lecture22
         {
             string path = Directory.GetCurrentDirectory();
 
@@ -98,7 +98,7 @@ namespace AZ_Quiz
             byte[] hash = hashAlgorithm.ComputeHash(bytes);
             return Convert.ToBase64String(hash);
         }
-        public void FindAccount()
+        public void FindAccount()///used for checking if some account´s name and password already exists
         {            
             foreach (var checkNickname in nicknames){
                 if (loginNickname == checkNickname && loginNickname != account1){
@@ -134,7 +134,7 @@ namespace AZ_Quiz
                 }
             }
         }
-        public void RewriteScore()
+        public void RewriteScore()///calculates new score data after PVP game ends
         {
             for (int i = 0; i < accounts.Length; i++){
                 var account = nicknames[i];
@@ -154,7 +154,7 @@ namespace AZ_Quiz
             }
             SaveData();
         }
-        public static void HelpLoad()
+        public static void HelpLoad()///help button in menu
         {
             string HelpPath = GetPath("data", "rules.html");
             ProcessStartInfo info = new ProcessStartInfo();//partially taken from and implemented to my code: https://social.msdn.microsoft.com/Forums/vstudio/en-US/30c27bf5-bd21-47b0-92c2-4e644d319197/create-an-html-file-and-display-it-on-button-press-c?forum=csharpgeneral
