@@ -22,6 +22,10 @@
         }
         public void LoadDataGridView()///sets whole DataGrigView
         {
+            int infox = 0;
+            int infoy = 0;
+            infox = this.Width - dataGridView1.Width + dataInfo.Width / 4;
+            infoy = this.Height - dataGridView1.Height + dataInfo.Height / 4;
             myAccountsManager.LoadData();
             myAccountsManager.SplitTextLine();
             SortData();
@@ -36,6 +40,7 @@
                 rowsize = (dataGridView1.Height - dataGridView1.ColumnHeadersHeight);
                 dataInfo.Text = "0 existing profiles, create some to display scoreboard";
                 dataInfo.Show();
+                dataInfo.Location = new Point(infox, infoy);
             }
             else
             {
